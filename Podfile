@@ -2,7 +2,7 @@
 platform :ios, "9.0"
 
 use_frameworks!
-targetArray = ['EnvironmentSelector', 'Example']
+targetArray = ['HYPEnviromentSelector', 'Example']
 targetArray.each do |t|
     target t do
         pod 'HyperioniOS/Core'

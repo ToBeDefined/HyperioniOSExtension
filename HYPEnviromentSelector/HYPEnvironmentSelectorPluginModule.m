@@ -6,9 +6,10 @@
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
+#import <HyperioniOS/HYPPluginMenuItem.h>
 #import "HYPEnvironmentSelectorPluginModule.h"
 #import "HYPEnvironmentSelectorPluginMenuItem.h"
-#import <HyperioniOS/HYPPluginMenuItem.h>
+#import "HYPEnvironmentSelectorPlugin.h"
 
 @interface HYPEnvironmentSelectorPluginModule() <HYPEnvironmentSelectorPluginMenuItemDelegate>
 
@@ -42,6 +43,10 @@
 
 - (void)environmentSelectorPluginMenuItemAction:(HYPEnvironmentSelectorPluginMenuItem *)menuItem {
     NSLog(@"TEST");
+    EnvironmentSelectedBlock block = [HYPEnvironmentSelectorPlugin.environmentSelectedBlock copy];
+    if (block) {
+        block([NSObject new]);
+    }
 }
 
 @end

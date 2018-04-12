@@ -14,11 +14,13 @@
 
 @implementation HYPEnvironmentSelectorPluginMenuItem
 
+@synthesize delegate = _delegate;
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.delegate = self;
+        _delegate = self;
     }
     return self;
 }

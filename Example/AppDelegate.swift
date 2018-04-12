@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HYPEnviromentSelector
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        HYPEnvironmentSelectorPlugin.environmentItems = [HYPEnvironmentItem.init(name: "1"),
+                                                         HYPEnvironmentItem.init(name: "2"),
+                                                         HYPEnvironmentItem.init(name: "3"),
+                                                         HYPEnvironmentItem.init(name: "4")]
+        HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
+            print(obj ?? "nonono")
+        }
         return true
     }
 

@@ -21,9 +21,6 @@
 static NSArray<HYPEnvironmentItem *> *__environmentItems = nil;
 + (void)setEnvironmentItems:(NSArray<HYPEnvironmentItem *> *)environmentItems {
     __environmentItems = environmentItems;
-    if (self.pluginModule) {
-        [self.pluginModule refreshPluginViewWithEnvironmentItems:environmentItems];
-    }
 }
 
 + (NSArray<HYPEnvironmentItem *> *)environmentItems {
@@ -31,7 +28,7 @@ static NSArray<HYPEnvironmentItem *> *__environmentItems = nil;
 }
 
 #pragma mark - pluginModule
-static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
+static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 + (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
     __pluginModule = pluginModule;
 }
@@ -39,6 +36,17 @@ static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 + (HYPEnvironmentSelectorPluginModule *)pluginModule {
     return __pluginModule;
 }
+
+#pragma mark -
+static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
++ (void)setEnvironmentSelectedBlock:(EnvironmentSelectedBlock)environmentSelectedBlock {
+    __environmentSelectedBlock = [environmentSelectedBlock copy];
+}
+
++ (EnvironmentSelectedBlock)environmentSelectedBlock {
+    return __environmentSelectedBlock;
+}
+
 
 #pragma mark - HYPPlugin
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {

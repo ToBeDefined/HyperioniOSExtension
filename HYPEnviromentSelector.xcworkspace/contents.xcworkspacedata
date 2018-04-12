@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HyperioniOS-EnvironmentSelector.xcodeproj">
+      location = "group:HYPEnviromentSelector.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
