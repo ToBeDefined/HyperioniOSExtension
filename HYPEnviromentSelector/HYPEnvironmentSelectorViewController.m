@@ -71,7 +71,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     if (tmpName) {
         title = [NSString stringWithFormat:@"%@", tmpName];
     } else {
-        title = @"Don't Have Name";
+        title = @"No name was set before.";
     }
     
     if (indexPath.row == 0) {

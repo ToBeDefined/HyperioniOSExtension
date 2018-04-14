@@ -12,14 +12,19 @@
 
 @implementation HYPEnvironmentItemManage
 
-+ (BOOL)isSwiftClass:(Class)cls {
+static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. must inherit from `NSObject`, \n 2. add `@objcMembers` in class define position, \n 3. add `init()` function. \n\n";
++ (void)checkIsSwiftClass:(Class)cls {
     if ([NSStringFromClass(cls) rangeOfString:@"."].location != NSNotFound) {
-        return YES;
+        NSAssert([cls isSubclassOfClass:[NSObject class]], swiftErrorLog);
     }
-    return NO;
+}
+
++ (void)checkValueIsNSString:(id)value {
+    NSAssert(value == nil || [value isKindOfClass:[NSString class]], @"all property must use NSString type");
 }
 
 + (NSDictionary *)dictionaryWithItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     if ([item isKindOfClass:[NSDictionary class]]) {
         return item;
     } else {
@@ -41,18 +46,16 @@
     if ([cls isMemberOfClass:[NSDictionary class]]) {
         return dict;
     } else {
+        [self checkIsSwiftClass:cls];
         NSArray<NSString *> *keys = [self keysForItemClass:cls];
         if (![cls instancesRespondToSelector:@selector(init)]) {
             NSAssert(NO, @"item's class must have `init` function");
             return nil;
         }
-        if ([self isSwiftClass:cls]) {
-            NSLog(@"\n\n!!!if is swift class, must inherit from `NSObject`, and add `init()` function, and add `@objcMembers` in class define position!!!\n\n");
-        }
         id newItem = [[cls alloc] init];
         [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             if ([keys containsObject:key]) {
-                NSAssert(obj == nil || [obj isKindOfClass:[NSString class]], @"all property must use NSString type");
+                [self checkValueIsNSString:obj];
                 [newItem setValue:obj forKey:key];
             }
         }];
@@ -61,22 +64,20 @@
 }
 
 + (id)mutableCopyItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     if ([item isKindOfClass:[NSDictionary class]]) {
         return [item mutableCopy];
     } else {
         Class cls = [item class];
         if (![cls instancesRespondToSelector:@selector(init)]) {
-            NSAssert(NO, @"item's class must have `init` function");
+            NSAssert(NO, @"item's class must have `init()` function");
             return nil;
-        }
-        if ([self isSwiftClass:cls]) {
-            NSLog(@"\n\n!!!if is swift class, must inherit from `NSObject`, and add `init()` function, and add `@objcMembers` in class define position!!!\n\n");
         }
         id newItem = [[cls alloc] init];
         NSArray<NSString *> *keys = [self keysForItem:item];
         for (NSString *key in keys) {
             id value = [self getObjectForKey:key inItem:item];
-            NSAssert(value == nil || [value isKindOfClass:[NSString class]], @"all property must use NSString type");
+            [self checkValueIsNSString:value];
             [newItem setValue:value forKey:key];
         }
         return newItem;
@@ -84,6 +85,7 @@
 }
 
 + (NSArray<NSString *> *)keysForItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     NSArray<NSString *> *keys;
     if ([item isKindOfClass:[NSDictionary class]]) {
         keys = (NSArray<NSString *> *)[(NSDictionary *)item allKeys];
@@ -97,6 +99,7 @@
 }
 
 + (NSArray<NSString *> *)keysForItemClass:(Class)cls {
+    [self checkIsSwiftClass:cls];
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList(cls, &count);
     NSMutableArray<NSString *> *propertyArray = [NSMutableArray array];
@@ -110,6 +113,7 @@
 }
 
 + (id)getObjectForKey:(NSString *)key inItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     if ([item isKindOfClass:[NSDictionary class]]) {
         id value = [(NSDictionary *)item objectForKey:key];
         return value;
@@ -117,14 +121,20 @@
         NSArray<NSString *>* keys = [HYPEnvironmentItemManage keysForItem:item];
         if ([keys containsObject:key]) {
             id value = [item valueForKey:key];
-            NSAssert(value == nil || [value isKindOfClass:[NSString class]], @"all property must use NSString type");
+            [self checkValueIsNSString:value];
             return value;
         }
+    }
+    if ([key isEqualToString:@"name"]) {
+        NSLog(@"\n%@, %@", @"you should set name", swiftErrorLog);
+    } else {
+        NSAssert(NO, swiftErrorLog);
     }
     return nil;
 }
 
 + (id)updateObject:(id)newObj forKey:(NSString *)key inItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     if ([item isKindOfClass:[NSMutableDictionary class]]) {
         id oldValue = [item objectForKey:key];
         [(NSMutableDictionary *)item setObject:newObj forKey:key];
@@ -136,12 +146,12 @@
             [item setValue:newObj forKey:key];
             return oldValue;
         }
-        NSAssert(NO, @"JUST Support Property, propertys dosn't contains this key");
     }
     return nil;
 }
 
 + (NSString *)descriptionForItem:(id)item {
+    [self checkIsSwiftClass:[item class]];
     NSArray<NSString *> *keys = [self keysForItem:item];
     if ([item isKindOfClass:[NSDictionary class]]) {
         NSMutableString *description = [NSMutableString stringWithString:@""];
@@ -154,7 +164,7 @@
         NSMutableString *description = [NSMutableString stringWithString:@""];
         for (NSString *property in keys) {
             id value = [item valueForKey:property];
-            NSAssert(value == nil || [value isKindOfClass:[NSString class]], @"all property must use NSString type");
+            [self checkValueIsNSString:value];
             [description appendFormat:@"\n%@ => %@", property, value];
         }
         return description;
