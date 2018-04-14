@@ -7,6 +7,7 @@
 //
 
 #import "HYPEnvironmentSelectorPluginMenuItem.h"
+#import <HyperioniOS/HyperionManager.h>
 
 @interface HYPEnvironmentSelectorPluginMenuItem() <HYPPluginMenuItemDelegate>
 
@@ -29,10 +30,14 @@
     // 不设置selected
     [super setSelected:NO animated:NO];
 }
+
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
-    if ([self.actionDelegate respondsToSelector:@selector(environmentSelectorPluginMenuItemAction:)]) {
-        [self.actionDelegate environmentSelectorPluginMenuItemAction:self];
-    }
+    [[HyperionManager sharedInstance] togglePluginDrawer];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.actionDelegate respondsToSelector:@selector(environmentSelectorPluginMenuItemAction:)]) {
+            [self.actionDelegate environmentSelectorPluginMenuItemAction:self];
+        }
+    });
 }
 
 @end

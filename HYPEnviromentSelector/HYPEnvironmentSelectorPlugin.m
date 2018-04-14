@@ -10,34 +10,44 @@
 #import "HYPEnvironmentSelectorPluginModule.h"
 
 @interface HYPEnvironmentSelectorPlugin()
-
-@property (nonatomic, class, weak) HYPEnvironmentSelectorPluginModule *pluginModule;
-
+@property (nonatomic, class, weak) HYPEnvironmentSelectorPluginModule * _Nullable pluginModule;
 @end
 
 @implementation HYPEnvironmentSelectorPlugin
 
 #pragma mark - environmentItems
-static NSArray<HYPEnvironmentItem *> *__environmentItems = nil;
-+ (void)setEnvironmentItems:(NSArray<HYPEnvironmentItem *> *)environmentItems {
+static NSArray *__environmentItems = nil;
++ (void)setEnvironmentItems:(NSArray *)environmentItems {
     __environmentItems = environmentItems;
 }
 
-+ (NSArray<HYPEnvironmentItem *> *)environmentItems {
++ (NSArray *)environmentItems {
     return __environmentItems;
 }
 
-#pragma mark - pluginModule
-static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
-+ (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
-    __pluginModule = pluginModule;
+#pragma mark - environmentItemsPlistName
+static NSString *__environmentItemsPlistName = nil;
++ (void)setEnvironmentItemsPlistName:(NSString *)environmentItemsPlistName {
+    __environmentItemsPlistName = environmentItemsPlistName;
 }
 
-+ (HYPEnvironmentSelectorPluginModule *)pluginModule {
-    return __pluginModule;
++ (NSString *)environmentItemsPlistName {
+    return __environmentItemsPlistName;
 }
 
-#pragma mark -
++ (Class)getEnvironmentItemClass {
+    id item = [self getEnvironmentItems].firstObject;
+    if (item == nil) {
+        return [NSNull class];
+    }
+    if ([item isKindOfClass:[NSDictionary class]]) {
+        return [NSDictionary class];
+    } else {
+        return [item class];
+    }
+}
+
+#pragma mark - environmentSelectedBlock
 static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
 + (void)setEnvironmentSelectedBlock:(EnvironmentSelectedBlock)environmentSelectedBlock {
     __environmentSelectedBlock = [environmentSelectedBlock copy];
@@ -47,12 +57,53 @@ static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
     return __environmentSelectedBlock;
 }
 
+#pragma mark - pluginModule
+static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
++ (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
+    __pluginModule = pluginModule;
+}
+
++ (HYPEnvironmentSelectorPluginModule *)pluginModule {
+    return __pluginModule;
+}
+
+
++ (NSArray *)getEnvironmentItems {
+    if (self.environmentItems.count > 0) {
+        return self.environmentItems;
+    }
+    
+    if (self.environmentItemsPlistName) {
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:self.environmentItemsPlistName
+                                                              ofType:@"plist"];
+        NSArray *array = [NSArray arrayWithContentsOfFile:plistPath];
+        if (array) {
+            return array;
+        }
+        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+        if (dict) {
+            return @[dict];
+        }
+    }
+    NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
+    return nil;
+}
+
++ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+}
+
++ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+    [self.pluginModule hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+}
+
 
 #pragma mark - HYPPlugin
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
-    HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc]
-                                                        initWithExtension:pluginExtension
-                                                        environmentItems:self.environmentItems];
+    if (self.pluginModule) {
+        return self.pluginModule;
+    }
+    HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
     self.pluginModule = pluginModule;
     return pluginModule;
 }

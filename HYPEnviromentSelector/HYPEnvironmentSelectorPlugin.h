@@ -8,17 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import <HyperioniOS/HYPPlugin.h>
-#import "HYPEnvironmentItem.h"
+#import "HYPEnvironmentItemManage.h"
 
-/**
- when select environment, call block, `obj` is `HYPEnvironmentItem` or subclass instance or NSDictionary
+NS_ASSUME_NONNULL_BEGIN
 
- @param obj `HYPEnvironmentItem` or subclass instance or NSDictionary
- */
-typedef void (^ __nullable EnvironmentSelectedBlock)(id obj);
+@class HYPEnvironmentSelectorPluginModule;
+
+typedef void (^ __nullable EnvironmentSelectedBlock)(id _Nullable obj);
 
 @interface HYPEnvironmentSelectorPlugin : NSObject<HYPPlugin>
 
-@property (class, nonatomic, copy) NSArray<HYPEnvironmentItem *> *environmentItems;
-@property (class, nonatomic, copy) EnvironmentSelectedBlock environmentSelectedBlock;
+@property (nonatomic, class, copy) NSArray* _Nullable environmentItems;
+@property (nonatomic, class, copy) NSString * _Nullable environmentItemsPlistName;
+@property (nonatomic, class, copy) EnvironmentSelectedBlock environmentSelectedBlock;
+
++ (NSArray *_Nullable)getEnvironmentItems;
++ (Class)getEnvironmentItemClass;
+
++ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^_Nullable)(void))completion;
++ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^_Nullable)(void))completion;
+
 @end
+
+NS_ASSUME_NONNULL_END

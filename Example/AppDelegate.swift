@@ -9,6 +9,23 @@
 import UIKit
 import HYPEnviromentSelector
 
+@objcMembers
+class HYPEnvironmentItem: NSObject {
+    var name: String?
+    var baseURL: String?
+    var commonPort: String?
+    var H5BaseURL: String?
+    var key: String?
+    
+    override init() {
+        super.init()
+    }
+    init(name: String) {
+        super.init()
+        self.name = name
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          HYPEnvironmentItem.init(name: "3"),
                                                          HYPEnvironmentItem.init(name: "4")]
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
+            if let obj = obj as? HYPEnvironmentItem {
+                print(obj.name)
+                print(obj.baseURL)
+                print(obj.commonPort)
+                print(obj.H5BaseURL)
+                print(obj.key)
+            }
             print(obj ?? "nonono")
         }
         return true

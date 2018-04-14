@@ -11,13 +11,21 @@
 #if __has_include(<HYPEnvironmentSelector/HYPEnviromentSelector.h>)
 FOUNDATION_EXPORT double HYPEnviromentSelectorVersionNumber;
 FOUNDATION_EXPORT const unsigned char HYPEnviromentSelectorVersionString[];
-#import <HYPEnvironmentSelector/HYPEnvironmentItem.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentSelectorPlugin.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentSelectorPluginMenuItem.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentSelectorPluginModule.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentSelectorPluginMenuItem.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentItemManage.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentSelectorViewController.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentSelectorEditItemViewController.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentInfoCell.h>
+#import <HYPEnvironmentSelector/HYPEnvironmentInfoEditCell.h>
 #else
-#import "HYPEnvironmentItem.h"
 #import "HYPEnvironmentSelectorPlugin.h"
-#import "HYPEnvironmentSelectorPluginMenuItem.h"
 #import "HYPEnvironmentSelectorPluginModule.h"
+#import "HYPEnvironmentSelectorPluginMenuItem.h"
+#import "HYPEnvironmentItemManage.h"
+#import "HYPEnvironmentSelectorViewController.h"
+#import "HYPEnvironmentSelectorEditItemViewController.h"
+#import "HYPEnvironmentInfoCell.h"
+#import "HYPEnvironmentInfoEditCell.h"
 #endif

@@ -7,11 +7,13 @@
 //
 
 #import <HyperioniOS/HYPPluginModule.h>
-#import "HYPEnvironmentItem.h"
+#import "HYPEnvironmentItemManage.h"
 
 @interface HYPEnvironmentSelectorPluginModule : HYPPluginModule
 
-- (nonnull instancetype)initWithExtension:(nonnull id<HYPPluginExtension>)extension
-                         environmentItems:(NSArray<HYPEnvironmentItem *> *)items;
+- (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^_Nullable)(void))completion;
+- (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^_Nullable)(void))completion;
 
 @end
