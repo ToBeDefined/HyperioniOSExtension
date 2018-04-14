@@ -25,16 +25,6 @@ static NSArray *__environmentItems = nil;
     return __environmentItems;
 }
 
-#pragma mark - environmentItemsPlistName
-static NSString *__environmentItemsPlistName = nil;
-+ (void)setEnvironmentItemsPlistName:(NSString *)environmentItemsPlistName {
-    __environmentItemsPlistName = environmentItemsPlistName;
-}
-
-+ (NSString *)environmentItemsPlistName {
-    return __environmentItemsPlistName;
-}
-
 + (Class)getEnvironmentItemClass {
     id item = [self getEnvironmentItems].firstObject;
     if (item == nil) {
@@ -81,19 +71,6 @@ static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 + (NSArray *)getEnvironmentItems {
     if (self.environmentItems.count > 0) {
         return self.environmentItems;
-    }
-    
-    if (self.environmentItemsPlistName) {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:self.environmentItemsPlistName
-                                                              ofType:@"plist"];
-        NSArray *array = [NSArray arrayWithContentsOfFile:plistPath];
-        if (array) {
-            return array;
-        }
-        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-        if (dict) {
-            return @[dict];
-        }
     }
     NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
     return nil;

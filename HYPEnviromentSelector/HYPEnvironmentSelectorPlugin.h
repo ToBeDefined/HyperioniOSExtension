@@ -19,7 +19,6 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(id _Nullable obj);
 @interface HYPEnvironmentSelectorPlugin : NSObject<HYPPlugin>
 
 @property (nonatomic, class, copy) NSArray * _Nullable environmentItems;
-@property (nonatomic, class, copy) NSString * _Nullable environmentItemsPlistName;
 @property (nonatomic, class, copy) EnvironmentSelectedBlock environmentSelectedBlock;
 
 // 是否允许以列表中的item为基础修改（默认为NO）
