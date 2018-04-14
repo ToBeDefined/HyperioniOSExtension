@@ -67,6 +67,10 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 }
 
 + (id)mutableCopyItem:(id)item {
+    if (item == nil) {
+        return nil;
+    }
+    
     [self checkIsSwiftClass:[item class]];
     if ([item isKindOfClass:[NSDictionary class]]) {
         return [item mutableCopy];

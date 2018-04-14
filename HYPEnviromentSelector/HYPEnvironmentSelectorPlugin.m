@@ -25,16 +25,14 @@ static NSArray *__environmentItems = nil;
     return __environmentItems;
 }
 
-+ (Class)getEnvironmentItemClass {
-    id item = [self getEnvironmentItems].firstObject;
-    if (item == nil) {
-        return [NSNull class];
-    }
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        return [NSDictionary class];
-    } else {
-        return [item class];
-    }
+#pragma mark - customEnvironmentItemTemplate
+static id __customEnvironmentItemTemplate = nil;
++ (id)customEnvironmentItemTemplate {
+    return __customEnvironmentItemTemplate;
+}
+
++ (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
+    __customEnvironmentItemTemplate = customEnvironmentItemTemplate;
 }
 
 #pragma mark - environmentSelectedBlock
@@ -68,6 +66,28 @@ static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 }
 
 
++ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+}
+
++ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+    [self.pluginModule hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+}
+
+#pragma mark - Private Func
+
++ (Class)getEnvironmentItemClass {
+    id item = [self getEnvironmentItems].firstObject;
+    if (item == nil) {
+        return [NSNull class];
+    }
+    if ([item isKindOfClass:[NSDictionary class]]) {
+        return [NSDictionary class];
+    } else {
+        return [item class];
+    }
+}
+
 + (NSArray *)getEnvironmentItems {
     if (self.environmentItems.count > 0) {
         return self.environmentItems;
@@ -76,13 +96,6 @@ static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
     return nil;
 }
 
-+ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
-}
-
-+ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [self.pluginModule hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
-}
 
 
 #pragma mark - HYPPlugin

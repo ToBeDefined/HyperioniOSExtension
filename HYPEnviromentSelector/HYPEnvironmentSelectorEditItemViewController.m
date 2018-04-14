@@ -25,15 +25,35 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
 
 @implementation HYPEnvironmentSelectorEditItemViewController
 
+- (void)setItemUseItem:(id)item {
+    // 传了item, 则使用item(拷贝)
+    if (item) {
+        _item = [HYPEnvironmentItemManage mutableCopyItem:item];
+        return;
+    }
+    
+    // 没传item
+    // 1、如果存在缓存，使用缓存(生成item)
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:HYPEnvironmentSelectorEditItemSaveKey];
+    if (dict != nil) {
+        _item = [HYPEnvironmentItemManage itemWithDictionary:dict];
+        return;
+    }
+    // 2、如果有模板，使用模板(拷贝)
+    id baseItem = HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate;
+    if (baseItem != nil) {
+        _item = [HYPEnvironmentItemManage mutableCopyItem:baseItem];
+        return;
+    }
+    
+    // 3、如果什么都没，生成一个item
+    _item = [HYPEnvironmentItemManage itemWithDictionary:nil];
+}
+
 - (instancetype)initWithItem:(id)item {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        if (item) {
-            _item = [HYPEnvironmentItemManage mutableCopyItem:item];
-        } else {
-            NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:HYPEnvironmentSelectorEditItemSaveKey];
-            _item = [HYPEnvironmentItemManage itemWithDictionary:dict];
-        }
+        [self setItemUseItem:item];
     }
     return self;
 }

@@ -18,19 +18,22 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(id _Nullable obj);
 
 @interface HYPEnvironmentSelectorPlugin : NSObject<HYPPlugin>
 
+
 @property (nonatomic, class, copy) NSArray * _Nullable environmentItems;
+// 自定义URL编辑界面的模板
+@property (nonatomic, class, strong) id _Nullable customEnvironmentItemTemplate;
 @property (nonatomic, class, copy) EnvironmentSelectedBlock environmentSelectedBlock;
 
 // 是否允许以列表中的item为基础修改（默认为NO）
 @property (nonatomic, class, assign) BOOL isCanEditItemFromListItem;
 
-+ (NSArray *_Nullable)getEnvironmentItems;
-+ (Class)getEnvironmentItemClass;
-
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;
+
++ (NSArray *_Nullable)getEnvironmentItems;
++ (Class)getEnvironmentItemClass;
 
 @end
 

@@ -14,7 +14,9 @@ class HYPEnvironmentItem: NSObject {
     var name: String?
     var baseURL: String?
     var commonPort: String?
-    var H5BaseURL: String?
+    var H5BaseURL1: String?
+    var H5BaseURL2: String?
+    var H5BaseURL3: String?
     var key: String?
     
     override init() {
@@ -38,12 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          HYPEnvironmentItem.init(name: "2"),
                                                          HYPEnvironmentItem.init(name: "3"),
                                                          HYPEnvironmentItem.init(name: "4")]
+        HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = HYPEnvironmentItem.init(name: "base");
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
             if let obj = obj as? HYPEnvironmentItem {
                 print(obj.name)
                 print(obj.baseURL)
                 print(obj.commonPort)
-                print(obj.H5BaseURL)
+                print(obj.H5BaseURL1)
                 print(obj.key)
             }
             print(obj ?? "nonono")
