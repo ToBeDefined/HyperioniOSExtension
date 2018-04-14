@@ -32,7 +32,10 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         for (NSString *key in keys) {
             id value = [self getObjectForKey:key inItem:item];
-            [dict setObject:value forKey:key];
+            if (value) {
+                [self checkValueIsNSString:value];
+                [dict setObject:value forKey:key];
+            }
         }
         return dict;
     }
