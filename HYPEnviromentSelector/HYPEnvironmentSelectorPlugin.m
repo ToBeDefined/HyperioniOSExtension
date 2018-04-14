@@ -57,6 +57,16 @@ static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
     return __environmentSelectedBlock;
 }
 
+#pragma mark - isCanEditItemFromListItem
+static BOOL __isCanEditItemFromListItem = NO;
++ (BOOL)isCanEditItemFromListItem {
+    return __isCanEditItemFromListItem;
+}
+
++ (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
+    __isCanEditItemFromListItem = isCanEditItemFromListItem;
+}
+
 #pragma mark - pluginModule
 static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 + (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {

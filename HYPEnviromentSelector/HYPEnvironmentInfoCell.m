@@ -7,6 +7,7 @@
 //
 
 #import "HYPEnvironmentInfoCell.h"
+#import "HYPEnvironmentSelectorPlugin.h"
 
 @interface HYPEnvironmentInfoCell()
 
@@ -18,7 +19,11 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
         self.detailTextLabel.numberOfLines = 0;
-        self.accessoryType = UITableViewCellAccessoryDetailButton;
+        if (HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem) {
+            self.accessoryType = UITableViewCellAccessoryDetailButton;
+        } else {
+            self.accessoryType = UITableViewCellAccessoryNone;
+        }
         [self insertUI];
     }
     return self;
