@@ -22,10 +22,6 @@ CGFloat HYPFPSMonitorManagerFPSLabelHeight = 30;
 
 @property (nonatomic, class, assign) BOOL isShowingFPSMonitorView;
 @property (nonatomic, class, strong) CADisplayLink *displayLink;
-
-@property (nonatomic, class, weak) UIWindow *fpsLabelWindow;
-@property (nonatomic, class, weak) UIWindow *originKeyWindow;
-
 @property (nonatomic, class, strong, readonly) UILabel *fpsLabel;
 
 @end
@@ -52,28 +48,6 @@ static CADisplayLink *__dispalyLink = nil;
 
 + (void)setDisplayLink:(CADisplayLink *)dispalyLink {
     __dispalyLink = dispalyLink;
-}
-
-
-#pragma mark - fpsLabelWindow
-static UIWindow *__fpsLabelWindow = nil;
-+ (UIWindow *)fpsLabelWindow {
-    return __fpsLabelWindow;
-}
-
-+ (void)setFpsLabelWindow:(UIWindow *)fpsLabelWindow {
-    __fpsLabelWindow = fpsLabelWindow;
-}
-
-
-#pragma mark - originKeyWindow
-static UIWindow *__fpsMonitororiginKeyWindow = nil;
-+ (UIWindow *)originKeyWindow {
-    return __fpsMonitororiginKeyWindow;
-}
-
-+ (void)setOriginKeyWindow:(UIWindow *)originKeyWindow {
-    __fpsMonitororiginKeyWindow = originKeyWindow;
 }
 
 
@@ -107,51 +81,52 @@ static UILabel *__fpsLabel = nil;
 + (void)showFPSMonitorView {
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateFPSValue:)];
     [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    self.originKeyWindow = [UIApplication sharedApplication].keyWindow;
-    self.fpsLabelWindow = [[UIWindow alloc] initWithFrame:CGRectMake(10,
-                                                                     [UIScreen mainScreen].bounds.size.height - 100,
-                                                                     HYPFPSMonitorManagerFPSLabelWidth,
-                                                                     HYPFPSMonitorManagerFPSLabelHeight)];
-    self.fpsLabelWindow.alpha = 0;
-    self.fpsLabelWindow.hidden = NO;
-    self.fpsLabelWindow.layer.zPosition = CGFLOAT_MAX;
+    [self addFPSLabelToKeyWindow];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addFPSLabelToKeyWindow)
+                                                 name:UIWindowDidBecomeKeyNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.fpsLabel
+                                             selector:@selector(removeFromSuperview)
+                                                 name:UIWindowDidResignKeyNotification
+                                               object:nil];
+}
+
++ (void)addFPSLabelToKeyWindow {
+    if ([UIApplication sharedApplication].keyWindow.isHidden || [self.fpsLabel isDescendantOfView:[UIApplication sharedApplication].keyWindow]) {
+        return;
+    }
+    [self.fpsLabel removeFromSuperview];
     self.fpsLabel.layer.zPosition = CGFLOAT_MAX;
-    [self.fpsLabelWindow addSubview:self.fpsLabel];
-    [self.fpsLabelWindow makeKeyWindow];
-    [UIView animateWithDuration:0.2 animations:^{
-        self.fpsLabelWindow.alpha = 1;
-    } completion:^(BOOL finished) {
-        [self.originKeyWindow makeKeyWindow];
-        self.originKeyWindow = nil;
+    self.fpsLabel.alpha = 0;
+    self.fpsLabel.hidden = NO;
+    [[UIApplication sharedApplication].keyWindow addSubview:self.fpsLabel];
+    CGFloat frameY = [UIApplication sharedApplication].keyWindow.frame.size.height - 100;
+    if (frameY < 0) {
+        frameY = 0;
+    }
+    self.fpsLabel.frame = CGRectMake(10,
+                                     frameY,
+                                     HYPFPSMonitorManagerFPSLabelWidth,
+                                     HYPFPSMonitorManagerFPSLabelHeight);
+    [UIView animateWithDuration:0.5 animations:^{
+        self.fpsLabel.alpha = 1;
     }];
-//    __weak typeof(self) weakSelf = self;
-//    __block UIWindow *originKeyWindow = nil;
-//    [[NSNotificationCenter defaultCenter] addObserverForName:UIWindowDidBecomeKeyNotification
-//                                                      object:nil
-//                                                       queue:[NSOperationQueue mainQueue]
-//                                                  usingBlock:^(NSNotification * _Nonnull note) {
-//                                                      if (self.fpsLabelWindow.isKeyWindow || [UIApplication sharedApplication].keyWindow == originKeyWindow) {
-//                                                          return;
-//                                                      }
-//                                                      originKeyWindow = [UIApplication sharedApplication].keyWindow;
-//                                                      [weakSelf.fpsLabelWindow makeKeyWindow];
-////                                                      [originKeyWindow makeKeyWindow];
-//                                                  }];
 }
 
 + (void)hideFPSMonitorView {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.displayLink.paused = YES;
     [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [self.displayLink invalidate];
     self.displayLink = nil;
     self.fpsLabel.attributedText = nil;
-    [UIView animateWithDuration:0.2 animations:^{
-        self.fpsLabelWindow.alpha = 0;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.fpsLabel.alpha = 0;
     } completion:^(BOOL finished) {
-        self.fpsLabelWindow.hidden = YES;
-        self.fpsLabelWindow = nil;
+        [self.fpsLabel removeFromSuperview];
+        self.fpsLabel.hidden = YES;
     }];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 + (void)calculateFPSValue:(CADisplayLink *)link {
