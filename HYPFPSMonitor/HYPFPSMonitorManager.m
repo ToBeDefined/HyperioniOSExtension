@@ -76,6 +76,8 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
     fpsLabel.textAlignment = NSTextAlignmentCenter;
     fpsLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     fpsLabel.userInteractionEnabled = YES;
+    fpsLabel.textColor = [UIColor greenColor];
+    fpsLabel.font = [UIFont systemFontOfSize:12];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(fpsLabelDidDragged:)];
     [pan setMaximumNumberOfTouches:1];
     [pan setMinimumNumberOfTouches:1];
@@ -164,10 +166,14 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
 
 #pragma mark - showFPSMonitor
 + (void)showFPSMonitor:(BOOL)shouldShow {
-    if (shouldShow && !self.isShowingFPSMonitorView) {
-        [self showFPSMonitorView];
+    if (shouldShow) {
+        if (!self.isShowingFPSMonitorView) {
+            [self showFPSMonitorView];
+        }
+        self.isShowingFPSMonitorView = YES;
     } else {
         [self hideFPSMonitorView];
+        self.isShowingFPSMonitorView = NO;
     }
 }
 
@@ -236,6 +242,9 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
     } completion:^(BOOL finished) {
         [self.fpsLabel removeFromSuperview];
         self.fpsLabel.hidden = YES;
+        // 重置 lastTime refreshCount
+        HYPFPSMonitorManagerLastTime = 0;
+        HYPFPSMonitorManagerRefreshCount = 0;
     }];
 }
 
@@ -244,6 +253,7 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
     ++HYPFPSMonitorManagerRefreshCount;
     
     if (HYPFPSMonitorManagerLastTime == 0) {
+        self.fpsLabel.text = @"wait...";
         HYPFPSMonitorManagerLastTime = link.timestamp;
         return;
     }
@@ -267,7 +277,7 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
                   range:NSMakeRange(0, 2)];
     
     [text addAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                          NSFontAttributeName: [UIFont systemFontOfSize:14]}
+                          NSFontAttributeName: [UIFont systemFontOfSize:10]}
                   range:NSMakeRange(text.length - 3, 3)];
     self.fpsLabel.attributedText = text;
 }
