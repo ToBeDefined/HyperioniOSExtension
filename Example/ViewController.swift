@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showFPSMonitor(_ sender: Any) {
+        HYPFPSMonitorPlugin.isCanTouchFPSView = false;
         HYPFPSMonitorPlugin.showFPSMonitor()
     }
     

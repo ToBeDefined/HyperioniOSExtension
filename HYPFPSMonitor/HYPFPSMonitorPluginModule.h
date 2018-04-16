@@ -11,6 +11,9 @@
 
 @interface HYPFPSMonitorPluginModule : HYPPluginModule
 
+// FPSView是否允许接收触摸事件
+- (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView;
+
 - (void)showHYPFPSMonitor:(BOOL)isShow;
 
 @end

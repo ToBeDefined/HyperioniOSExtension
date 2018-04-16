@@ -33,6 +33,10 @@
     return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
+- (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
+    HYPFPSMonitorManager.fpsView.userInteractionEnabled = isCanTouchFPSView;
+}
+
 
 #pragma mark - pluginMenuItem
 - (UIView *)pluginMenuItem {

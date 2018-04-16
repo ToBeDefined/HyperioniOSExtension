@@ -17,6 +17,23 @@
 
 @implementation HYPFPSMonitorPlugin
 
++ (void)load {
+    self.isCanTouchFPSView = YES;
+}
+
+#pragma mark - isCanTouchFPSView
++ (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
+    objc_setAssociatedObject(self,
+                             @selector(isCanTouchFPSView),
+                             @(isCanTouchFPSView),
+                             OBJC_ASSOCIATION_RETAIN);
+    [self.pluginModule setIsCanTouchFPSView:isCanTouchFPSView];
+}
+
++ (BOOL)isCanTouchFPSView {
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
 #pragma mark - pluginModule
 + (void)setPluginModule:(HYPFPSMonitorPluginModule *)pluginModule {
     objc_setAssociatedObject(self,
