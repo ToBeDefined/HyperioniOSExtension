@@ -11,4 +11,8 @@
 
 @interface HYPFPSMonitorPlugin : NSObject<HYPPlugin>
 
++ (void)showFPSMonitor;
+
++ (void)hideFPSMonitor;
+
 @end

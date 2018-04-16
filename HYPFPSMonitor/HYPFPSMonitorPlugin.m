@@ -35,7 +35,6 @@
     return newPluginModule;
 }
 
-
 #pragma mark - HYPPlugin
 + (nonnull HYPFPSMonitorPluginModule *)createNewHYPFPSMonitorPluginModule {
     HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
@@ -54,6 +53,15 @@
 
 + (nonnull NSString *)pluginVersion {
     return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+}
+
+#pragma mark - Function
++ (void)showFPSMonitor {
+    [self.pluginModule showHYPFPSMonitor:YES];
+}
+
++ (void)hideFPSMonitor {
+    [self.pluginModule showHYPFPSMonitor:NO];
 }
 
 @end

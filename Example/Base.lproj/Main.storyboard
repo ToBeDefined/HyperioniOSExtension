@@ -19,26 +19,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXQ-5X-bD2">
-                                <rect key="frame" x="168.5" y="318.5" width="38" height="30"/>
+                                <rect key="frame" x="20" y="120" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Z6w-Mu-PYf"/>
+                                    <constraint firstAttribute="height" constant="44" id="aYS-iX-9PA"/>
                                 </constraints>
-                                <state key="normal" title="Show"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Show Env Selector">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="showEnvSelector:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jqp-R0-eFZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UW-Se-p8B">
+                                <rect key="frame" x="20" y="184" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Swo-pn-xIy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Show FPS Monitor">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showFPSMonitor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LEu-Nc-b2U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIf-by-ePv">
+                                <rect key="frame" x="20" y="248" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uQK-mX-zTH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Hide FPS Monitor">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideFPSMonitor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPI-85-1HV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sXQ-5X-bD2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qU1-mk-H1A"/>
-                            <constraint firstItem="sXQ-5X-bD2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wAp-ki-lQI"/>
+                            <constraint firstItem="0UW-Se-p8B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9Dg-WG-JcT"/>
+                            <constraint firstItem="mIf-by-ePv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QlG-gB-XLX"/>
+                            <constraint firstItem="sXQ-5X-bD2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="UQi-6r-6GL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0UW-Se-p8B" secondAttribute="trailing" constant="20" id="W42-qi-BSL"/>
+                            <constraint firstAttribute="trailing" secondItem="mIf-by-ePv" secondAttribute="trailing" constant="20" id="WJV-FS-y8A"/>
+                            <constraint firstItem="mIf-by-ePv" firstAttribute="top" secondItem="0UW-Se-p8B" secondAttribute="bottom" constant="20" id="cbY-Qn-djx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sXQ-5X-bD2" secondAttribute="trailing" constant="20" id="coJ-JS-0Rc"/>
+                            <constraint firstItem="sXQ-5X-bD2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iZi-bj-b5P"/>
+                            <constraint firstItem="0UW-Se-p8B" firstAttribute="top" secondItem="sXQ-5X-bD2" secondAttribute="bottom" constant="20" id="vks-ZD-gmz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

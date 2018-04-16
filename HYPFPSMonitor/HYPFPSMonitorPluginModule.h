@@ -11,4 +11,6 @@
 
 @interface HYPFPSMonitorPluginModule : HYPPluginModule
 
+- (void)showHYPFPSMonitor:(BOOL)isShow;
+
 @end

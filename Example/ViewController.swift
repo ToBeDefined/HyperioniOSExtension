@@ -8,6 +8,7 @@
 
 import UIKit
 import HYPEnviromentSelector
+import HYPFPSMonitor
 
 class ViewController: UIViewController {
 
@@ -26,5 +27,12 @@ class ViewController: UIViewController {
         HYPEnvironmentSelectorPlugin.showEnvironmentSelectorWindow(animated: true, completionBlock: nil)
     }
     
+    @IBAction func showFPSMonitor(_ sender: Any) {
+        HYPFPSMonitorPlugin.showFPSMonitor()
+    }
+    
+    @IBAction func hideFPSMonitor(_ sender: Any) {
+        HYPFPSMonitorPlugin.hideFPSMonitor()
+    }
 }
 
