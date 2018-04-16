@@ -17,30 +17,30 @@
 @implementation HYPFPSMonitorPlugin
 
 #pragma mark - pluginModule
-static HYPFPSMonitorPluginModule *__pluginModule = nil;
+static HYPFPSMonitorPluginModule *__HYPFPSMonitorPluginModule = nil;
 + (HYPFPSMonitorPluginModule *)pluginModule {
-    if (__pluginModule == nil) {
+    if (__HYPFPSMonitorPluginModule == nil) {
         HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
                                                                                    overlayContainer:nil
                                                                                          hypeWindow:nil
                                                                                      attachedWindow:nil];
         return [self createPluginModule:pluginExtension];
     }
-    return __pluginModule;
+    return __HYPFPSMonitorPluginModule;
 }
 
 + (void)setPluginModule:(HYPFPSMonitorPluginModule *)pluginModule {
-    __pluginModule = pluginModule;
+    __HYPFPSMonitorPluginModule = pluginModule;
 }
 
 
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
     // pluginExtension没使用到，不再重复创建
-    if (__pluginModule) {
-        return __pluginModule;
+    if (__HYPFPSMonitorPluginModule) {
+        return __HYPFPSMonitorPluginModule;
     }
     HYPFPSMonitorPluginModule *pluginModule = [[HYPFPSMonitorPluginModule alloc] initWithExtension:pluginExtension];
-    __pluginModule = pluginModule;
+    __HYPFPSMonitorPluginModule = pluginModule;
     return pluginModule;
 }
 

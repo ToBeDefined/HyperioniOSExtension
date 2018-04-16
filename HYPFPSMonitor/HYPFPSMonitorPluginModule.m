@@ -20,13 +20,13 @@
 
 @implementation HYPFPSMonitorPluginModule
 
-static BOOL __isShowingHYPFPSMonitorView = NO;
+static BOOL __HYPFPSMonitorIsShowingHYPFPSMonitorView = NO;
 + (void)setIsShowingHYPFPSMonitorView:(BOOL)isShowingHYPFPSMonitorView {
-    __isShowingHYPFPSMonitorView = isShowingHYPFPSMonitorView;
+    __HYPFPSMonitorIsShowingHYPFPSMonitorView = isShowingHYPFPSMonitorView;
 }
 
 + (BOOL)isShowingHYPFPSMonitorView {
-    return __isShowingHYPFPSMonitorView;
+    return __HYPFPSMonitorIsShowingHYPFPSMonitorView;
 }
 
 - (UIView *)pluginMenuItem {
@@ -47,7 +47,7 @@ static BOOL __isShowingHYPFPSMonitorView = NO;
     self.class.isShowingHYPFPSMonitorView = !self.class.isShowingHYPFPSMonitorView;
     [HYPFPSMonitorManager showFPSMonitor:self.class.isShowingHYPFPSMonitorView];
     [pluginView setSelected:self.class.isShowingHYPFPSMonitorView animated:YES];
-//    [[HyperionManager sharedInstance] togglePluginDrawer];
+    [[HyperionManager sharedInstance] togglePluginDrawer];
 }
 
 @end

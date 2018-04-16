@@ -34,32 +34,32 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
 
 
 #pragma mark - isShowingFPSMonitorView
-static BOOL __isShowingFPSMonitorView = NO;
+static BOOL ____HYPFPSMonitorIsShowingFPSMonitorView = NO;
 + (void)setIsShowingFPSMonitorView:(BOOL)isShowingFPSMonitorView {
-    __isShowingFPSMonitorView = isShowingFPSMonitorView;
+    ____HYPFPSMonitorIsShowingFPSMonitorView = isShowingFPSMonitorView;
 }
 
 + (BOOL)isShowingFPSMonitorView {
-    return __isShowingFPSMonitorView;
+    return ____HYPFPSMonitorIsShowingFPSMonitorView;
 }
 
 
 #pragma mark - displayLink
-static CADisplayLink *__dispalyLink = nil;
+static CADisplayLink *__HYPFPSMonitorDispalyLink = nil;
 + (CADisplayLink *)displayLink {
-    return __dispalyLink;
+    return __HYPFPSMonitorDispalyLink;
 }
 
 + (void)setDisplayLink:(CADisplayLink *)dispalyLink {
-    __dispalyLink = dispalyLink;
+    __HYPFPSMonitorDispalyLink = dispalyLink;
 }
 
 
 #pragma mark - fpsLabel
-static UILabel *__fpsLabel = nil;
+static UILabel *__HYPFPSMonitorFPSLabel = nil;
 + (UILabel *)fpsLabel {
-    if (__fpsLabel) {
-        return __fpsLabel;
+    if (__HYPFPSMonitorFPSLabel) {
+        return __HYPFPSMonitorFPSLabel;
     }
     UILabel *fpsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                   0,
@@ -76,8 +76,8 @@ static UILabel *__fpsLabel = nil;
     [pan setMinimumNumberOfTouches:1];
     //将手势添加到draggableObj里
     [fpsLabel addGestureRecognizer:pan];
-    __fpsLabel = fpsLabel;
-    return __fpsLabel;
+    __HYPFPSMonitorFPSLabel = fpsLabel;
+    return __HYPFPSMonitorFPSLabel;
 }
 
 #pragma mark - fpsLabel拖动
@@ -263,13 +263,4 @@ static UILabel *__fpsLabel = nil;
 }
 
 @end
-
-
-
-
-
-
-
-
-
 

@@ -22,13 +22,13 @@
 
 @implementation HYPEnvironmentSelectorPluginModule
 
-static BOOL __isShowingEnvironmentSelectorWindow = NO;
+static BOOL __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow = NO;
 + (void)setIsShowingEnvironmentSelectorWindow:(BOOL)isShowingEnvironmentSelectorWindow {
-    __isShowingEnvironmentSelectorWindow = isShowingEnvironmentSelectorWindow;
+    __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow = isShowingEnvironmentSelectorWindow;
 }
 
 + (BOOL)isShowingEnvironmentSelectorWindow {
-    return __isShowingEnvironmentSelectorWindow;
+    return __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow;
 }
 
 

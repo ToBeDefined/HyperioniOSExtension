@@ -18,82 +18,81 @@
 
 
 #pragma mark - environmentItems
-static NSArray *__environmentItems = nil;
+static NSArray *__HYPEnvironmentSelectorEnvironmentItems = nil;
 + (void)setEnvironmentItems:(NSArray *)environmentItems {
-    __environmentItems = environmentItems;
+    __HYPEnvironmentSelectorEnvironmentItems = environmentItems;
 }
 
 + (NSArray *)environmentItems {
-    return __environmentItems;
+    return __HYPEnvironmentSelectorEnvironmentItems;
 }
 
 
 #pragma mark - customEnvironmentItemTemplate
-static id __customEnvironmentItemTemplate = nil;
+static id __HYPEnvironmentSelectorCustomEnvironmentItemTemplate = nil;
 + (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
-    __customEnvironmentItemTemplate = customEnvironmentItemTemplate;
+    __HYPEnvironmentSelectorCustomEnvironmentItemTemplate = customEnvironmentItemTemplate;
 }
 
 + (id)customEnvironmentItemTemplate {
-    return __customEnvironmentItemTemplate;
+    return __HYPEnvironmentSelectorCustomEnvironmentItemTemplate;
 }
 
 
 #pragma mark - environmentSelectedBlock
-static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
+static __strong EnvironmentSelectedBlock __HYPEnvironmentSelectorEnvironmentSelectedBlock = nil;
 + (void)setEnvironmentSelectedBlock:(EnvironmentSelectedBlock)environmentSelectedBlock {
-    __environmentSelectedBlock = [environmentSelectedBlock copy];
+    __HYPEnvironmentSelectorEnvironmentSelectedBlock = [environmentSelectedBlock copy];
 }
 
 + (EnvironmentSelectedBlock)environmentSelectedBlock {
-    return __environmentSelectedBlock;
+    return __HYPEnvironmentSelectorEnvironmentSelectedBlock;
 }
 
 
 #pragma mark - isCanEditItemFromListItem
-static BOOL __isShowInSidebarList = YES;
+static BOOL __HYPEnvironmentSelectorIsShowInSidebarList = YES;
 + (void)setIsShowInSidebarList:(BOOL)isShowInSidebarList {
-    __isShowInSidebarList = isShowInSidebarList;
+    __HYPEnvironmentSelectorIsShowInSidebarList = isShowInSidebarList;
 }
 
 + (BOOL)isShowInSidebarList {
-    return __isShowInSidebarList;
+    return __HYPEnvironmentSelectorIsShowInSidebarList;
 }
 
 
 #pragma mark - isCanEditItemFromListItem
-static BOOL __isCanEditItemFromListItem = NO;
+static BOOL __HYPEnvironmentSelectorIsCanEditItemFromListItem = NO;
 + (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
-    __isCanEditItemFromListItem = isCanEditItemFromListItem;
+    __HYPEnvironmentSelectorIsCanEditItemFromListItem = isCanEditItemFromListItem;
 }
 
 + (BOOL)isCanEditItemFromListItem {
-    return __isCanEditItemFromListItem;
+    return __HYPEnvironmentSelectorIsCanEditItemFromListItem;
 }
 
 
 
 #pragma mark - pluginModule
-static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
+static HYPEnvironmentSelectorPluginModule *__HYPEnvironmentSelectorPluginModule = nil;
 + (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
-    __pluginModule = pluginModule;
+    __HYPEnvironmentSelectorPluginModule = pluginModule;
 }
 
 + (HYPEnvironmentSelectorPluginModule *)pluginModule {
-    if (__pluginModule == nil) {
+    if (__HYPEnvironmentSelectorPluginModule == nil) {
         HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
                                                                                    overlayContainer:nil
                                                                                          hypeWindow:nil
                                                                                      attachedWindow:nil];
         return [self createPluginModule:pluginExtension];
     }
-    return __pluginModule;
+    return __HYPEnvironmentSelectorPluginModule;
 }
 
 #pragma mark - Show/Hide Environment Selector
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    HYPEnvironmentSelectorPluginModule *m = self.pluginModule;
-    [m showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
 }
 
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
@@ -115,8 +114,8 @@ static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 }
 
 + (NSArray *)getEnvironmentItems {
-    if (__environmentItems.count > 0) {
-        return __environmentItems;
+    if (__HYPEnvironmentSelectorEnvironmentItems.count > 0) {
+        return __HYPEnvironmentSelectorEnvironmentItems;
     }
     NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
     return nil;
@@ -126,11 +125,11 @@ static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 #pragma mark - HYPPlugin
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
     // pluginExtension没使用到，不再重复创建
-    if (__pluginModule) {
-        return __pluginModule;
+    if (__HYPEnvironmentSelectorPluginModule) {
+        return __HYPEnvironmentSelectorPluginModule;
     }
     HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
-    __pluginModule = pluginModule;
+    __HYPEnvironmentSelectorPluginModule = pluginModule;
     return pluginModule;
 }
 
