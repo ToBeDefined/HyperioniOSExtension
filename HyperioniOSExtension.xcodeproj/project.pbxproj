@@ -292,7 +292,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F88663B207F7317009760E3 /* Build configuration list for PBXProject "HYPEnviromentSelector" */;
+			buildConfigurationList = 3F88663B207F7317009760E3 /* Build configuration list for PBXProject "HyperioniOSExtension" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -687,7 +687,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F88663B207F7317009760E3 /* Build configuration list for PBXProject "HYPEnviromentSelector" */ = {
+		3F88663B207F7317009760E3 /* Build configuration list for PBXProject "HyperioniOSExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F886647207F7317009760E3 /* Debug */,
