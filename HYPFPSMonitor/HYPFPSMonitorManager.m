@@ -93,6 +93,9 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
         CGPoint offset = [pan translationInView:self.fpsLabel.superview];
         [self.fpsLabel setCenter:CGPointMake(self.fpsLabel.center.x + offset.x, self.fpsLabel.center.y + offset.y)];
         [pan setTranslation:CGPointMake(0, 0) inView:self.fpsLabel.superview];
+    }
+    
+    if (pan.state == UIGestureRecognizerStateEnded) {
         // 保存上次拖动的位置
         CGRect absoluteFrame = [self getAbsoluteFrameForView:self.fpsLabel];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HYPFPSLabelIsHaveAbsoluteFrameXY];
