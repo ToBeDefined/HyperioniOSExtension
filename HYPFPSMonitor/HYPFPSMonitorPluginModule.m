@@ -6,6 +6,7 @@
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
+#import <objc/runtime.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
 #import <HyperioniOS/HyperionManager.h>
 #import "HYPFPSMonitorPluginModule.h"
@@ -20,13 +21,16 @@
 
 @implementation HYPFPSMonitorPluginModule
 
-static BOOL __HYPFPSMonitorIsShowingHYPFPSMonitorView = NO;
+
 + (void)setIsShowingHYPFPSMonitorView:(BOOL)isShowingHYPFPSMonitorView {
-    __HYPFPSMonitorIsShowingHYPFPSMonitorView = isShowingHYPFPSMonitorView;
+    objc_setAssociatedObject(self,
+                             @selector(isShowingHYPFPSMonitorView),
+                             @(isShowingHYPFPSMonitorView),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (BOOL)isShowingHYPFPSMonitorView {
-    return __HYPFPSMonitorIsShowingHYPFPSMonitorView;
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 - (UIView *)pluginMenuItem {

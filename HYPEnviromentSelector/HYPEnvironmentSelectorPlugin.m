@@ -9,6 +9,7 @@
 #import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentSelectorPluginModule.h"
 #import <HyperioniOS/HYPPluginExtensionImp.h>
+#import <objc/runtime.h>
 
 @interface HYPEnvironmentSelectorPlugin()
 @property (nonatomic, class, strong) HYPEnvironmentSelectorPluginModule * _Nullable pluginModule;
@@ -18,76 +19,87 @@
 
 
 #pragma mark - environmentItems
-static NSArray *__HYPEnvironmentSelectorEnvironmentItems = nil;
 + (void)setEnvironmentItems:(NSArray *)environmentItems {
-    __HYPEnvironmentSelectorEnvironmentItems = environmentItems;
+    objc_setAssociatedObject(self,
+                             @selector(environmentItems),
+                             environmentItems,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (NSArray *)environmentItems {
-    return __HYPEnvironmentSelectorEnvironmentItems;
+    return (NSArray *)objc_getAssociatedObject(self, _cmd);
 }
 
 
 #pragma mark - customEnvironmentItemTemplate
-static id __HYPEnvironmentSelectorCustomEnvironmentItemTemplate = nil;
 + (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
-    __HYPEnvironmentSelectorCustomEnvironmentItemTemplate = customEnvironmentItemTemplate;
+    objc_setAssociatedObject(self,
+                             @selector(customEnvironmentItemTemplate),
+                             customEnvironmentItemTemplate,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (id)customEnvironmentItemTemplate {
-    return __HYPEnvironmentSelectorCustomEnvironmentItemTemplate;
+    return objc_getAssociatedObject(self, _cmd);
 }
 
 
 #pragma mark - environmentSelectedBlock
-static __strong EnvironmentSelectedBlock __HYPEnvironmentSelectorEnvironmentSelectedBlock = nil;
 + (void)setEnvironmentSelectedBlock:(EnvironmentSelectedBlock)environmentSelectedBlock {
-    __HYPEnvironmentSelectorEnvironmentSelectedBlock = [environmentSelectedBlock copy];
+    objc_setAssociatedObject(self,
+                             @selector(environmentSelectedBlock),
+                             environmentSelectedBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 + (EnvironmentSelectedBlock)environmentSelectedBlock {
-    return __HYPEnvironmentSelectorEnvironmentSelectedBlock;
+    return [objc_getAssociatedObject(self, _cmd) copy];
 }
 
 
-#pragma mark - isCanEditItemFromListItem
-static BOOL __HYPEnvironmentSelectorIsShowInSidebarList = YES;
+#pragma mark - isShowInSidebarList
 + (void)setIsShowInSidebarList:(BOOL)isShowInSidebarList {
-    __HYPEnvironmentSelectorIsShowInSidebarList = isShowInSidebarList;
+    objc_setAssociatedObject(self,
+                             @selector(isShowInSidebarList),
+                             @(isShowInSidebarList),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (BOOL)isShowInSidebarList {
-    return __HYPEnvironmentSelectorIsShowInSidebarList;
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 
 #pragma mark - isCanEditItemFromListItem
-static BOOL __HYPEnvironmentSelectorIsCanEditItemFromListItem = NO;
 + (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
-    __HYPEnvironmentSelectorIsCanEditItemFromListItem = isCanEditItemFromListItem;
+    objc_setAssociatedObject(self,
+                             @selector(isCanEditItemFromListItem),
+                             @(isCanEditItemFromListItem),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (BOOL)isCanEditItemFromListItem {
-    return __HYPEnvironmentSelectorIsCanEditItemFromListItem;
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 
 
 #pragma mark - pluginModule
-static HYPEnvironmentSelectorPluginModule *__HYPEnvironmentSelectorPluginModule = nil;
 + (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
-    __HYPEnvironmentSelectorPluginModule = pluginModule;
+    objc_setAssociatedObject(self,
+                             @selector(pluginModule),
+                             pluginModule,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (HYPEnvironmentSelectorPluginModule *)pluginModule {
-    if (__HYPEnvironmentSelectorPluginModule == nil) {
-        HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
-                                                                                   overlayContainer:nil
-                                                                                         hypeWindow:nil
-                                                                                     attachedWindow:nil];
-        return [self createPluginModule:pluginExtension];
+    HYPEnvironmentSelectorPluginModule *pluginModule = objc_getAssociatedObject(self, _cmd);
+    if (pluginModule) {
+        return pluginModule;
     }
-    return __HYPEnvironmentSelectorPluginModule;
+    HYPEnvironmentSelectorPluginModule *newPluginModule = [self createNewHYPEnvironmentSelectorPluginModule];
+    self.pluginModule = newPluginModule;
+    return newPluginModule;
 }
 
 #pragma mark - Show/Hide Environment Selector
@@ -114,8 +126,8 @@ static HYPEnvironmentSelectorPluginModule *__HYPEnvironmentSelectorPluginModule 
 }
 
 + (NSArray *)getEnvironmentItems {
-    if (__HYPEnvironmentSelectorEnvironmentItems.count > 0) {
-        return __HYPEnvironmentSelectorEnvironmentItems;
+    if (self.environmentItems.count > 0) {
+        return self.environmentItems;
     }
     NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
     return nil;
@@ -123,14 +135,18 @@ static HYPEnvironmentSelectorPluginModule *__HYPEnvironmentSelectorPluginModule 
 
 
 #pragma mark - HYPPlugin
++ (nonnull HYPEnvironmentSelectorPluginModule *)createNewHYPEnvironmentSelectorPluginModule {
+    HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
+                                                                               overlayContainer:nil
+                                                                                     hypeWindow:nil
+                                                                                 attachedWindow:nil];
+    HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
+    return pluginModule;
+}
+
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
     // pluginExtension没使用到，不再重复创建
-    if (__HYPEnvironmentSelectorPluginModule) {
-        return __HYPEnvironmentSelectorPluginModule;
-    }
-    HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
-    __HYPEnvironmentSelectorPluginModule = pluginModule;
-    return pluginModule;
+    return self.pluginModule;
 }
 
 + (nonnull NSString *)pluginVersion {

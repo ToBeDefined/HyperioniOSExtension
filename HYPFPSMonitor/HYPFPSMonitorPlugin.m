@@ -6,9 +6,10 @@
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
+#import <objc/runtime.h>
+#import <HyperioniOS/HYPPluginExtensionImp.h>
 #import "HYPFPSMonitorPlugin.h"
 #import "HYPFPSMonitorPluginModule.h"
-#import <HyperioniOS/HYPPluginExtensionImp.h>
 
 @interface HYPFPSMonitorPlugin()
 @property (nonatomic, class, strong) HYPFPSMonitorPluginModule * _Nullable pluginModule;
@@ -17,31 +18,38 @@
 @implementation HYPFPSMonitorPlugin
 
 #pragma mark - pluginModule
-static HYPFPSMonitorPluginModule *__HYPFPSMonitorPluginModule = nil;
-+ (HYPFPSMonitorPluginModule *)pluginModule {
-    if (__HYPFPSMonitorPluginModule == nil) {
-        HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
-                                                                                   overlayContainer:nil
-                                                                                         hypeWindow:nil
-                                                                                     attachedWindow:nil];
-        return [self createPluginModule:pluginExtension];
-    }
-    return __HYPFPSMonitorPluginModule;
-}
-
 + (void)setPluginModule:(HYPFPSMonitorPluginModule *)pluginModule {
-    __HYPFPSMonitorPluginModule = pluginModule;
+    objc_setAssociatedObject(self,
+                             @selector(pluginModule),
+                             pluginModule,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
++ (HYPFPSMonitorPluginModule *)pluginModule {
+    HYPFPSMonitorPluginModule *pluginModule = objc_getAssociatedObject(self, _cmd);
+    if (pluginModule) {
+        return pluginModule;
+    }
+    HYPFPSMonitorPluginModule *newPluginModule = [self createNewHYPFPSMonitorPluginModule];
+    self.pluginModule = newPluginModule;
+    return newPluginModule;
+}
+
+
+#pragma mark - HYPPlugin
++ (nonnull HYPFPSMonitorPluginModule *)createNewHYPFPSMonitorPluginModule {
+    HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
+                                                                               overlayContainer:nil
+                                                                                     hypeWindow:nil
+                                                                                 attachedWindow:nil];
+    HYPFPSMonitorPluginModule *pluginModule = [[HYPFPSMonitorPluginModule alloc] initWithExtension:pluginExtension];
+    self.pluginModule = pluginModule;
+    return pluginModule;
+}
 
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
     // pluginExtension没使用到，不再重复创建
-    if (__HYPFPSMonitorPluginModule) {
-        return __HYPFPSMonitorPluginModule;
-    }
-    HYPFPSMonitorPluginModule *pluginModule = [[HYPFPSMonitorPluginModule alloc] initWithExtension:pluginExtension];
-    __HYPFPSMonitorPluginModule = pluginModule;
-    return pluginModule;
+    return self.pluginModule;
 }
 
 + (nonnull NSString *)pluginVersion {

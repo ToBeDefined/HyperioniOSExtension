@@ -34,50 +34,57 @@ static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameY
 
 
 #pragma mark - isShowingFPSMonitorView
-static BOOL ____HYPFPSMonitorIsShowingFPSMonitorView = NO;
 + (void)setIsShowingFPSMonitorView:(BOOL)isShowingFPSMonitorView {
-    ____HYPFPSMonitorIsShowingFPSMonitorView = isShowingFPSMonitorView;
+    objc_setAssociatedObject(self,
+                             @selector(isShowingFPSMonitorView),
+                             @(isShowingFPSMonitorView),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (BOOL)isShowingFPSMonitorView {
-    return ____HYPFPSMonitorIsShowingFPSMonitorView;
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 
 #pragma mark - displayLink
-static CADisplayLink *__HYPFPSMonitorDispalyLink = nil;
-+ (CADisplayLink *)displayLink {
-    return __HYPFPSMonitorDispalyLink;
++ (void)setDisplayLink:(CADisplayLink *)dispalyLink {
+    objc_setAssociatedObject(self,
+                             @selector(displayLink),
+                             dispalyLink,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
 }
 
-+ (void)setDisplayLink:(CADisplayLink *)dispalyLink {
-    __HYPFPSMonitorDispalyLink = dispalyLink;
++ (CADisplayLink *)displayLink {
+    return objc_getAssociatedObject(self, _cmd);
 }
+
 
 
 #pragma mark - fpsLabel
-static UILabel *__HYPFPSMonitorFPSLabel = nil;
 + (UILabel *)fpsLabel {
-    if (__HYPFPSMonitorFPSLabel) {
-        return __HYPFPSMonitorFPSLabel;
+    UILabel *fpsLabel = objc_getAssociatedObject(self, _cmd);
+    if (fpsLabel) {
+        return fpsLabel;
     }
-    UILabel *fpsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                  0,
-                                                                  HYPFPSMonitorManagerFPSLabelWidth,
-                                                                  HYPFPSMonitorManagerFPSLabelHeight)];
+    fpsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                         0,
+                                                         HYPFPSMonitorManagerFPSLabelWidth,
+                                                         HYPFPSMonitorManagerFPSLabelHeight)];
     fpsLabel.layer.cornerRadius = 5;
     fpsLabel.layer.masksToBounds = YES;
     fpsLabel.textAlignment = NSTextAlignmentCenter;
     fpsLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     fpsLabel.userInteractionEnabled = YES;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(fpsLabelDidDragged:)];
-    //限定操作的触点数
     [pan setMaximumNumberOfTouches:1];
     [pan setMinimumNumberOfTouches:1];
-    //将手势添加到draggableObj里
     [fpsLabel addGestureRecognizer:pan];
-    __HYPFPSMonitorFPSLabel = fpsLabel;
-    return __HYPFPSMonitorFPSLabel;
+    objc_setAssociatedObject(self,
+                             _cmd,
+                             fpsLabel,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    return fpsLabel;
 }
 
 #pragma mark - fpsLabel拖动

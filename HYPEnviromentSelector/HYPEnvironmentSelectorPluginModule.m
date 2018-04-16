@@ -6,6 +6,7 @@
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
+#import <objc/runtime.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
 #import "HYPEnvironmentSelectorPluginModule.h"
 #import "HYPEnvironmentSelectorPluginMenuItem.h"
@@ -22,13 +23,15 @@
 
 @implementation HYPEnvironmentSelectorPluginModule
 
-static BOOL __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow = NO;
 + (void)setIsShowingEnvironmentSelectorWindow:(BOOL)isShowingEnvironmentSelectorWindow {
-    __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow = isShowingEnvironmentSelectorWindow;
+    objc_setAssociatedObject(self,
+                             @selector(isShowingEnvironmentSelectorWindow),
+                             @(isShowingEnvironmentSelectorWindow),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (BOOL)isShowingEnvironmentSelectorWindow {
-    return __HYPEnvironmentSelectorIsShowingEnvironmentSelectorWindow;
+    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 
