@@ -34,6 +34,9 @@ static BOOL __isShowingEnvironmentSelectorWindow = NO;
 
 
 - (UIView *)pluginMenuItem {
+    if (!HYPEnvironmentSelectorPlugin.isShowInSidebarList) {
+        return nil;
+    }
     HYPEnvironmentSelectorPluginMenuItem *menu = [[HYPEnvironmentSelectorPluginMenuItem alloc] init];
     NSString *imagePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"env"
                                                                            ofType:@"png"];

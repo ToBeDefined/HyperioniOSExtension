@@ -34,7 +34,8 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     
     // 没传item
     // 1、如果存在缓存，使用缓存(生成item)
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:HYPEnvironmentSelectorEditItemSaveKey];
+    NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:HYPEnvironmentSelectorEditItemSaveKey];
+    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (dict != nil) {
         _item = [HYPEnvironmentItemManage itemWithDictionary:dict];
         return;
@@ -79,7 +80,8 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
 - (void)confirmEdit {
     [self hideKeyboard];
     NSDictionary *itemDict = [HYPEnvironmentItemManage dictionaryWithItem:self.item];
-    [[NSUserDefaults standardUserDefaults] setObject:itemDict
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:itemDict];
+    [[NSUserDefaults standardUserDefaults] setObject:data
                                               forKey:HYPEnvironmentSelectorEditItemSaveKey];
     [HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
         EnvironmentSelectedBlock block = [HYPEnvironmentSelectorPlugin.environmentSelectedBlock copy];
@@ -103,7 +105,11 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     NSString *propertyKey = self.keys[indexPath.row];
     id value = [HYPEnvironmentItemManage getObjectForKey:propertyKey inItem:self.item];
     cell.titleLabel.text = propertyKey;
-    cell.valueTextField.text = value;
+    if (value == [NSNull null]) {
+        cell.valueTextField.text = nil;
+    } else {
+        cell.valueTextField.text = value;
+    }
     __weak typeof(self)weakSelf = self;
     cell.textFieldEditBlock = ^(NSString *key, NSString *value) {
         [HYPEnvironmentItemManage updateObject:value forKey:key inItem:weakSelf.item];

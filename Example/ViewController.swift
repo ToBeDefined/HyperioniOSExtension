@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HYPEnviromentSelector
 
 class ViewController: UIViewController {
 
@@ -21,6 +22,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func showEnvSelector(_ sender: Any) {
+        HYPEnvironmentSelectorPlugin.showEnvironmentSelectorWindow(animated: true, completionBlock: nil)
+    }
+    
 }
 

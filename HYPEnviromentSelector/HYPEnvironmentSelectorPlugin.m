@@ -8,12 +8,14 @@
 
 #import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentSelectorPluginModule.h"
+#import <HyperioniOS/HYPPluginExtensionImp.h>
 
 @interface HYPEnvironmentSelectorPlugin()
-@property (nonatomic, class, weak) HYPEnvironmentSelectorPluginModule * _Nullable pluginModule;
+@property (nonatomic, class, strong) HYPEnvironmentSelectorPluginModule * _Nullable pluginModule;
 @end
 
 @implementation HYPEnvironmentSelectorPlugin
+
 
 #pragma mark - environmentItems
 static NSArray *__environmentItems = nil;
@@ -25,6 +27,7 @@ static NSArray *__environmentItems = nil;
     return __environmentItems;
 }
 
+
 #pragma mark - customEnvironmentItemTemplate
 static id __customEnvironmentItemTemplate = nil;
 + (id)customEnvironmentItemTemplate {
@@ -34,6 +37,7 @@ static id __customEnvironmentItemTemplate = nil;
 + (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
     __customEnvironmentItemTemplate = customEnvironmentItemTemplate;
 }
+
 
 #pragma mark - environmentSelectedBlock
 static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
@@ -45,6 +49,18 @@ static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
     return __environmentSelectedBlock;
 }
 
+
+#pragma mark - isCanEditItemFromListItem
+static BOOL __isShowInSidebarList = YES;
++ (BOOL)isShowInSidebarList {
+    return __isShowInSidebarList;
+}
+
++ (void)setIsShowInSidebarList:(BOOL)isShowInSidebarList {
+    __isShowInSidebarList = isShowInSidebarList;
+}
+
+
 #pragma mark - isCanEditItemFromListItem
 static BOOL __isCanEditItemFromListItem = NO;
 + (BOOL)isCanEditItemFromListItem {
@@ -55,27 +71,36 @@ static BOOL __isCanEditItemFromListItem = NO;
     __isCanEditItemFromListItem = isCanEditItemFromListItem;
 }
 
+
 #pragma mark - pluginModule
-static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
+static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 + (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
     __pluginModule = pluginModule;
 }
 
 + (HYPEnvironmentSelectorPluginModule *)pluginModule {
+    if (__pluginModule == nil) {
+        HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
+                                                                                   overlayContainer:nil
+                                                                                         hypeWindow:nil
+                                                                                     attachedWindow:nil];
+        return [self createPluginModule:pluginExtension];
+    }
     return __pluginModule;
 }
 
 
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+    HYPEnvironmentSelectorPluginModule *m = self.pluginModule;
+    [m showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
 }
 
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
     [self.pluginModule hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
 }
 
-#pragma mark - Private Func
 
+#pragma mark - Private Func
 + (Class)getEnvironmentItemClass {
     id item = [self getEnvironmentItems].firstObject;
     if (item == nil) {
@@ -89,22 +114,22 @@ static __weak HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
 }
 
 + (NSArray *)getEnvironmentItems {
-    if (self.environmentItems.count > 0) {
-        return self.environmentItems;
+    if (__environmentItems.count > 0) {
+        return __environmentItems;
     }
     NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
     return nil;
 }
 
 
-
 #pragma mark - HYPPlugin
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
-    if (self.pluginModule) {
-        return self.pluginModule;
+    // pluginExtension没使用到，不再重复创建
+    if (__pluginModule) {
+        return __pluginModule;
     }
     HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
-    self.pluginModule = pluginModule;
+    __pluginModule = pluginModule;
     return pluginModule;
 }
 

@@ -29,6 +29,6 @@
 + (id)updateObject:(id)newObj forKey:(NSString *)key inItem:(id)item;
 
 // item的所有属性和值组成NSString
-+ (NSString *)descriptionForItem:(id)item;
++ (NSString *)descriptionForItem:(id)item escapeName:(BOOL)escapeName;
 
 @end

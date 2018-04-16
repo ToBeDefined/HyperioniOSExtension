@@ -81,7 +81,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     }
     
     cell.textLabel.text = title;
-    cell.detailTextLabel.text = [HYPEnvironmentItemManage descriptionForItem:item];
+    cell.detailTextLabel.text = [HYPEnvironmentItemManage descriptionForItem:item escapeName:YES];
     return cell;
 }
 

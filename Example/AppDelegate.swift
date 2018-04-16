@@ -17,7 +17,7 @@ class HYPEnvironmentItem: NSObject {
     var H5BaseURL1: String?
     var H5BaseURL2: String?
     var H5BaseURL3: String?
-    var key: String?
+    var H5BaseURL4: String?
     
     override init() {
         super.init()
@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(obj.baseURL)
                 print(obj.commonPort)
                 print(obj.H5BaseURL1)
-                print(obj.key)
             }
             print(obj ?? "nonono")
         }
