@@ -18,6 +18,10 @@ NSUInteger HYPFPSMonitorManagerRefreshCount = 0;
 CGFloat HYPFPSMonitorManagerFPSLabelWidth  = 60;
 CGFloat HYPFPSMonitorManagerFPSLabelHeight = 30;
 
+static NSString *HYPFPSLabelIsHaveAbsoluteFrameXY  = @"HYPFPSLabelIsHaveAbsoluteFrameXY";
+static NSString *HYPFPSLabelAbsoluteFrameXSaveKey  = @"HYPFPSLabelAbsoluteFrameXSaveKey";
+static NSString *HYPFPSLabelAbsoluteFrameYSaveKey  = @"HYPFPSLabelAbsoluteFrameYSaveKey";
+
 @interface HYPFPSMonitorManager()
 
 @property (nonatomic, class, assign) BOOL isShowingFPSMonitorView;
@@ -65,11 +69,90 @@ static UILabel *__fpsLabel = nil;
     fpsLabel.layer.masksToBounds = YES;
     fpsLabel.textAlignment = NSTextAlignmentCenter;
     fpsLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    fpsLabel.userInteractionEnabled = YES;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(fpsLabelDidDragged:)];
+    //限定操作的触点数
+    [pan setMaximumNumberOfTouches:1];
+    [pan setMinimumNumberOfTouches:1];
+    //将手势添加到draggableObj里
+    [fpsLabel addGestureRecognizer:pan];
     __fpsLabel = fpsLabel;
     return __fpsLabel;
 }
 
-#pragma mark -
+#pragma mark - fpsLabel拖动
++ (void)fpsLabelDidDragged:(UIPanGestureRecognizer *)pan {
+    if (pan.state == UIGestureRecognizerStateChanged || pan.state == UIGestureRecognizerStateEnded) {
+        CGPoint offset = [pan translationInView:self.fpsLabel.superview];
+        [self.fpsLabel setCenter:CGPointMake(self.fpsLabel.center.x + offset.x, self.fpsLabel.center.y + offset.y)];
+        [pan setTranslation:CGPointMake(0, 0) inView:self.fpsLabel.superview];
+        // 保存上次拖动的位置
+        CGRect absoluteFrame = [self getAbsoluteFrameForView:self.fpsLabel];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HYPFPSLabelIsHaveAbsoluteFrameXY];
+        [[NSUserDefaults standardUserDefaults] setDouble:(double)absoluteFrame.origin.x forKey:HYPFPSLabelAbsoluteFrameXSaveKey];
+        [[NSUserDefaults standardUserDefaults] setDouble:(double)absoluteFrame.origin.y forKey:HYPFPSLabelAbsoluteFrameYSaveKey];
+    }
+}
+
+#pragma mark - view frame 操作
+
+/**
+ 获取view在屏幕上的绝对frame
+
+ @param view 获取绝对frame的view
+ @return 返回在屏幕上的绝对frame
+ */
++ (CGRect)getAbsoluteFrameForView:(UIView *)view {
+    CGFloat x = view.frame.origin.x;
+    CGFloat y = view.frame.origin.y;
+    CGFloat width = view.frame.size.width;
+    CGFloat height = view.frame.size.height;
+    UIView *superView = view.superview;
+    while (superView) {
+        x += superView.frame.origin.x;
+        y += superView.frame.origin.y;
+        superView = superView.superview;
+    }
+    return CGRectMake(x, y, width, height);
+}
+
+
+/**
+ 根据绝对位置，转换成在view内的相对位置
+
+ @param absoluteFrame 绝对frame
+ @param view 获取绝对位置在view内相对位置的view
+ @return view内的相对位置
+ */
++ (CGRect)getRelativeFrameWithAbsoluteFrame:(CGRect)absoluteFrame inView:(UIView *)view {
+    CGFloat x = absoluteFrame.origin.x;
+    CGFloat y = absoluteFrame.origin.y;
+    CGFloat width = absoluteFrame.size.width;
+    CGFloat height = absoluteFrame.size.height;
+    
+    UIView *superView = view;
+    while (superView) {
+        x -= superView.frame.origin.x;
+        y -= superView.frame.origin.y;
+        superView = superView.superview;
+    }
+    return CGRectMake(x, y, width, height);
+}
+
+/**
+ view 从原superView内到另一个superView的相对位置转换，保证绝对位置不变
+ 
+ @param view 转换位置的view
+ @param newSuperView view添加到新的superView上
+ @return 载新的superView上该view的frame
+ */
++ (CGRect)conversionRelativeFrameForView:(UIView *)view
+                       addToNewSuperView:(UIWindow *)newSuperView {
+    CGRect absoluteFrame = [self getAbsoluteFrameForView:view];
+    return [self getRelativeFrameWithAbsoluteFrame:absoluteFrame inView:newSuperView];
+}
+
+#pragma mark - showFPSMonitor
 + (void)showFPSMonitor:(BOOL)shouldShow {
     if (shouldShow && !self.isShowingFPSMonitorView) {
         [self showFPSMonitorView];
@@ -86,29 +169,46 @@ static UILabel *__fpsLabel = nil;
                                              selector:@selector(addFPSLabelToKeyWindow)
                                                  name:UIWindowDidBecomeKeyNotification
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self.fpsLabel
-                                             selector:@selector(removeFromSuperview)
-                                                 name:UIWindowDidResignKeyNotification
-                                               object:nil];
 }
 
 + (void)addFPSLabelToKeyWindow {
     if ([UIApplication sharedApplication].keyWindow.isHidden || [self.fpsLabel isDescendantOfView:[UIApplication sharedApplication].keyWindow]) {
         return;
     }
-    [self.fpsLabel removeFromSuperview];
+    if (self.fpsLabel.superview) {
+        CGRect newFrame = [self conversionRelativeFrameForView:self.fpsLabel
+                                             addToNewSuperView:[UIApplication sharedApplication].keyWindow];
+        [self.fpsLabel removeFromSuperview];
+        self.fpsLabel.frame = newFrame;
+    } else {
+        // 获取上次拖动的位置
+        CGRect absoluteFrame;
+        BOOL isHaveCacheFrame = [[NSUserDefaults standardUserDefaults] boolForKey:HYPFPSLabelIsHaveAbsoluteFrameXY];
+        if (isHaveCacheFrame) {
+            CGFloat absoluteFrameX = (CGFloat)[[NSUserDefaults standardUserDefaults] floatForKey:HYPFPSLabelAbsoluteFrameXSaveKey];
+            CGFloat absoluteFrameY = (CGFloat)[[NSUserDefaults standardUserDefaults] floatForKey:HYPFPSLabelAbsoluteFrameYSaveKey];
+            absoluteFrame = CGRectMake(absoluteFrameX,
+                                       absoluteFrameY,
+                                       HYPFPSMonitorManagerFPSLabelWidth,
+                                       HYPFPSMonitorManagerFPSLabelHeight);
+        } else {
+            CGFloat frameY = [UIScreen mainScreen].bounds.size.height - 100;
+            if (frameY < 0) {
+                frameY = 0;
+            }
+            absoluteFrame = CGRectMake(10,
+                                       frameY,
+                                       HYPFPSMonitorManagerFPSLabelWidth,
+                                       HYPFPSMonitorManagerFPSLabelHeight);
+        }
+        CGRect relativeFrame = [self getRelativeFrameWithAbsoluteFrame:absoluteFrame
+                                                                inView:[UIApplication sharedApplication].keyWindow];
+        self.fpsLabel.frame = relativeFrame;
+    }
     self.fpsLabel.layer.zPosition = CGFLOAT_MAX;
     self.fpsLabel.alpha = 0;
     self.fpsLabel.hidden = NO;
     [[UIApplication sharedApplication].keyWindow addSubview:self.fpsLabel];
-    CGFloat frameY = [UIApplication sharedApplication].keyWindow.frame.size.height - 100;
-    if (frameY < 0) {
-        frameY = 0;
-    }
-    self.fpsLabel.frame = CGRectMake(10,
-                                     frameY,
-                                     HYPFPSMonitorManagerFPSLabelWidth,
-                                     HYPFPSMonitorManagerFPSLabelHeight);
     [UIView animateWithDuration:0.5 animations:^{
         self.fpsLabel.alpha = 1;
     }];
