@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for HYPFPSMonitor.
+#if __has_include(<HYPEnvironmentSelector/HYPEnviromentSelector.h>)
 FOUNDATION_EXPORT double HYPFPSMonitorVersionNumber;
-
-//! Project version string for HYPFPSMonitor.
 FOUNDATION_EXPORT const unsigned char HYPFPSMonitorVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <HYPFPSMonitor/PublicHeader.h>
-
+#import <HYPFPSMonitor/HYPFPSMonitorPlugin.h>
+#import <HYPFPSMonitor/HYPFPSMonitorPluginModule.h>
+#import <HYPFPSMonitor/HYPFPSMonitorManager.h>
+#else
+#import "HYPFPSMonitorPlugin.h"
+#import "HYPFPSMonitorPluginModule.h"
+#import "HYPFPSMonitorManager.h"
+#endif
 

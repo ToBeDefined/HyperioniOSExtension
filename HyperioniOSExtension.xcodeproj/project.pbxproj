@@ -29,14 +29,14 @@
 		3FA20F292084402C008B1402 /* HYPFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F272084402C008B1402 /* HYPFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; };
 		3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3FA20F3320844062008B1402 /* HYPFPSMonitorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3120844062008B1402 /* HYPFPSMonitorPlugin.h */; };
+		3FA20F3320844062008B1402 /* HYPFPSMonitorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3120844062008B1402 /* HYPFPSMonitorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F3420844062008B1402 /* HYPFPSMonitorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA20F3220844062008B1402 /* HYPFPSMonitorPlugin.m */; };
-		3FA20F3720844731008B1402 /* HYPFPSMonitorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3520844731008B1402 /* HYPFPSMonitorPluginModule.h */; };
+		3FA20F3720844731008B1402 /* HYPFPSMonitorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3520844731008B1402 /* HYPFPSMonitorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F3820844731008B1402 /* HYPFPSMonitorPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA20F3620844731008B1402 /* HYPFPSMonitorPluginModule.m */; };
 		3FA20F4120844900008B1402 /* fpsMonitor.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA20F3E20844900008B1402 /* fpsMonitor.png */; };
 		3FA20F4220844900008B1402 /* fpsMonitor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA20F3F20844900008B1402 /* fpsMonitor@2x.png */; };
 		3FA20F4320844900008B1402 /* fpsMonitor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA20F4020844900008B1402 /* fpsMonitor@3x.png */; };
-		3FA20F4620844D8F008B1402 /* HYPFPSMonitorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F4420844D8F008B1402 /* HYPFPSMonitorManager.h */; };
+		3FA20F4620844D8F008B1402 /* HYPFPSMonitorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F4420844D8F008B1402 /* HYPFPSMonitorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F4720844D8F008B1402 /* HYPFPSMonitorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA20F4520844D8F008B1402 /* HYPFPSMonitorManager.m */; };
 		3FA8F1B920803B500015BEE0 /* HYPEnvironmentSelectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA8F1BA20803B500015BEE0 /* HYPEnvironmentSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */; };
