@@ -30,12 +30,12 @@ static NSArray *__environmentItems = nil;
 
 #pragma mark - customEnvironmentItemTemplate
 static id __customEnvironmentItemTemplate = nil;
-+ (id)customEnvironmentItemTemplate {
-    return __customEnvironmentItemTemplate;
-}
-
 + (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
     __customEnvironmentItemTemplate = customEnvironmentItemTemplate;
+}
+
++ (id)customEnvironmentItemTemplate {
+    return __customEnvironmentItemTemplate;
 }
 
 
@@ -52,24 +52,25 @@ static __strong EnvironmentSelectedBlock __environmentSelectedBlock = nil;
 
 #pragma mark - isCanEditItemFromListItem
 static BOOL __isShowInSidebarList = YES;
-+ (BOOL)isShowInSidebarList {
-    return __isShowInSidebarList;
-}
-
 + (void)setIsShowInSidebarList:(BOOL)isShowInSidebarList {
     __isShowInSidebarList = isShowInSidebarList;
+}
+
++ (BOOL)isShowInSidebarList {
+    return __isShowInSidebarList;
 }
 
 
 #pragma mark - isCanEditItemFromListItem
 static BOOL __isCanEditItemFromListItem = NO;
++ (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
+    __isCanEditItemFromListItem = isCanEditItemFromListItem;
+}
+
 + (BOOL)isCanEditItemFromListItem {
     return __isCanEditItemFromListItem;
 }
 
-+ (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
-    __isCanEditItemFromListItem = isCanEditItemFromListItem;
-}
 
 
 #pragma mark - pluginModule
@@ -89,7 +90,7 @@ static HYPEnvironmentSelectorPluginModule *__pluginModule = nil;
     return __pluginModule;
 }
 
-
+#pragma mark - Show/Hide Environment Selector
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
     HYPEnvironmentSelectorPluginModule *m = self.pluginModule;
     [m showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];

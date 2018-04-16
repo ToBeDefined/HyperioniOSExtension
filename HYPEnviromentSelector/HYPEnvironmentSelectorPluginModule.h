@@ -7,7 +7,6 @@
 //
 
 #import <HyperioniOS/HYPPluginModule.h>
-#import "HYPEnvironmentItemManage.h"
 
 @interface HYPEnvironmentSelectorPluginModule : HYPPluginModule
 

@@ -2,8 +2,9 @@
 platform :ios, "9.0"
 
 use_frameworks!
-targetArray = ['HYPEnviromentSelector', 'Example']
-targetArray.each do |t|
+
+project = Xcodeproj::Project.open('HyperioniOSExtension.xcodeproj')
+project.targets.each do |t|
     target t do
         pod 'HyperioniOS/Core'
         pod 'HyperioniOS/AttributesInspector'
