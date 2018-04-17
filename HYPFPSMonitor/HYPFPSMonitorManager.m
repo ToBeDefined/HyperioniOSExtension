@@ -109,9 +109,9 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     fpsLabel.layer.cornerRadius = 5;
     fpsLabel.layer.masksToBounds = YES;
     fpsLabel.textAlignment = NSTextAlignmentCenter;
-    fpsLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    fpsLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     fpsLabel.userInteractionEnabled = YES;
-    fpsLabel.textColor = [UIColor greenColor];
+    fpsLabel.textColor = [UIColor whiteColor];
     fpsLabel.font = [UIFont systemFontOfSize:12];
     [self setFPSViewUserInterfaceEnable:HYPFPSMonitorPlugin.isCanTouchFPSView];
 }
@@ -242,8 +242,10 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
 }
 
 + (void)showFPSMonitorView {
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateFPSValue:)];
-    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    if (!self.displayLink) {
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateFPSValue:)];
+        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
     [self addFPSViewToKeyWindow];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addFPSViewToKeyWindow)
@@ -290,7 +292,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     self.fpsView.alpha = 0;
     self.fpsView.hidden = NO;
     [[UIApplication sharedApplication].keyWindow addSubview:self.fpsView];
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.fpsView.alpha = 1;
     } completion:^(BOOL finished) {
         // 防止其他操作导致隐藏
@@ -305,7 +307,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [self.displayLink invalidate];
     self.displayLink = nil;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         self.fpsView.alpha = 0;
     } completion:^(BOOL finished) {
         self.fpsLabel.attributedText = nil;
