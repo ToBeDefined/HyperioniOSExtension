@@ -60,18 +60,103 @@
                                     <action selector="hideFPSMonitor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EPI-85-1HV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NL1-oY-Szq">
+                                <rect key="frame" x="20" y="312" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="goF-Z2-w1E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Open UI Main Thread Check">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="openUIMainThreadCheck:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qCD-o3-HeO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxo-bz-frF">
+                                <rect key="frame" x="20" y="376" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qZu-Nc-Oqf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Close UI Main Thread Check">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeUIMainThreadCheck:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JGY-lL-Jp0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C40-fm-QHY">
+                                <rect key="frame" x="20" y="440" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="S6A-Wp-pN6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Create UI in Other Thread">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createUIInOtherThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OVp-hd-wKq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQg-RN-DgI">
+                                <rect key="frame" x="20" y="568" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Gd5-GO-b1J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Remove UI in Other Thread">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeUIInOtherThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lpQ-Xf-iRN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDG-Rc-QTT">
+                                <rect key="frame" x="20" y="504" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="itL-ov-08k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Add UI in Other Thread">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addUIInOtherThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hl3-GV-25Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0UW-Se-p8B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9Dg-WG-JcT"/>
+                            <constraint firstItem="tDG-Rc-QTT" firstAttribute="top" secondItem="C40-fm-QHY" secondAttribute="bottom" constant="20" id="GbU-oN-0Ms"/>
+                            <constraint firstItem="jxo-bz-frF" firstAttribute="top" secondItem="NL1-oY-Szq" secondAttribute="bottom" constant="20" id="JZO-Il-oKs"/>
+                            <constraint firstItem="tDG-Rc-QTT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MfV-zT-svG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jxo-bz-frF" secondAttribute="trailing" constant="20" id="Pc8-Vc-Z66"/>
                             <constraint firstItem="mIf-by-ePv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QlG-gB-XLX"/>
                             <constraint firstItem="sXQ-5X-bD2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="UQi-6r-6GL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NL1-oY-Szq" secondAttribute="trailing" constant="20" id="USO-gu-INC"/>
+                            <constraint firstItem="C40-fm-QHY" firstAttribute="top" secondItem="jxo-bz-frF" secondAttribute="bottom" constant="20" id="UlO-kR-zQs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0UW-Se-p8B" secondAttribute="trailing" constant="20" id="W42-qi-BSL"/>
                             <constraint firstAttribute="trailing" secondItem="mIf-by-ePv" secondAttribute="trailing" constant="20" id="WJV-FS-y8A"/>
                             <constraint firstItem="mIf-by-ePv" firstAttribute="top" secondItem="0UW-Se-p8B" secondAttribute="bottom" constant="20" id="cbY-Qn-djx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sXQ-5X-bD2" secondAttribute="trailing" constant="20" id="coJ-JS-0Rc"/>
+                            <constraint firstItem="LQg-RN-DgI" firstAttribute="top" secondItem="tDG-Rc-QTT" secondAttribute="bottom" constant="20" id="dyH-UH-qeV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tDG-Rc-QTT" secondAttribute="trailing" constant="20" id="fZn-fA-L6c"/>
+                            <constraint firstItem="NL1-oY-Szq" firstAttribute="top" secondItem="mIf-by-ePv" secondAttribute="bottom" constant="20" id="frj-48-KNq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LQg-RN-DgI" secondAttribute="trailing" constant="20" id="gCa-PL-Grg"/>
                             <constraint firstItem="sXQ-5X-bD2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iZi-bj-b5P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C40-fm-QHY" secondAttribute="trailing" constant="20" id="qfu-gN-aSv"/>
+                            <constraint firstItem="C40-fm-QHY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="r5J-QS-8Og"/>
+                            <constraint firstItem="LQg-RN-DgI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rc0-Sk-enn"/>
+                            <constraint firstItem="jxo-bz-frF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tHX-tX-5gT"/>
                             <constraint firstItem="0UW-Se-p8B" firstAttribute="top" secondItem="sXQ-5X-bD2" secondAttribute="bottom" constant="20" id="vks-ZD-gmz"/>
+                            <constraint firstItem="NL1-oY-Szq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="z3Q-PK-PsN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

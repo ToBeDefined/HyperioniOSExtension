@@ -9,13 +9,14 @@
 import UIKit
 import HYPEnviromentSelector
 import HYPFPSMonitor
+import HYPUIMainThreadChecker
 
 class ViewController: UIViewController {
-
+    var subView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,12 +29,43 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showFPSMonitor(_ sender: Any) {
-        HYPFPSMonitorPlugin.isCanTouchFPSView = false;
         HYPFPSMonitorPlugin.showFPSMonitor()
     }
     
     @IBAction func hideFPSMonitor(_ sender: Any) {
         HYPFPSMonitorPlugin.hideFPSMonitor()
     }
+    
+    @IBAction func openUIMainThreadCheck(_ sender: Any) {
+        HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = true
+    }
+    
+    @IBAction func closeUIMainThreadCheck(_ sender: Any) {
+        HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = false
+    }
+    
+    @IBAction func createUIInOtherThread(_ sender: Any) {
+        DispatchQueue.init(label: "other thread", qos: .background).async {
+            _ = UIView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
+        }
+    }
+    
+    @IBAction func addUIInOtherThread(_ sender: Any) {
+        self.subView = UIView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
+        self.subView?.backgroundColor = .red
+        DispatchQueue.init(label: "other thread", qos: .background).async {
+            if let subView = self.subView {
+                self.view.addSubview(subView)
+            }
+        }
+    }
+    
+    @IBAction func removeUIInOtherThread(_ sender: Any) {
+        DispatchQueue.init(label: "other thread", qos: .background).async {
+            self.subView?.removeFromSuperview()
+        }
+    }
+    
+    
 }
 

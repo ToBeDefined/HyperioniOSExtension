@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F14AFA02085C88500CE4EE5 /* HYPUIMainThreadChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F14AFA32085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */; };
+		3F14AFA42085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F14AFA82085C89A00CE4EE5 /* UIView+HYPUIMainThreadChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */; };
+		3F14AFA92085C89A00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */; };
+		3F14AFAA2085C89A00CE4EE5 /* HYPUIMainThreadCheckerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */; };
+		3F14AFAB2085C9D900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F14AFAC2085C9DC00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F14AFAD2085C9E000CE4EE5 /* UIView+HYPUIMainThreadChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */; };
+		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
+		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
 		3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnviromentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886655207F735A009760E3 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,10 +60,18 @@
 		3FA8F1D120819DA90015BEE0 /* HYPEnvironmentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */; };
 		9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8B5C2564B566209C7B0F48 /* Pods_Example.framework */; };
 		AF8E4D44C19A26DA64849BC1 /* Pods_HYPEnviromentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC648620FED0EBE9309DB78B /* Pods_HYPEnviromentSelector.framework */; };
+		B77CAFC5428A9C7F9F80E236 /* Pods_HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */; };
 		FF54AEB869A7EA5A7EF80809 /* Pods_HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3F14AFA12085C88500CE4EE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F886638207F7317009760E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F14AF9B2085C88500CE4EE5;
+			remoteInfo = HYPUIMainThreadChecker;
+		};
 		3F886695207F7500009760E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3F886638207F7317009760E3 /* Project object */;
@@ -76,6 +96,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3F886694207F7500009760E3 /* HYPEnviromentSelector.framework in Embed Frameworks */,
+				3F14AFA42085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Embed Frameworks */,
 				3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -86,9 +107,22 @@
 /* Begin PBXFileReference section */
 		1E8B5C2564B566209C7B0F48 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F21C19863A24FD094E905B0 /* Pods_AllTarget_HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllTarget_HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2995F6DDDC070EEB4D268065 /* Pods-HYPUIMainThreadChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadChecker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadChecker/Pods-HYPUIMainThreadChecker.release.xcconfig"; sourceTree = "<group>"; };
 		34F86701CA8BA9CFEC79EDFE /* Pods-AllTarget-HYPEnviromentSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPEnviromentSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPEnviromentSelector/Pods-AllTarget-HYPEnviromentSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		36880CED7E4427F16BEE3A56 /* Pods-AllTarget-HYPEnviromentSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPEnviromentSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPEnviromentSelector/Pods-AllTarget-HYPEnviromentSelector.release.xcconfig"; sourceTree = "<group>"; };
 		36EC2D7824E5F9823D947F2C /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadCheckerPlugin.h; sourceTree = "<group>"; };
+		3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPUIMainThreadCheckerPlugin.m; sourceTree = "<group>"; };
+		3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadCheckerPluginModule.h; sourceTree = "<group>"; };
+		3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPUIMainThreadCheckerPluginModule.m; sourceTree = "<group>"; };
+		3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+HYPUIMainThreadChecker.h"; sourceTree = "<group>"; };
+		3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYPUIMainThreadChecker.m"; sourceTree = "<group>"; };
+		3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainThreadCheck.png; sourceTree = "<group>"; };
+		3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainThreadCheck@2x.png"; sourceTree = "<group>"; };
+		3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainThreadCheck@3x.png"; sourceTree = "<group>"; };
+		3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
+		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F886644207F7317009760E3 /* HYPEnviromentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,21 +165,34 @@
 		3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentInfoCell.h; sourceTree = "<group>"; };
 		3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoCell.m; sourceTree = "<group>"; };
 		4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
+		4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E5801663D749F6E0CEBE4D /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		62D564FC925072656116C11D /* Pods-AllTarget-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-Example/Pods-AllTarget-Example.release.xcconfig"; sourceTree = "<group>"; };
+		6C1C4A95A5B19ABC5FD783D5 /* Pods-HYPUIMainThreadCheaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadCheaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadCheaker/Pods-HYPUIMainThreadCheaker.release.xcconfig"; sourceTree = "<group>"; };
 		715D46970E9ACE9D4722BBCD /* Pods-AllTarget-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-Example/Pods-AllTarget-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7345F310DD8A053BCE9DC07D /* Pods-HYPFPSMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPFPSMonitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor.release.xcconfig"; sourceTree = "<group>"; };
 		749E5AEB86A0DDA660D43A7F /* Pods-HYPEnviromentSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnviromentSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnviromentSelector/Pods-HYPEnviromentSelector.release.xcconfig"; sourceTree = "<group>"; };
 		7642D0F827F81D60FF722291 /* Pods_AllTarget_HYPFPSMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllTarget_HYPFPSMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F76C635CCFF10AD510BA273 /* Pods-HYPUIMainThreadChecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadChecker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadChecker/Pods-HYPUIMainThreadChecker.debug.xcconfig"; sourceTree = "<group>"; };
 		81CAB74EAEDC9FE4FF01A030 /* Pods-AllTarget-HYPFPSMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPFPSMonitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPFPSMonitor/Pods-AllTarget-HYPFPSMonitor.release.xcconfig"; sourceTree = "<group>"; };
+		828699604C1986C1611BA401 /* Pods-HYPUIMainThreadCheaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadCheaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadCheaker/Pods-HYPUIMainThreadCheaker.debug.xcconfig"; sourceTree = "<group>"; };
 		8901E5272A8DE83F9901039C /* Pods-AllTarget-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPFPSMonitor/Pods-AllTarget-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC352738121A549E1FEE3D3 /* Pods_AllTarget_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllTarget_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPFPSMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91DE5109C35244080B61E05 /* Pods_HYPUIMainThreadCheaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPUIMainThreadCheaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC648620FED0EBE9309DB78B /* Pods_HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86D4F820A8E710CA2E72A70 /* Pods-HYPEnviromentSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnviromentSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnviromentSelector/Pods-HYPEnviromentSelector.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3F14AF982085C88500CE4EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77CAFC5428A9C7F9F80E236 /* Pods_HYPUIMainThreadChecker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F88663D207F7317009760E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F14AFA32085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Frameworks */,
 				3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */,
 				3F886693207F7500009760E3 /* HYPEnviromentSelector.framework in Frameworks */,
 				9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */,
@@ -175,11 +223,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F14AF9020859BCB00CE4EE5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */,
+				3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */,
+				3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */ = {
+			isa = PBXGroup;
+			children = (
+				3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */,
+				3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */,
+				3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */,
+				3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */,
+				3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */,
+				3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */,
+				3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */,
+				3F14AF9F2085C88500CE4EE5 /* Info.plist */,
+				3F14AF9020859BCB00CE4EE5 /* Resources */,
+			);
+			path = HYPUIMainThreadChecker;
+			sourceTree = "<group>";
+		};
 		3F886637207F7317009760E3 = {
 			isa = PBXGroup;
 			children = (
 				3F886643207F7317009760E3 /* HYPEnviromentSelector */,
 				3FA20F262084402C008B1402 /* HYPFPSMonitor */,
+				3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
 				3F886682207F7388009760E3 /* Example */,
 				3F886642207F7317009760E3 /* Products */,
 				4739C495600620D1E0B57456 /* Pods */,
@@ -193,6 +268,7 @@
 				3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */,
 				3F886681207F7388009760E3 /* Example.app */,
 				3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */,
+				3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,6 +363,10 @@
 				81CAB74EAEDC9FE4FF01A030 /* Pods-AllTarget-HYPFPSMonitor.release.xcconfig */,
 				4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */,
 				7345F310DD8A053BCE9DC07D /* Pods-HYPFPSMonitor.release.xcconfig */,
+				828699604C1986C1611BA401 /* Pods-HYPUIMainThreadCheaker.debug.xcconfig */,
+				6C1C4A95A5B19ABC5FD783D5 /* Pods-HYPUIMainThreadCheaker.release.xcconfig */,
+				7F76C635CCFF10AD510BA273 /* Pods-HYPUIMainThreadChecker.debug.xcconfig */,
+				2995F6DDDC070EEB4D268065 /* Pods-HYPUIMainThreadChecker.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -300,6 +380,8 @@
 				1F21C19863A24FD094E905B0 /* Pods_AllTarget_HYPEnviromentSelector.framework */,
 				7642D0F827F81D60FF722291 /* Pods_AllTarget_HYPFPSMonitor.framework */,
 				8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */,
+				B91DE5109C35244080B61E05 /* Pods_HYPUIMainThreadCheaker.framework */,
+				4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,6 +389,17 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3F14AF992085C88500CE4EE5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F14AFA02085C88500CE4EE5 /* HYPUIMainThreadChecker.h in Headers */,
+				3F14AFAB2085C9D900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h in Headers */,
+				3F14AFAC2085C9DC00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h in Headers */,
+				3F14AFAD2085C9E000CE4EE5 /* UIView+HYPUIMainThreadChecker.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F88663E207F7317009760E3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +430,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F14AFA52085C88500CE4EE5 /* Build configuration list for PBXNativeTarget "HYPUIMainThreadChecker" */;
+			buildPhases = (
+				B9723C77B6C03B25DE3FD915 /* [CP] Check Pods Manifest.lock */,
+				3F14AF972085C88500CE4EE5 /* Sources */,
+				3F14AF982085C88500CE4EE5 /* Frameworks */,
+				3F14AF992085C88500CE4EE5 /* Headers */,
+				3F14AF9A2085C88500CE4EE5 /* Resources */,
+				1B9C6D3C4F8321C244E6CFEB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYPUIMainThreadChecker;
+			productName = HYPUIMainThreadChecker;
+			productReference = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3F886640207F7317009760E3 /* HYPEnviromentSelector */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F886649207F7317009760E3 /* Build configuration list for PBXNativeTarget "HYPEnviromentSelector" */;
@@ -374,6 +487,7 @@
 			dependencies = (
 				3F886696207F7500009760E3 /* PBXTargetDependency */,
 				3FA20F2B2084402C008B1402 /* PBXTargetDependency */,
+				3F14AFA22085C88500CE4EE5 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -410,6 +524,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = TBD;
 				TargetAttributes = {
+					3F14AF9B2085C88500CE4EE5 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					3F886640207F7317009760E3 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -436,12 +553,23 @@
 			targets = (
 				3F886640207F7317009760E3 /* HYPEnviromentSelector */,
 				3FA20F242084402C008B1402 /* HYPFPSMonitor */,
+				3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
 				3F886680207F7388009760E3 /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3F14AF9A2085C88500CE4EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */,
+				3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */,
+				3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F88663F207F7317009760E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,6 +634,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPEnviromentSelector/Pods-HYPEnviromentSelector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B9C6D3C4F8321C244E6CFEB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPUIMainThreadChecker/Pods-HYPUIMainThreadChecker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		35C5616703DEE2A45FD96FFB /* [CP] Copy Pods Resources */ = {
@@ -577,6 +720,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B9723C77B6C03B25DE3FD915 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HYPUIMainThreadChecker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DC0049E551F475F89775E3CA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -595,6 +756,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3F14AF972085C88500CE4EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F14AFA82085C89A00CE4EE5 /* UIView+HYPUIMainThreadChecker.m in Sources */,
+				3F14AFA92085C89A00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m in Sources */,
+				3F14AFAA2085C89A00CE4EE5 /* HYPUIMainThreadCheckerPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3F88663C207F7317009760E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,6 +803,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3F14AFA22085C88500CE4EE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */;
+			targetProxy = 3F14AFA12085C88500CE4EE5 /* PBXContainerItemProxy */;
+		};
 		3F886696207F7500009760E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3F886640207F7317009760E3 /* HYPEnviromentSelector */;
@@ -664,6 +840,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3F14AFA62085C88500CE4EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F76C635CCFF10AD510BA273 /* Pods-HYPUIMainThreadChecker.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TS9WTSBK78;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HYPUIMainThreadChecker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPUIMainThreadChecker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F14AFA72085C88500CE4EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2995F6DDDC070EEB4D268065 /* Pods-HYPUIMainThreadChecker.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TS9WTSBK78;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HYPUIMainThreadChecker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPUIMainThreadChecker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3F886647207F7317009760E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -925,6 +1151,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3F14AFA52085C88500CE4EE5 /* Build configuration list for PBXNativeTarget "HYPUIMainThreadChecker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F14AFA62085C88500CE4EE5 /* Debug */,
+				3F14AFA72085C88500CE4EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3F88663B207F7317009760E3 /* Build configuration list for PBXProject "HyperioniOSExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
