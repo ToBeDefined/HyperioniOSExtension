@@ -10,7 +10,7 @@ import UIKit
 import HYPEnviromentSelector
 
 @objcMembers
-class HYPEnvironmentItem: NSObject {
+class HYPEnvironmentItem: NSObject, HYPEnviromentItemProtocol {
     var name: String?
     var baseURL: String?
     var commonPort: String?
@@ -18,10 +18,10 @@ class HYPEnvironmentItem: NSObject {
     var H5BaseURL2: String?
     var H5BaseURL3: String?
     var H5BaseURL4: String?
-    
-    override init() {
+    required override init() {
         super.init()
     }
+    
     init(name: String) {
         super.init()
         self.name = name

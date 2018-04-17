@@ -19,6 +19,7 @@
 		3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */; };
 		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
 		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
+		3F55CEE32085CF6700B1960F /* HYPEnviromentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnviromentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886655207F735A009760E3 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +124,7 @@
 		3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentItemProtocol.h; sourceTree = "<group>"; };
 		3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F886644207F7317009760E3 /* HYPEnviromentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				3F886644207F7317009760E3 /* HYPEnviromentSelector.h */,
+				3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */,
 				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
 				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
 				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
@@ -405,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */,
+				3F55CEE32085CF6700B1960F /* HYPEnviromentItemProtocol.h in Headers */,
 				3F88665B207F735A009760E3 /* HYPEnvironmentSelectorPlugin.h in Headers */,
 				3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */,
 				3F886657207F735A009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h in Headers */,
