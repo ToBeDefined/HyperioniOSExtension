@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#if __has_include(<HYPEnvironmentSelector/HYPEnviromentSelector.h>)
+#if __has_include(<HYPFPSMonitor/HYPFPSMonitor.h>)
 FOUNDATION_EXPORT double HYPFPSMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char HYPFPSMonitorVersionString[];
 #import <HYPFPSMonitor/HYPFPSMonitorPlugin.h>

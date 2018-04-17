@@ -27,6 +27,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
 
 @property (nonatomic, class, assign) BOOL isShowingFPSMonitorView;
 @property (nonatomic, class, strong) CADisplayLink *displayLink;
+@property (nonatomic, class, strong, readonly) UIView *fpsView;
 @property (nonatomic, class, strong, readonly) UILabel *fpsLabel;
 
 @end
@@ -91,17 +92,6 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
                              fpsView,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     fpsView.backgroundColor = [UIColor clearColor];
-    if (HYPFPSMonitorPlugin.isCanTouchFPSView) {
-        fpsView.userInteractionEnabled = YES;
-    } else {
-        fpsView.userInteractionEnabled = NO;
-    }
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidDragged:)];
-    [pan setMaximumNumberOfTouches:1];
-    [pan setMinimumNumberOfTouches:1];
-    [fpsView addGestureRecognizer:pan];
-    objc_setAssociatedObject(pan, @selector(viewDidDragged:), fpsView, OBJC_ASSOCIATION_ASSIGN);
-    
     // fpsLabel
     CGFloat fpsLabelHeight  = 30;
     CGFloat fpsLabelWidth   = 60;
@@ -123,9 +113,45 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     fpsLabel.userInteractionEnabled = YES;
     fpsLabel.textColor = [UIColor greenColor];
     fpsLabel.font = [UIFont systemFontOfSize:12];
+    [self setFPSViewUserInterfaceEnable:HYPFPSMonitorPlugin.isCanTouchFPSView];
 }
 
 #pragma mark - fpsView拖动
++ (void)setFPSViewUserInterfaceEnable:(BOOL)enable {
+    if (enable) {
+        [self addGestureRecognizer];
+    } else {
+        [self removeGestureRecognizer];
+    }
+}
+
++ (void)addGestureRecognizer {
+    UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
+    if (fpsView == nil) {
+        return;
+    }
+    fpsView.userInteractionEnabled = YES;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidDragged:)];
+    [pan setMaximumNumberOfTouches:1];
+    [pan setMinimumNumberOfTouches:1];
+    [fpsView addGestureRecognizer:pan];
+    objc_setAssociatedObject(pan,
+                             @selector(viewDidDragged:),
+                             fpsView,
+                             OBJC_ASSOCIATION_ASSIGN);
+}
+
++ (void)removeGestureRecognizer {
+    UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
+    if (fpsView == nil) {
+        return;
+    }
+    fpsView.userInteractionEnabled = NO;
+    for (UIGestureRecognizer *ges in fpsView.gestureRecognizers) {
+        [fpsView removeGestureRecognizer:ges];
+    }
+}
+
 + (void)viewDidDragged:(UIPanGestureRecognizer *)pan {
     if (pan.state == UIGestureRecognizerStateChanged || pan.state == UIGestureRecognizerStateEnded) {
         UIView *dragView = objc_getAssociatedObject(pan, @selector(viewDidDragged:));
@@ -260,12 +286,16 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
                                                                 inView:[UIApplication sharedApplication].keyWindow];
         self.fpsView.frame = relativeFrame;
     }
-    self.fpsView.layer.zPosition = CGFLOAT_MAX;
+    self.fpsView.layer.zPosition = FLT_MAX;
     self.fpsView.alpha = 0;
     self.fpsView.hidden = NO;
     [[UIApplication sharedApplication].keyWindow addSubview:self.fpsView];
     [UIView animateWithDuration:0.5 animations:^{
         self.fpsView.alpha = 1;
+    } completion:^(BOOL finished) {
+        // 防止其他操作导致隐藏
+        self.fpsView.alpha = 1;
+        self.fpsView.hidden = NO;
     }];
 }
 
@@ -281,8 +311,9 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
         self.fpsLabel.attributedText = nil;
         self.fpsLabel.text = nil;
         [self.fpsView removeFromSuperview];
+        // 防止其他操作导致显示
+        self.fpsView.alpha = 0;
         self.fpsView.hidden = YES;
-        
         // 重置 lastTime refreshCount
         HYPFPSMonitorManagerLastTime = 0;
         HYPFPSMonitorManagerRefreshCount = 0;

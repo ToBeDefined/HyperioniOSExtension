@@ -34,7 +34,7 @@
 }
 
 - (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
-    HYPFPSMonitorManager.fpsView.userInteractionEnabled = isCanTouchFPSView;
+    [HYPFPSMonitorManager setFPSViewUserInterfaceEnable:isCanTouchFPSView];
 }
 
 

@@ -10,8 +10,8 @@
 
 @interface HYPFPSMonitorManager : NSObject
 
-@property (nonatomic, class, strong, readonly) UIView *fpsView;
-
 + (void)showFPSMonitor:(BOOL)shouldShow;
+
++ (void)setFPSViewUserInterfaceEnable:(BOOL)enable;
 
 @end
