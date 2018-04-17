@@ -43,11 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = MyEnvItem.init(name: "base");
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
             if let obj = obj as? MyEnvItem {
-                let message =
+                var message =
                 """
-                EnvName:  + \(obj.name ?? "no name")
+                
+                EnvName: \(obj.name ?? "no name")
                 \(HYPEnvironmentItemManage.description(forItem: obj, escapeName: true))
+                
                 """
+                message = message.replacingOccurrences(of: "Optional(\"", with: "")
+                message = message.replacingOccurrences(of: "\\t", with: "\t")
+                message = message.replacingOccurrences(of: "\\n", with: "\n")
+                message = message.replacingOccurrences(of: "\")", with: "")
                 
                 let alertController = UIAlertController.init(title: "Env Selected",
                                                              message: message,
