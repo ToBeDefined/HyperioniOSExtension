@@ -26,20 +26,16 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 
 + (NSDictionary *)dictionaryWithItem:(id)item {
     [self checkIsSwiftClass:[item class]];
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        return item;
-    } else {
-        NSArray<NSString *> *keys = [self keysForItem:item];
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        for (NSString *key in keys) {
-            id value = [self getObjectForKey:key inItem:item];
-            if (value) {
-                [self checkValueIsNSString:value];
-                [dict setObject:value forKey:key];
-            }
+    NSArray<NSString *> *keys = [self keysForItem:item];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (NSString *key in keys) {
+        id value = [self getObjectForKey:key inItem:item];
+        if (value) {
+            [self checkValueIsNSString:value];
+            [dict setObject:value forKey:key];
         }
-        return dict;
     }
+    return dict;
 }
 
 + (id)itemWithDictionary:(NSDictionary *)dict {
@@ -49,36 +45,22 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
     }
     
     NSArray<NSString *> *keys = [self keysForItemClass:cls];
-    
-    if ([cls isMemberOfClass:[NSDictionary class]]) {
-        NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
-        for (NSString *key in keys) {
-            id obj = [dict objectForKey:key];
-            if (obj == nil || obj == [NSNull null]) {
-                obj = @"";
-            }
-            [self checkValueIsNSString:obj];
-            [newDict setObject:obj forKey:key];
-        }
-        return newDict;
-    } else {
-        [self checkIsSwiftClass:cls];
-        if (![cls instancesRespondToSelector:@selector(init)]) {
-            NSAssert(NO, @"item's class must have `init` function");
-            return nil;
-        }
-        id newItem = [[cls alloc] init];
-        
-        for (NSString *key in keys) {
-            id obj = [dict objectForKey:key];
-            if (obj == [NSNull null]) {
-                obj = nil;
-            }
-            [self checkValueIsNSString:obj];
-            [newItem setValue:obj forKey:key];
-        }
-        return newItem;
+    [self checkIsSwiftClass:cls];
+    if (![cls instancesRespondToSelector:@selector(init)]) {
+        NSAssert(NO, @"item's class must have `init` function");
+        return nil;
     }
+    id newItem = [[cls alloc] init];
+    
+    for (NSString *key in keys) {
+        id obj = [dict objectForKey:key];
+        if (obj == [NSNull null]) {
+            obj = nil;
+        }
+        [self checkValueIsNSString:obj];
+        [newItem setValue:obj forKey:key];
+    }
+    return newItem;
 }
 
 + (id)mutableCopyItem:(id)item {
@@ -87,34 +69,25 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
     }
     
     [self checkIsSwiftClass:[item class]];
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        return [item mutableCopy];
-    } else {
-        Class cls = [item class];
-        if (![cls instancesRespondToSelector:@selector(init)]) {
-            NSAssert(NO, @"item's class must have `init()` function");
-            return nil;
-        }
-        id newItem = [[cls alloc] init];
-        NSArray<NSString *> *keys = [self keysForItem:item];
-        for (NSString *key in keys) {
-            id value = [self getObjectForKey:key inItem:item];
-            [self checkValueIsNSString:value];
-            [newItem setValue:value forKey:key];
-        }
-        return newItem;
+    Class cls = [item class];
+    if (![cls instancesRespondToSelector:@selector(init)]) {
+        NSAssert(NO, @"item's class must have `init()` function");
+        return nil;
     }
+    id newItem = [[cls alloc] init];
+    NSArray<NSString *> *keys = [self keysForItem:item];
+    for (NSString *key in keys) {
+        id value = [self getObjectForKey:key inItem:item];
+        [self checkValueIsNSString:value];
+        [newItem setValue:value forKey:key];
+    }
+    return newItem;
 }
 
 + (NSArray<NSString *> *)keysForItem:(id)item {
     [self checkIsSwiftClass:[item class]];
     NSArray<NSString *> *keys;
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        keys = (NSArray<NSString *> *)[(NSDictionary *)item allKeys];
-    } else {
-        keys = [self keysForItemClass:[item class]];
-    }
-    
+    keys = [self keysForItemClass:[item class]];
     return [keys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [(NSString *)obj1 compare:(NSString *)obj2 options:NSCaseInsensitiveSearch];
     }];
@@ -136,16 +109,11 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 
 + (id)getObjectForKey:(NSString *)key inItem:(id)item {
     [self checkIsSwiftClass:[item class]];
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        id value = [(NSDictionary *)item objectForKey:key];
+    NSArray<NSString *>* keys = [HYPEnvironmentItemManage keysForItem:item];
+    if ([keys containsObject:key]) {
+        id value = [item valueForKey:key];
+        [self checkValueIsNSString:value];
         return value;
-    } else {
-        NSArray<NSString *>* keys = [HYPEnvironmentItemManage keysForItem:item];
-        if ([keys containsObject:key]) {
-            id value = [item valueForKey:key];
-            [self checkValueIsNSString:value];
-            return value;
-        }
     }
     if ([key isEqualToString:@"name"]) {
         NSLog(@"\n%@, %@", @"you should set name", swiftErrorLog);
@@ -175,28 +143,16 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 + (NSString *)descriptionForItem:(id)item escapeName:(BOOL)escapeName {
     [self checkIsSwiftClass:[item class]];
     NSArray<NSString *> *keys = [self keysForItem:item];
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        NSMutableString *description = [NSMutableString stringWithString:@""];
-        for (NSString *key in keys) {
-            if (escapeName && [key isEqualToString:@"name"]) {
-                continue;
-            }
-            id obj = [(NSDictionary *)item objectForKey:key];
-            [description appendFormat:@"\n%@:\n\t%@", key, obj];
+    NSMutableString *description = [NSMutableString stringWithString:@""];
+    for (NSString *property in keys) {
+        if (escapeName && [property isEqualToString:@"name"]) {
+            continue;
         }
-        return description;
-    } else {
-        NSMutableString *description = [NSMutableString stringWithString:@""];
-        for (NSString *property in keys) {
-            if (escapeName && [property isEqualToString:@"name"]) {
-                continue;
-            }
-            id value = [item valueForKey:property];
-            [self checkValueIsNSString:value];
-            [description appendFormat:@"\n%@:\n\t%@", property, value];
-        }
-        return description;
+        id value = [item valueForKey:property];
+        [self checkValueIsNSString:value];
+        [description appendFormat:@"\n%@:\n\t%@", property, value];
     }
+    return description;
 }
 
 @end

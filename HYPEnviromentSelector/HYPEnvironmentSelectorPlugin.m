@@ -121,11 +121,7 @@
     if (item == nil) {
         return [NSNull class];
     }
-    if ([item isKindOfClass:[NSDictionary class]]) {
-        return [NSDictionary class];
-    } else {
-        return [item class];
-    }
+    return [item class];
 }
 
 + (NSArray *)getEnvironmentItems {
