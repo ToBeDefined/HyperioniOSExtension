@@ -17,6 +17,9 @@
 
 @implementation HYPEnvironmentSelectorPlugin
 
++ (void)load {
+    self.isShowInSidebarList = YES;
+}
 
 #pragma mark - environmentItems
 + (void)setEnvironmentItems:(NSArray *)environmentItems {
