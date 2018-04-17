@@ -8,7 +8,6 @@
 
 #import <objc/runtime.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
-#import <HyperioniOS/HyperionManager.h>
 #import "HYPUIMainThreadCheckerPluginModule.h"
 
 @interface HYPUIMainThreadCheckerPluginModule() <HYPPluginMenuItemDelegate>
@@ -55,7 +54,6 @@
 #pragma mark - HYPPluginMenuItemDelegate
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
     self.class.isShouldCheckMainThread = !self.class.isShouldCheckMainThread;
-    [[HyperionManager sharedInstance] togglePluginDrawer];
     [self.menu setSelected:self.class.isShouldCheckMainThread animated:YES];
 }
 
