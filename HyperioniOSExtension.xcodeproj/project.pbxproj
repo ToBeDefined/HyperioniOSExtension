@@ -19,17 +19,10 @@
 		3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */; };
 		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
 		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
-		3F55CEE32085CF6700B1960F /* HYPEnviromentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F55CEE72085D88500B1960F /* MyEnvItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CEE62085D88500B1960F /* MyEnvItem.m */; };
-		3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnviromentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F886655207F735A009760E3 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886656207F735A009760E3 /* HYPEnvironmentItemManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */; };
-		3F886657207F735A009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664F207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F886658207F735A009760E3 /* HYPEnvironmentSelectorPluginMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F886650207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.m */; };
 		3F886659207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */; };
 		3F88665A207F735A009760E3 /* HYPEnvironmentSelectorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */; };
-		3F88665B207F735A009760E3 /* HYPEnvironmentSelectorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886660207F7366009760E3 /* env.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665D207F7366009760E3 /* env.png */; };
 		3F886661207F7366009760E3 /* env@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665E207F7366009760E3 /* env@2x.png */; };
 		3F886662207F7366009760E3 /* env@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665F207F7366009760E3 /* env@3x.png */; };
@@ -38,8 +31,6 @@
 		3F886689207F7388009760E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F886687207F7388009760E3 /* Main.storyboard */; };
 		3F88668B207F7389009760E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F88668A207F7389009760E3 /* Assets.xcassets */; };
 		3F88668E207F7389009760E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F88668C207F7389009760E3 /* LaunchScreen.storyboard */; };
-		3F886693207F7500009760E3 /* HYPEnviromentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */; };
-		3F886694207F7500009760E3 /* HYPEnviromentSelector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FA20F292084402C008B1402 /* HYPFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F272084402C008B1402 /* HYPFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; };
 		3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -52,16 +43,23 @@
 		3FA20F4320844900008B1402 /* fpsMonitor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA20F4020844900008B1402 /* fpsMonitor@3x.png */; };
 		3FA20F4620844D8F008B1402 /* HYPFPSMonitorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F4420844D8F008B1402 /* HYPFPSMonitorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F4720844D8F008B1402 /* HYPFPSMonitorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA20F4520844D8F008B1402 /* HYPFPSMonitorManager.m */; };
-		3FA8F1B920803B500015BEE0 /* HYPEnvironmentSelectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA8F1BA20803B500015BEE0 /* HYPEnvironmentSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */; };
-		3FA8F1C52080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA8F1C62080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */; };
-		3FA8F1C92080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */; };
-		3FA8F1D020819DA90015BEE0 /* HYPEnvironmentInfoCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA8F1D120819DA90015BEE0 /* HYPEnvironmentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */; };
+		3FF95B7F2085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; };
+		3FF95B802085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B862085F45B00AE7D93 /* HYPEnvironmentSelectorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B872085F45B00AE7D93 /* HYPEnvironmentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B882085F45B00AE7D93 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B892085F45B00AE7D93 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B8A2085F45B00AE7D93 /* HYPEnvironmentSelectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B8B2085F45B00AE7D93 /* HYPEnvironmentInfoCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		416036DF50820786C0E7A417 /* Pods_HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */; };
 		9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8B5C2564B566209C7B0F48 /* Pods_Example.framework */; };
-		AF8E4D44C19A26DA64849BC1 /* Pods_HYPEnviromentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC648620FED0EBE9309DB78B /* Pods_HYPEnviromentSelector.framework */; };
 		B77CAFC5428A9C7F9F80E236 /* Pods_HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */; };
 		FF54AEB869A7EA5A7EF80809 /* Pods_HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */; };
 /* End PBXBuildFile section */
@@ -74,19 +72,19 @@
 			remoteGlobalIDString = 3F14AF9B2085C88500CE4EE5;
 			remoteInfo = HYPUIMainThreadChecker;
 		};
-		3F886695207F7500009760E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F886638207F7317009760E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F886640207F7317009760E3;
-			remoteInfo = HYPEnviromentSelector;
-		};
 		3FA20F2A2084402C008B1402 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3F886638207F7317009760E3 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3FA20F242084402C008B1402;
 			remoteInfo = HYPFPSMonitor;
+		};
+		3FF95B832085F43100AE7D93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F886638207F7317009760E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F886640207F7317009760E3;
+			remoteInfo = HYPEnvironmentSelector;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -97,7 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F886694207F7500009760E3 /* HYPEnviromentSelector.framework in Embed Frameworks */,
+				3FF95B802085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Embed Frameworks */,
 				3F14AFA42085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Embed Frameworks */,
 				3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */,
 			);
@@ -125,18 +123,16 @@
 		3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentItemProtocol.h; sourceTree = "<group>"; };
+		3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentItemProtocol.h; sourceTree = "<group>"; };
 		3F55CEE42085D88500B1960F /* Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F55CEE52085D88500B1960F /* MyEnvItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEnvItem.h; sourceTree = "<group>"; };
 		3F55CEE62085D88500B1960F /* MyEnvItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEnvItem.m; sourceTree = "<group>"; };
-		3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F886644207F7317009760E3 /* HYPEnviromentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentSelector.h; sourceTree = "<group>"; };
+		3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnvironmentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorPluginModule.h; sourceTree = "<group>"; };
 		3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentItemManage.h; sourceTree = "<group>"; };
 		3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentItemManage.m; sourceTree = "<group>"; };
-		3F88664F207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorPluginMenuItem.h; sourceTree = "<group>"; };
-		3F886650207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorPluginMenuItem.m; sourceTree = "<group>"; };
 		3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorPluginModule.m; sourceTree = "<group>"; };
 		3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorPlugin.m; sourceTree = "<group>"; };
 		3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorPlugin.h; sourceTree = "<group>"; };
@@ -170,8 +166,10 @@
 		3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoEditCell.m; sourceTree = "<group>"; };
 		3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentInfoCell.h; sourceTree = "<group>"; };
 		3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoCell.m; sourceTree = "<group>"; };
+		42470BB1473038DBF7143011 /* Pods-HYPEnvironmentSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnvironmentSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 		4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		505EEE7269718E53B081973B /* Pods-HYPEnvironmentSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnvironmentSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector.release.xcconfig"; sourceTree = "<group>"; };
 		51E5801663D749F6E0CEBE4D /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		62D564FC925072656116C11D /* Pods-AllTarget-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-Example/Pods-AllTarget-Example.release.xcconfig"; sourceTree = "<group>"; };
 		6C1C4A95A5B19ABC5FD783D5 /* Pods-HYPUIMainThreadCheaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadCheaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadCheaker/Pods-HYPUIMainThreadCheaker.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +178,7 @@
 		749E5AEB86A0DDA660D43A7F /* Pods-HYPEnviromentSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnviromentSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnviromentSelector/Pods-HYPEnviromentSelector.release.xcconfig"; sourceTree = "<group>"; };
 		7642D0F827F81D60FF722291 /* Pods_AllTarget_HYPFPSMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllTarget_HYPFPSMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F76C635CCFF10AD510BA273 /* Pods-HYPUIMainThreadChecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadChecker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadChecker/Pods-HYPUIMainThreadChecker.debug.xcconfig"; sourceTree = "<group>"; };
+		81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPEnvironmentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAB74EAEDC9FE4FF01A030 /* Pods-AllTarget-HYPFPSMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPFPSMonitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPFPSMonitor/Pods-AllTarget-HYPFPSMonitor.release.xcconfig"; sourceTree = "<group>"; };
 		828699604C1986C1611BA401 /* Pods-HYPUIMainThreadCheaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPUIMainThreadCheaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPUIMainThreadCheaker/Pods-HYPUIMainThreadCheaker.debug.xcconfig"; sourceTree = "<group>"; };
 		8901E5272A8DE83F9901039C /* Pods-AllTarget-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTarget-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllTarget-HYPFPSMonitor/Pods-AllTarget-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF8E4D44C19A26DA64849BC1 /* Pods_HYPEnviromentSelector.framework in Frameworks */,
+				416036DF50820786C0E7A417 /* Pods_HYPEnvironmentSelector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +212,7 @@
 			files = (
 				3F14AFA32085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Frameworks */,
 				3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */,
-				3F886693207F7500009760E3 /* HYPEnviromentSelector.framework in Frameworks */,
+				3FF95B7F2085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Frameworks */,
 				9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +257,7 @@
 		3F886637207F7317009760E3 = {
 			isa = PBXGroup;
 			children = (
-				3F886643207F7317009760E3 /* HYPEnviromentSelector */,
+				3F886643207F7317009760E3 /* HYPEnvironmentSelector */,
 				3FA20F262084402C008B1402 /* HYPFPSMonitor */,
 				3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
 				3F886682207F7388009760E3 /* Example */,
@@ -271,7 +270,7 @@
 		3F886642207F7317009760E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */,
+				3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */,
 				3F886681207F7388009760E3 /* Example.app */,
 				3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */,
 				3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */,
@@ -279,17 +278,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3F886643207F7317009760E3 /* HYPEnviromentSelector */ = {
+		3F886643207F7317009760E3 /* HYPEnvironmentSelector */ = {
 			isa = PBXGroup;
 			children = (
-				3F886644207F7317009760E3 /* HYPEnviromentSelector.h */,
+				3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */,
 				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
 				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
-				3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */,
+				3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */,
 				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
 				3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */,
-				3F88664F207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h */,
-				3F886650207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.m */,
 				3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */,
 				3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */,
 				3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */,
@@ -303,7 +300,7 @@
 				3F886645207F7317009760E3 /* Info.plist */,
 				3F88665C207F7366009760E3 /* Resources */,
 			);
-			path = HYPEnviromentSelector;
+			path = HYPEnvironmentSelector;
 			sourceTree = "<group>";
 		};
 		3F88665C207F7366009760E3 /* Resources */ = {
@@ -377,6 +374,8 @@
 				6C1C4A95A5B19ABC5FD783D5 /* Pods-HYPUIMainThreadCheaker.release.xcconfig */,
 				7F76C635CCFF10AD510BA273 /* Pods-HYPUIMainThreadChecker.debug.xcconfig */,
 				2995F6DDDC070EEB4D268065 /* Pods-HYPUIMainThreadChecker.release.xcconfig */,
+				42470BB1473038DBF7143011 /* Pods-HYPEnvironmentSelector.debug.xcconfig */,
+				505EEE7269718E53B081973B /* Pods-HYPEnvironmentSelector.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -392,6 +391,7 @@
 				8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */,
 				B91DE5109C35244080B61E05 /* Pods_HYPUIMainThreadCheaker.framework */,
 				4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */,
+				81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -414,16 +414,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */,
-				3F55CEE32085CF6700B1960F /* HYPEnviromentItemProtocol.h in Headers */,
-				3F88665B207F735A009760E3 /* HYPEnvironmentSelectorPlugin.h in Headers */,
-				3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */,
-				3F886657207F735A009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h in Headers */,
-				3F886655207F735A009760E3 /* HYPEnvironmentItemManage.h in Headers */,
-				3FA8F1B920803B500015BEE0 /* HYPEnvironmentSelectorViewController.h in Headers */,
-				3FA8F1C52080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */,
-				3FA8F1D020819DA90015BEE0 /* HYPEnvironmentInfoCell.h in Headers */,
-				3FA8F1C92080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h in Headers */,
+				3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */,
+				3FF95B862085F45B00AE7D93 /* HYPEnvironmentSelectorPlugin.h in Headers */,
+				3FF95B872085F45B00AE7D93 /* HYPEnvironmentItemProtocol.h in Headers */,
+				3FF95B882085F45B00AE7D93 /* HYPEnvironmentSelectorPluginModule.h in Headers */,
+				3FF95B892085F45B00AE7D93 /* HYPEnvironmentItemManage.h in Headers */,
+				3FF95B8A2085F45B00AE7D93 /* HYPEnvironmentSelectorViewController.h in Headers */,
+				3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */,
+				3FF95B8B2085F45B00AE7D93 /* HYPEnvironmentInfoCell.h in Headers */,
+				3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,9 +460,9 @@
 			productReference = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3F886640207F7317009760E3 /* HYPEnviromentSelector */ = {
+		3F886640207F7317009760E3 /* HYPEnvironmentSelector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F886649207F7317009760E3 /* Build configuration list for PBXNativeTarget "HYPEnviromentSelector" */;
+			buildConfigurationList = 3F886649207F7317009760E3 /* Build configuration list for PBXNativeTarget "HYPEnvironmentSelector" */;
 			buildPhases = (
 				988A4EF38E927DC3C6AE5890 /* [CP] Check Pods Manifest.lock */,
 				3F88663C207F7317009760E3 /* Sources */,
@@ -476,9 +475,9 @@
 			);
 			dependencies = (
 			);
-			name = HYPEnviromentSelector;
+			name = HYPEnvironmentSelector;
 			productName = HYPEnviromentSelector;
-			productReference = 3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */;
+			productReference = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3F886680207F7388009760E3 /* Example */ = {
@@ -496,7 +495,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				3F886696207F7500009760E3 /* PBXTargetDependency */,
+				3FF95B842085F43100AE7D93 /* PBXTargetDependency */,
 				3FA20F2B2084402C008B1402 /* PBXTargetDependency */,
 				3F14AFA22085C88500CE4EE5 /* PBXTargetDependency */,
 			);
@@ -563,7 +562,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F886640207F7317009760E3 /* HYPEnviromentSelector */,
+				3F886640207F7317009760E3 /* HYPEnvironmentSelector */,
 				3FA20F242084402C008B1402 /* HYPFPSMonitor */,
 				3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
 				3F886680207F7388009760E3 /* Example */,
@@ -645,7 +644,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPEnviromentSelector/Pods-HYPEnviromentSelector-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1B9C6D3C4F8321C244E6CFEB /* [CP] Copy Pods Resources */ = {
@@ -707,7 +706,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HYPEnviromentSelector-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HYPEnvironmentSelector-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -788,7 +787,6 @@
 				3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */,
 				3F886659207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.m in Sources */,
 				3FA8F1D120819DA90015BEE0 /* HYPEnvironmentInfoCell.m in Sources */,
-				3F886658207F735A009760E3 /* HYPEnvironmentSelectorPluginMenuItem.m in Sources */,
 				3F88665A207F735A009760E3 /* HYPEnvironmentSelectorPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,15 +819,15 @@
 			target = 3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */;
 			targetProxy = 3F14AFA12085C88500CE4EE5 /* PBXContainerItemProxy */;
 		};
-		3F886696207F7500009760E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F886640207F7317009760E3 /* HYPEnviromentSelector */;
-			targetProxy = 3F886695207F7500009760E3 /* PBXContainerItemProxy */;
-		};
 		3FA20F2B2084402C008B1402 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3FA20F242084402C008B1402 /* HYPFPSMonitor */;
 			targetProxy = 3FA20F2A2084402C008B1402 /* PBXContainerItemProxy */;
+		};
+		3FF95B842085F43100AE7D93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F886640207F7317009760E3 /* HYPEnvironmentSelector */;
+			targetProxy = 3FF95B832085F43100AE7D93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1021,7 +1019,7 @@
 		};
 		3F88664A207F7317009760E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F86D4F820A8E710CA2E72A70 /* Pods-HYPEnviromentSelector.debug.xcconfig */;
+			baseConfigurationReference = 42470BB1473038DBF7143011 /* Pods-HYPEnvironmentSelector.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1030,14 +1028,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HYPEnviromentSelector/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HYPEnvironmentSelector/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPEnviromentSelector;
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPEnvironmentSelector;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1046,7 +1044,7 @@
 		};
 		3F88664B207F7317009760E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 749E5AEB86A0DDA660D43A7F /* Pods-HYPEnviromentSelector.release.xcconfig */;
+			baseConfigurationReference = 505EEE7269718E53B081973B /* Pods-HYPEnvironmentSelector.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1055,14 +1053,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HYPEnviromentSelector/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HYPEnvironmentSelector/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPEnviromentSelector;
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPEnvironmentSelector;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1186,7 +1184,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F886649207F7317009760E3 /* Build configuration list for PBXNativeTarget "HYPEnviromentSelector" */ = {
+		3F886649207F7317009760E3 /* Build configuration list for PBXNativeTarget "HYPEnvironmentSelector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F88664A207F7317009760E3 /* Debug */,

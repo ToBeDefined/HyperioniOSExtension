@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <HYPEnviromentSelector/HYPEnviromentSelector.h>
-@interface MyEnvItem: NSObject <HYPEnviromentItemProtocol>
+#import <HYPEnvironmentSelector/HYPEnvironmentSelector.h>
+@interface MyEnvItem: NSObject <HYPEnvironmentItemProtocol>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *otherVariable;

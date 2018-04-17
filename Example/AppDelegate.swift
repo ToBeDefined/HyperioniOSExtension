@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import HYPEnviromentSelector
+import HYPEnvironmentSelector
 
 //@objcMembers
-//class MyEnvItem: NSObject, HYPEnviromentItemProtocol {
+//class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 //    var name: String?
 //    var baseURL: String?
 //    var commonPort: String?
@@ -43,9 +43,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = MyEnvItem.init(name: "base");
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
             if let obj = obj as? MyEnvItem {
-                print(obj.name ?? "nilValue")
+                let message =
+                """
+                EnvName:  + \(obj.name ?? "no name")
+                \(HYPEnvironmentItemManage.description(forItem: obj, escapeName: true))
+                """
+                
+                let alertController = UIAlertController.init(title: "Env Selected",
+                                                             message: message,
+                                                             preferredStyle: .alert)
+                alertController.addAction(UIAlertAction.init(title: "确定",
+                                                             style: .cancel,
+                                                             handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alertController,
+                                                                            animated: true,
+                                                                            completion: nil)
+                
             }
-            print(obj ?? "nonono")
         }
         return true
     }

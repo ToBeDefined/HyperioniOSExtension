@@ -7,17 +7,18 @@
 //
 
 #import <objc/runtime.h>
+#import <HyperioniOS/HyperionManager.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
 #import "HYPEnvironmentSelectorPluginModule.h"
-#import "HYPEnvironmentSelectorPluginMenuItem.h"
 #import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentSelectorViewController.h"
 
-@interface HYPEnvironmentSelectorPluginModule() <HYPEnvironmentSelectorPluginMenuItemDelegate>
+@interface HYPEnvironmentSelectorPluginModule() <HYPPluginMenuItemDelegate>
 
 @property (nonatomic, class, assign) BOOL isShowingEnvironmentSelectorWindow;
 @property (nonatomic, weak) UIWindow *environmentSelectorWindow;
 @property (nonatomic, weak) UIWindow *originKeyWindow;
+@property (nonatomic, strong) HYPPluginMenuItem *menu;
 
 @end
 
@@ -39,24 +40,38 @@
     if (!HYPEnvironmentSelectorPlugin.isShowInSidebarList) {
         return nil;
     }
-    HYPEnvironmentSelectorPluginMenuItem *menu = [[HYPEnvironmentSelectorPluginMenuItem alloc] init];
+    if (self.menu) {
+        return self.menu;
+    }
+    
+    HYPPluginMenuItem *menu = [[HYPPluginMenuItem alloc] init];
     NSString *imagePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"env"
                                                                            ofType:@"png"];
     [menu bindWithTitle:@"Environment Selector"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    menu.actionDelegate = self;
+    menu.delegate = self;
+    [menu setSelected:self.class.isShowingEnvironmentSelectorWindow animated:NO];
+    self.menu = menu;
     return menu;
 }
 
-- (void)environmentSelectorPluginMenuItemAction:(HYPEnvironmentSelectorPluginMenuItem *)menuItem {
-    [self showEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+- (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
+    [[HyperionManager sharedInstance] togglePluginDrawer];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.class.isShowingEnvironmentSelectorWindow) {
+            [self hideEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+        } else {
+            [self showEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+        }
+    });
 }
 
 - (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    if ([self class].isShowingEnvironmentSelectorWindow) {
+    if (self.class.isShowingEnvironmentSelectorWindow) {
         return;
     }
-    [self class].isShowingEnvironmentSelectorWindow = YES;
+    self.class.isShowingEnvironmentSelectorWindow = YES;
+    [self.menu setSelected:YES animated:YES];
     if (self.environmentSelectorWindow == nil) {
         UIWindow *environmentSelectorWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         HYPEnvironmentSelectorViewController *selectorVC = [[HYPEnvironmentSelectorViewController alloc] init];
@@ -100,6 +115,7 @@
 }
 
 - (void)afterHideEnvironmentSelectorWindowAnimation:(void (^)(void))completion {
+    [self.menu setSelected:NO animated:YES];
     self.environmentSelectorWindow.alpha = 0;
     self.class.isShowingEnvironmentSelectorWindow = NO;
     self.environmentSelectorWindow.hidden = YES;

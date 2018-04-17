@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HYPEnviromentSelector
+import HYPEnvironmentSelector
 import HYPFPSMonitor
 import HYPUIMainThreadChecker
 
@@ -17,11 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func showEnvSelector(_ sender: Any) {
