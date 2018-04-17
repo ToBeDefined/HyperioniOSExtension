@@ -46,12 +46,6 @@ static inline void __t_main_thread_checker_safe_swizzling_exchange_instance_meth
         __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
                                                                         @selector(layoutSubviews),
                                                                         @selector(__t_layoutSubviews));
-//        __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
-//                                                                        @selector(addSubview:),
-//                                                                        @selector(__t_addSubview:));
-//        __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
-//                                                                        @selector(removeFromSuperview),
-//                                                                        @selector(__t_removeFromSuperview));
     });
 }
 
@@ -83,41 +77,16 @@ static inline void __t_main_thread_checker_safe_swizzling_exchange_instance_meth
     [self __t_layoutSubviews];
 }
 
-//- (void)__t_addSubview:(UIView *)view {
-//    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-//        [self checkUIOperationInMainThread];
-//    }
-//    if ([NSThread isMainThread]) {
-//        [self __t_addSubview:view];
-//    } else {
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [self __t_addSubview:view];
-//        });
-//    }
-//}
-//
-//- (void)__t_removeFromSuperview {
-//    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-//        [self checkUIOperationInMainThread];
-//    }
-//    if ([NSThread isMainThread]) {
-//        [self __t_removeFromSuperview];
-//    } else {
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [self __t_removeFromSuperview];
-//        });
-//    }
-//}
-
 - (void)checkUIOperationInMainThread {
     if ([NSThread isMainThread]) {
         return;
     }
     NSArray<NSString *> *symbols = [NSThread callStackSymbols];
     
-    NSString *assertLog = [NSString stringWithFormat:@"Class: %@, Instance: %@ \n%@", [self class], self, symbols];
-//    NSAssert(NO, assertLog);
-    [self showAlertControllerWithMessage:assertLog];
+    NSString *logTips = @"1. layoutSubviews error maybe is removeFormSupperView or addSubView in child thread.\n2. other error maybe create UI in child thread.";
+    NSString *logMessage = [NSString stringWithFormat:@"Class: %@, Instance: %@\n\nTips:\n%@\n\nsymbols:\n%@", [self class], self, logTips, symbols];
+    [self showAlertControllerWithMessage:logMessage];
+    
 }
 
 - (void)showAlertControllerWithMessage:(NSString *)message {
