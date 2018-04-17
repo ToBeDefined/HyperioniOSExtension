@@ -85,26 +85,31 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 }
 
 + (NSArray<NSString *> *)keysForItem:(id)item {
-    [self checkIsSwiftClass:[item class]];
-    NSArray<NSString *> *keys;
-    keys = [self keysForItemClass:[item class]];
-    return [keys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [(NSString *)obj1 compare:(NSString *)obj2 options:NSCaseInsensitiveSearch];
-    }];
+    return [self keysForItemClass:[item class]];
 }
 
 + (NSArray<NSString *> *)keysForItemClass:(Class)cls {
     [self checkIsSwiftClass:cls];
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList(cls, &count);
-    NSMutableArray<NSString *> *propertyArray = [NSMutableArray array];
+    NSMutableSet<NSString *> *propertySet = [NSMutableSet set];
     for (int i = 0; i < count; i++) {
         objc_property_t property = properties[i];
         const char *cName = property_getName(property);
-        NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
-        [propertyArray addObject:name];
+        NSString *propertyName = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+        [propertySet addObject:propertyName];
     }
-    return propertyArray;
+    
+    // 去除NSObject本来的property
+    objc_property_t *nsobject_properties = class_copyPropertyList([NSObject class], &count);
+    for (int i = 0; i < count; i++) {
+        objc_property_t property = nsobject_properties[i];
+        const char *cName = property_getName(property);
+        NSString *propertyName = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+        [propertySet removeObject:propertyName];
+    }
+    NSArray *sortDesc = @[[NSSortDescriptor sortDescriptorWithKey:@"lowercaseString" ascending:YES]];
+    return [propertySet sortedArrayUsingDescriptors:sortDesc];
 }
 
 + (id)getObjectForKey:(NSString *)key inItem:(id)item {

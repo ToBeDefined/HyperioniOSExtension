@@ -20,6 +20,7 @@
 		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
 		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
 		3F55CEE32085CF6700B1960F /* HYPEnviromentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F55CEE72085D88500B1960F /* MyEnvItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CEE62085D88500B1960F /* MyEnvItem.m */; };
 		3F886646207F7317009760E3 /* HYPEnviromentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnviromentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886654207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F886655207F735A009760E3 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +126,9 @@
 		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentItemProtocol.h; sourceTree = "<group>"; };
+		3F55CEE42085D88500B1960F /* Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F55CEE52085D88500B1960F /* MyEnvItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEnvItem.h; sourceTree = "<group>"; };
+		3F55CEE62085D88500B1960F /* MyEnvItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEnvItem.m; sourceTree = "<group>"; };
 		3F886641207F7317009760E3 /* HYPEnviromentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnviromentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F886644207F7317009760E3 /* HYPEnviromentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnviromentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,9 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				3F886644207F7317009760E3 /* HYPEnviromentSelector.h */,
-				3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */,
 				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
 				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
+				3F55CEE22085CF6700B1960F /* HYPEnviromentItemProtocol.h */,
 				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
 				3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */,
 				3F88664F207F7359009760E3 /* HYPEnvironmentSelectorPluginMenuItem.h */,
@@ -315,6 +319,9 @@
 		3F886682207F7388009760E3 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				3F55CEE42085D88500B1960F /* Example-Bridging-Header.h */,
+				3F55CEE52085D88500B1960F /* MyEnvItem.h */,
+				3F55CEE62085D88500B1960F /* MyEnvItem.m */,
 				3F886683207F7388009760E3 /* AppDelegate.swift */,
 				3F886685207F7388009760E3 /* ViewController.swift */,
 				3F886687207F7388009760E3 /* Main.storyboard */,
@@ -536,6 +543,7 @@
 					};
 					3F886680207F7388009760E3 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					3FA20F242084402C008B1402 = {
 						CreatedOnToolsVersion = 9.3;
@@ -790,6 +798,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F886686207F7388009760E3 /* ViewController.swift in Sources */,
+				3F55CEE72085D88500B1960F /* MyEnvItem.m in Sources */,
 				3F886684207F7388009760E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1065,6 +1074,7 @@
 			baseConfigurationReference = 36EC2D7824E5F9823D947F2C /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
 				INFOPLIST_FILE = Example/Info.plist;
@@ -1075,6 +1085,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1086,6 +1097,7 @@
 			baseConfigurationReference = 51E5801663D749F6E0CEBE4D /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
 				INFOPLIST_FILE = Example/Info.plist;
@@ -1096,6 +1108,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

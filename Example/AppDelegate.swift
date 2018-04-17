@@ -9,24 +9,24 @@
 import UIKit
 import HYPEnviromentSelector
 
-@objcMembers
-class HYPEnvironmentItem: NSObject, HYPEnviromentItemProtocol {
-    var name: String?
-    var baseURL: String?
-    var commonPort: String?
-    var H5BaseURL1: String?
-    var H5BaseURL2: String?
-    var H5BaseURL3: String?
-    var H5BaseURL4: String?
-    required override init() {
-        super.init()
-    }
-    
-    init(name: String) {
-        super.init()
-        self.name = name
-    }
-}
+//@objcMembers
+//class MyEnvItem: NSObject, HYPEnviromentItemProtocol {
+//    var name: String?
+//    var baseURL: String?
+//    var commonPort: String?
+//    var H5BaseURL1: String?
+//    var H5BaseURL2: String?
+//    var H5BaseURL3: String?
+//    var H5BaseURL4: String?
+//    required override init() {
+//        super.init()
+//    }
+//
+//    init(name: String) {
+//        super.init()
+//        self.name = name
+//    }
+//}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,17 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        HYPEnvironmentSelectorPlugin.environmentItems = [HYPEnvironmentItem.init(name: "1"),
-                                                         HYPEnvironmentItem.init(name: "2"),
-                                                         HYPEnvironmentItem.init(name: "3"),
-                                                         HYPEnvironmentItem.init(name: "4")]
-        HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = HYPEnvironmentItem.init(name: "base");
+        HYPEnvironmentSelectorPlugin.environmentItems = [MyEnvItem.init(name: "1"),
+                                                         MyEnvItem.init(name: "2"),
+                                                         MyEnvItem.init(name: "3"),
+                                                         MyEnvItem.init(name: "4")]
+        HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = MyEnvItem.init(name: "base");
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
-            if let obj = obj as? HYPEnvironmentItem {
-                print(obj.name)
-                print(obj.baseURL)
-                print(obj.commonPort)
-                print(obj.H5BaseURL1)
+            if let obj = obj as? MyEnvItem {
+                print(obj.name ?? "nilValue")
             }
             print(obj ?? "nonono")
         }
