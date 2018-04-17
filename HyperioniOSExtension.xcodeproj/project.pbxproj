@@ -46,7 +46,6 @@
 		3FA8F1BA20803B500015BEE0 /* HYPEnvironmentSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */; };
 		3FA8F1C62080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */; };
 		3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */; };
-		3FA8F1D120819DA90015BEE0 /* HYPEnvironmentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */; };
 		3FF95B7F2085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; };
 		3FF95B802085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,7 +54,6 @@
 		3FF95B882085F45B00AE7D93 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B892085F45B00AE7D93 /* HYPEnvironmentItemManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8A2085F45B00AE7D93 /* HYPEnvironmentSelectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3FF95B8B2085F45B00AE7D93 /* HYPEnvironmentInfoCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		416036DF50820786C0E7A417 /* Pods_HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */; };
@@ -164,8 +162,6 @@
 		3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorEditItemViewController.m; sourceTree = "<group>"; };
 		3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentInfoEditCell.h; sourceTree = "<group>"; };
 		3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoEditCell.m; sourceTree = "<group>"; };
-		3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentInfoCell.h; sourceTree = "<group>"; };
-		3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoCell.m; sourceTree = "<group>"; };
 		42470BB1473038DBF7143011 /* Pods-HYPEnvironmentSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnvironmentSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 		4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,8 +287,6 @@
 				3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */,
 				3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */,
 				3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */,
-				3FA8F1CE20819DA90015BEE0 /* HYPEnvironmentInfoCell.h */,
-				3FA8F1CF20819DA90015BEE0 /* HYPEnvironmentInfoCell.m */,
 				3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */,
 				3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */,
 				3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */,
@@ -421,7 +415,6 @@
 				3FF95B892085F45B00AE7D93 /* HYPEnvironmentItemManage.h in Headers */,
 				3FF95B8A2085F45B00AE7D93 /* HYPEnvironmentSelectorViewController.h in Headers */,
 				3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */,
-				3FF95B8B2085F45B00AE7D93 /* HYPEnvironmentInfoCell.h in Headers */,
 				3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,7 +779,6 @@
 				3F886656207F735A009760E3 /* HYPEnvironmentItemManage.m in Sources */,
 				3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */,
 				3F886659207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.m in Sources */,
-				3FA8F1D120819DA90015BEE0 /* HYPEnvironmentInfoCell.m in Sources */,
 				3F88665A207F735A009760E3 /* HYPEnvironmentSelectorPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

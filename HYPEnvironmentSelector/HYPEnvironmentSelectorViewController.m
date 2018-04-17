@@ -9,7 +9,6 @@
 #import <objc/runtime.h>
 
 #import "HYPEnvironmentSelectorViewController.h"
-#import "HYPEnvironmentInfoCell.h"
 #import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentSelectorEditItemViewController.h"
 #import "HYPEnvironmentItemManage.h"
@@ -34,10 +33,9 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                                                                            target:self
                                                                                            action:@selector(pushToEditViewControllerWithItemUseCache)];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     self.title = @"Environment Selector";
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerClass:[HYPEnvironmentInfoCell class]
-           forCellReuseIdentifier:HYPEnvironmentInfoCellID];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)cancelSelectEnvironment {
@@ -62,8 +60,18 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HYPEnvironmentInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPEnvironmentInfoCellID
-                                                            forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPEnvironmentInfoCellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:HYPEnvironmentInfoCellID];
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        if (HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem) {
+            cell.accessoryType = UITableViewCellAccessoryDetailButton;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
     
     id item = self.items[indexPath.row];
     NSString *title;
@@ -71,13 +79,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     if (tmpName) {
         title = [NSString stringWithFormat:@"%@", tmpName];
     } else {
-        title = @"No name was set before.";
-    }
-    
-    if (indexPath.row == 0) {
-        cell.topLine.hidden = NO;
-    } else {
-        cell.topLine.hidden = YES;
+        title = @"No name was set.";
     }
     
     cell.textLabel.text = title;

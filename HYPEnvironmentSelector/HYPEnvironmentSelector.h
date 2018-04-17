@@ -17,7 +17,6 @@ FOUNDATION_EXPORT const unsigned char HYPEnvironmentSelectorVersionString[];
 #import <HYPEnvironmentSelector/HYPEnvironmentItemManage.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentSelectorViewController.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentSelectorEditItemViewController.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentInfoCell.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentInfoEditCell.h>
 #else
 #import "HYPEnvironmentSelectorPlugin.h"
@@ -26,6 +25,5 @@ FOUNDATION_EXPORT const unsigned char HYPEnvironmentSelectorVersionString[];
 #import "HYPEnvironmentItemManage.h"
 #import "HYPEnvironmentSelectorViewController.h"
 #import "HYPEnvironmentSelectorEditItemViewController.h"
-#import "HYPEnvironmentInfoCell.h"
 #import "HYPEnvironmentInfoEditCell.h"
 #endif
