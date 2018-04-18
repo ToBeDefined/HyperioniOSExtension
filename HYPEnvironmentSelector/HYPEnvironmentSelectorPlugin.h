@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class HYPEnvironmentSelectorPluginModule;
 @protocol HYPEnvironmentItemProtocol;
 
-typedef void (^ __nullable EnvironmentSelectedBlock)(id _Nullable obj);
+typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentItemProtocol> * _Nullable obj);
 
 @interface HYPEnvironmentSelectorPlugin : NSObject<HYPPlugin>
 

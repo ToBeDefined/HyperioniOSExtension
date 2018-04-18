@@ -9,8 +9,29 @@
 import UIKit
 import HYPEnvironmentSelector
 
+
+//#if DEBUG
 //@objcMembers
 //class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
+//    var name: String?
+//    var baseURL: String?
+//    var commonPort: String?
+//    var H5BaseURL1: String?
+//    var H5BaseURL2: String?
+//    var H5BaseURL3: String?
+//    var H5BaseURL4: String?
+//    required override init() {
+//        super.init()
+//    }
+//    
+//    init(name: String) {
+//        super.init()
+//        self.name = name
+//    }
+//}
+//#else
+//@objcMembers
+//class MyEnvItem: NSObject {
 //    var name: String?
 //    var baseURL: String?
 //    var commonPort: String?
@@ -27,20 +48,21 @@ import HYPEnvironmentSelector
 //        self.name = name
 //    }
 //}
+//#endif
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        #if CUSTOM_DEBUG
         HYPEnvironmentSelectorPlugin.environmentItems = [MyEnvItem.init(name: "1"),
                                                          MyEnvItem.init(name: "2"),
                                                          MyEnvItem.init(name: "3"),
                                                          MyEnvItem.init(name: "4")]
-        HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = MyEnvItem.init(name: "base");
+        HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = MyEnvItem.init(name: "base")
         HYPEnvironmentSelectorPlugin.environmentSelectedBlock = { (obj) in
             if let obj = obj as? MyEnvItem {
                 var message = "EnvName: \(obj.name ?? "no name")" + HYPEnvironmentItemManage.description(forItem: obj, escapeName: true)
@@ -59,6 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
         }
+        #else
+        _ = MyEnvItem.init(name: "Release Item")
+        #endif
         return true
     }
 

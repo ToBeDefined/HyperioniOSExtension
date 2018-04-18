@@ -10,7 +10,7 @@
 
 @interface HYPEnvironmentSelectorPluginModule : HYPPluginModule
 
-+ (instancetype)sharedInstance;
++ (instancetype _Nonnull)sharedInstance;
 
 - (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;

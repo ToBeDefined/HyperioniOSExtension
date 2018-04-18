@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <HYPEnvironmentSelector/HYPEnvironmentSelector.h>
+
+
+#ifdef CUSTOM_DEBUG
 @interface MyEnvItem: NSObject <HYPEnvironmentItemProtocol>
+#else
+@interface MyEnvItem: NSObject
+#endif
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *baseURL;
@@ -21,3 +27,4 @@
 - (instancetype)initWithName:(NSString *)name;
 
 @end
+
