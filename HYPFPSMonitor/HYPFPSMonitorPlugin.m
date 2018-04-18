@@ -18,7 +18,13 @@
 @implementation HYPFPSMonitorPlugin
 
 + (void)load {
-    self.isCanTouchFPSView = YES;
+    // 防止load时候还未添加方法
+    Method setIsCanTouchFPSViewMethod = class_getClassMethod([self class], @selector(setIsCanTouchFPSView:));
+    class_addMethod([self class],
+                    @selector(setIsCanTouchFPSView:),
+                    method_getImplementation(setIsCanTouchFPSViewMethod),
+                    method_getTypeEncoding(setIsCanTouchFPSViewMethod));
+    [self setIsCanTouchFPSView:YES];
 }
 
 #pragma mark - isCanTouchFPSView

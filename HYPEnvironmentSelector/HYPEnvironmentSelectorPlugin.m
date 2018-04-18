@@ -18,7 +18,13 @@
 @implementation HYPEnvironmentSelectorPlugin
 
 + (void)load {
-    self.isShowInSidebarList = YES;
+    // 防止load时候还未添加方法
+    Method setIsShowInSidebarListMethod = class_getClassMethod([self class], @selector(setIsShowInSidebarList:));
+    class_addMethod([self class],
+                    @selector(setIsShowInSidebarList:),
+                    method_getImplementation(setIsShowInSidebarListMethod),
+                    method_getTypeEncoding(setIsShowInSidebarListMethod));
+    [self setIsShowInSidebarList:YES];
 }
 
 #pragma mark - environmentItems
