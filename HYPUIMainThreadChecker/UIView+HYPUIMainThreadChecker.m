@@ -67,35 +67,35 @@ BOOL isMainQueue(void) {
 }
 
 - (void)__t_setNeedsLayout {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         [self operationIsInMainQueue];
     }
     [self __t_setNeedsLayout];
 }
 
 - (void)__t_setNeedsDisplay {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         [self operationIsInMainQueue];
     }
     [self __t_setNeedsDisplay];
 }
 
 - (void)__t_setNeedsDisplayInRect:(CGRect)rect {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         [self operationIsInMainQueue];
     }
     [self __t_setNeedsDisplayInRect:rect];
 }
 
 - (void)__t_layoutSubviews {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         [self operationIsInMainQueue];
     }
     [self __t_layoutSubviews];
 }
 
 - (void)__t_addSubview:(UIView *)view {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         // 使用断言，debug模式下崩溃看栈信息上一步，切换为主线程操作
         NSAssert(isMainQueue(), @"not in main queue, type 'cmd + 7', see call stark");
     }
@@ -103,7 +103,7 @@ BOOL isMainQueue(void) {
 }
 
 - (void)__t_removeFromSuperview {
-    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+    if ([HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread) {
         // 使用断言，debug模式下崩溃看栈信息上一步，切换为主线程操作
         NSAssert(isMainQueue(), @"not in main queue, type 'cmd + 7', see call stark");
     }

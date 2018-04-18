@@ -10,5 +10,9 @@
 #import <HyperioniOS/HYPPluginModule.h>
 
 @interface HYPUIMainThreadCheckerPluginModule : HYPPluginModule
-@property (nonatomic, class, assign) BOOL isShouldCheckMainThread;
+
+@property (nonatomic, assign) BOOL isShouldCheckMainThread;
+
++ (instancetype)sharedInstance;
+
 @end

@@ -9,28 +9,30 @@
 #import <objc/runtime.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
 #import <HyperioniOS/HyperionManager.h>
+#import <HyperioniOS/HYPPluginExtensionImp.h>
 #import "HYPFPSMonitorPluginModule.h"
 #import "HYPFPSMonitorManager.h"
 
 @interface HYPFPSMonitorPluginModule() <HYPPluginMenuItemDelegate>
 
-@property (nonatomic, class, assign) BOOL isShowingHYPFPSMonitorView;
+@property (nonatomic, assign) BOOL isShowingHYPFPSMonitorView;
 @property (nonatomic, strong) HYPPluginMenuItem *menu;
 
 @end
 
 @implementation HYPFPSMonitorPluginModule
 
-#pragma mark - isShowingHYPFPSMonitorView
-+ (void)setIsShowingHYPFPSMonitorView:(BOOL)isShowingHYPFPSMonitorView {
-    objc_setAssociatedObject(self,
-                             @selector(isShowingHYPFPSMonitorView),
-                             @(isShowingHYPFPSMonitorView),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (BOOL)isShowingHYPFPSMonitorView {
-    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
++ (instancetype)sharedInstance {
+    static id __instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
+                                                                                   overlayContainer:nil
+                                                                                         hypeWindow:nil
+                                                                                     attachedWindow:nil];
+        __instance = [[[self class] alloc] initWithExtension:pluginExtension];
+    });
+    return __instance;
 }
 
 - (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
@@ -49,21 +51,21 @@
     menu.delegate = self;
     [menu bindWithTitle:@"FPS Monitor"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    [menu setSelected:self.class.isShowingHYPFPSMonitorView animated:YES];
+    [menu setSelected:self.isShowingHYPFPSMonitorView animated:YES];
     self.menu = menu;
     return menu;
 }
 
 #pragma mark - HYPPluginMenuItemDelegate
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
-    self.class.isShowingHYPFPSMonitorView = !self.class.isShowingHYPFPSMonitorView;
+    self.isShowingHYPFPSMonitorView = !self.isShowingHYPFPSMonitorView;
     [[HyperionManager sharedInstance] togglePluginDrawer];
-    [self showHYPFPSMonitor:self.class.isShowingHYPFPSMonitorView];
+    [self showHYPFPSMonitor:self.isShowingHYPFPSMonitorView];
 }
 
 #pragma mark - Private Func
 - (void)showHYPFPSMonitor:(BOOL)isShow {
-    self.class.isShowingHYPFPSMonitorView = isShow;
+    self.isShowingHYPFPSMonitorView = isShow;
     [HYPFPSMonitorManager showFPSMonitor:isShow];
     [self.menu setSelected:isShow animated:YES];
 }

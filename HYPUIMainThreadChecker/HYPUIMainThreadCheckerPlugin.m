@@ -7,13 +7,8 @@
 //
 
 #import <objc/runtime.h>
-#import <HyperioniOS/HYPPluginExtensionImp.h>
 #import "HYPUIMainThreadCheckerPlugin.h"
 #import "HYPUIMainThreadCheckerPluginModule.h"
-
-@interface HYPUIMainThreadCheckerPlugin()
-@property (nonatomic, class, strong) HYPUIMainThreadCheckerPluginModule * _Nullable pluginModule;
-@end
 
 @implementation HYPUIMainThreadCheckerPlugin
 
@@ -33,7 +28,7 @@
                              @selector(isShouldCheckUIInMainThread),
                              @(isShouldCheckUIInMainThread),
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread = isShouldCheckUIInMainThread;
+    [HYPUIMainThreadCheckerPluginModule sharedInstance].isShouldCheckMainThread = isShouldCheckUIInMainThread;
 }
 
 + (BOOL)isShouldCheckUIInMainThread {
@@ -41,40 +36,9 @@
 }
 
 
-#pragma mark - pluginModule
-+ (void)setPluginModule:(HYPUIMainThreadCheckerPluginModule *)pluginModule {
-    objc_setAssociatedObject(self,
-                             @selector(pluginModule),
-                             pluginModule,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (HYPUIMainThreadCheckerPluginModule *)pluginModule {
-    HYPUIMainThreadCheckerPluginModule *pluginModule = objc_getAssociatedObject(self, _cmd);
-    if (pluginModule) {
-        return pluginModule;
-    }
-    HYPUIMainThreadCheckerPluginModule *newPluginModule = [self createNewHYPUIMainThreadCheckerPluginModule];
-    self.pluginModule = newPluginModule;
-    return newPluginModule;
-}
-
-
 #pragma mark - HYPPlugin
-
-+ (HYPUIMainThreadCheckerPluginModule *)createNewHYPUIMainThreadCheckerPluginModule {
-    HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
-                                                                               overlayContainer:nil
-                                                                                     hypeWindow:nil
-                                                                                 attachedWindow:nil];
-    HYPUIMainThreadCheckerPluginModule *pluginModule = [[HYPUIMainThreadCheckerPluginModule alloc] initWithExtension:pluginExtension];
-    self.pluginModule = pluginModule;
-    return pluginModule;
-}
-
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
-    // pluginExtension没使用到，不再重复创建
-    return self.pluginModule;
+    return [HYPUIMainThreadCheckerPluginModule sharedInstance];
 }
 
 + (nonnull NSString *)pluginVersion {

@@ -8,6 +8,7 @@
 
 #import <objc/runtime.h>
 #import <HyperioniOS/HYPPluginMenuItem.h>
+#import <HyperioniOS/HYPPluginExtensionImp.h>
 #import "HYPUIMainThreadCheckerPluginModule.h"
 
 @interface HYPUIMainThreadCheckerPluginModule() <HYPPluginMenuItemDelegate>
@@ -16,23 +17,23 @@
 
 @implementation HYPUIMainThreadCheckerPluginModule
 
-+ (void)load {
-    objc_setAssociatedObject(self,
-                             @selector(isShouldCheckMainThread),
-                             @(YES),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
++ (instancetype)sharedInstance {
+    static id __instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
+                                                                                   overlayContainer:nil
+                                                                                         hypeWindow:nil
+                                                                                     attachedWindow:nil];
+        __instance = [[[self class] alloc] initWithExtension:pluginExtension];
+    });
+    return __instance;
 }
 
 #pragma mark - isShouldCheckMainThread
-+ (void)setIsShouldCheckMainThread:(BOOL)isShouldCheckMainThread {
-    objc_setAssociatedObject(self,
-                             @selector(isShouldCheckMainThread),
-                             @(isShouldCheckMainThread),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (BOOL)isShouldCheckMainThread {
-    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
+- (void)setIsShouldCheckMainThread:(BOOL)isShouldCheckMainThread {
+    _isShouldCheckMainThread = isShouldCheckMainThread;
+    [self.menu setSelected:self.isShouldCheckMainThread animated:YES];
 }
 
 #pragma mark - pluginMenuItem
@@ -46,15 +47,14 @@
     menu.delegate = self;
     [menu bindWithTitle:@"UI Main Thread Check"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    [menu setSelected:self.class.isShouldCheckMainThread animated:YES];
+    [menu setSelected:self.isShouldCheckMainThread animated:YES];
     self.menu = menu;
     return menu;
 }
 
 #pragma mark - HYPPluginMenuItemDelegate
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
-    self.class.isShouldCheckMainThread = !self.class.isShouldCheckMainThread;
-    [self.menu setSelected:self.class.isShouldCheckMainThread animated:YES];
+    self.isShouldCheckMainThread = !self.isShouldCheckMainThread;
 }
 
 @end

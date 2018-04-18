@@ -11,9 +11,6 @@
 #import <HyperioniOS/HYPPluginExtensionImp.h>
 #import <objc/runtime.h>
 
-@interface HYPEnvironmentSelectorPlugin()
-@property (nonatomic, class, strong) HYPEnvironmentSelectorPluginModule * _Nullable pluginModule;
-@end
 
 @implementation HYPEnvironmentSelectorPlugin
 
@@ -91,33 +88,13 @@
     return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-
-
-#pragma mark - pluginModule
-+ (void)setPluginModule:(HYPEnvironmentSelectorPluginModule *)pluginModule {
-    objc_setAssociatedObject(self,
-                             @selector(pluginModule),
-                             pluginModule,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (HYPEnvironmentSelectorPluginModule *)pluginModule {
-    HYPEnvironmentSelectorPluginModule *pluginModule = objc_getAssociatedObject(self, _cmd);
-    if (pluginModule) {
-        return pluginModule;
-    }
-    HYPEnvironmentSelectorPluginModule *newPluginModule = [self createNewHYPEnvironmentSelectorPluginModule];
-    self.pluginModule = newPluginModule;
-    return newPluginModule;
-}
-
 #pragma mark - Show/Hide Environment Selector
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [self.pluginModule showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+    [[HYPEnvironmentSelectorPluginModule sharedInstance] showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
 }
 
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [self.pluginModule hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
+    [[HYPEnvironmentSelectorPluginModule sharedInstance] hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
 }
 
 
@@ -140,18 +117,8 @@
 
 
 #pragma mark - HYPPlugin
-+ (nonnull HYPEnvironmentSelectorPluginModule *)createNewHYPEnvironmentSelectorPluginModule {
-    HYPPluginExtension *pluginExtension = [[HYPPluginExtension alloc] initWithSnapshotContainer:nil
-                                                                               overlayContainer:nil
-                                                                                     hypeWindow:nil
-                                                                                 attachedWindow:nil];
-    HYPEnvironmentSelectorPluginModule *pluginModule = [[HYPEnvironmentSelectorPluginModule alloc] initWithExtension:pluginExtension];
-    return pluginModule;
-}
-
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
-    // pluginExtension没使用到，不再重复创建
-    return self.pluginModule;
+    return [HYPEnvironmentSelectorPluginModule sharedInstance];
 }
 
 + (nonnull NSString *)pluginVersion {
