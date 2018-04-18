@@ -29,6 +29,17 @@ static inline void __t_main_thread_checker_safe_swizzling_exchange_instance_meth
     }
 }
 
+BOOL isMainQueue(void) {
+    static const void *mainQueueKey = @"__T_MainQueue_T__";
+    static void *mainQueueContext = @"__T_MainQueue_T__";
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dispatch_queue_set_specific(dispatch_get_main_queue(), mainQueueKey, mainQueueContext, nil);
+    });
+    
+    return dispatch_get_specific(mainQueueKey) == mainQueueContext;
+}
+
 @implementation UIView (HYPUIMainThreadChecker)
 
 + (void)load {
@@ -46,47 +57,70 @@ static inline void __t_main_thread_checker_safe_swizzling_exchange_instance_meth
         __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
                                                                         @selector(layoutSubviews),
                                                                         @selector(__t_layoutSubviews));
+        __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
+                                                                        @selector(addSubview:),
+                                                                        @selector(__t_addSubview:));
+        __t_main_thread_checker_safe_swizzling_exchange_instance_method(self,
+                                                                        @selector(removeFromSuperview),
+                                                                        @selector(__t_removeFromSuperview));
     });
 }
 
 - (void)__t_setNeedsLayout {
     if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-        [self checkUIOperationInMainThread];
+        [self operationIsInMainQueue];
     }
     [self __t_setNeedsLayout];
 }
 
 - (void)__t_setNeedsDisplay {
     if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-        [self checkUIOperationInMainThread];
+        [self operationIsInMainQueue];
     }
     [self __t_setNeedsDisplay];
 }
 
 - (void)__t_setNeedsDisplayInRect:(CGRect)rect {
     if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-        [self checkUIOperationInMainThread];
+        [self operationIsInMainQueue];
     }
     [self __t_setNeedsDisplayInRect:rect];
 }
 
 - (void)__t_layoutSubviews {
     if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
-        [self checkUIOperationInMainThread];
+        [self operationIsInMainQueue];
     }
     [self __t_layoutSubviews];
 }
 
-- (void)checkUIOperationInMainThread {
-    if ([NSThread isMainThread]) {
-        return;
+- (void)__t_addSubview:(UIView *)view {
+    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+        // 使用断言，debug模式下崩溃看栈信息上一步，切换为主线程操作
+        NSAssert(isMainQueue(), @"not in main queue, type 'cmd + 7', see call stark");
+    }
+    [self __t_addSubview:view];
+}
+
+- (void)__t_removeFromSuperview {
+    if (HYPUIMainThreadCheckerPluginModule.isShouldCheckMainThread) {
+        // 使用断言，debug模式下崩溃看栈信息上一步，切换为主线程操作
+        NSAssert(isMainQueue(), @"not in main queue, type 'cmd + 7', see call stark");
+    }
+    [self __t_removeFromSuperview];
+}
+
+- (BOOL)operationIsInMainQueue {
+    // 修改检测是否为main_queue, http://ios.jobbole.com/87535/
+    if (isMainQueue()) {
+        return YES;
     }
     NSArray<NSString *> *symbols = [NSThread callStackSymbols];
     
-    NSString *logTips = @"1. layoutSubviews error maybe is removeFormSupperView or addSubView in child thread.\n2. other error maybe create UI in child thread.";
+    NSString *logTips = @"1. 'layoutSubviews' error maybe is 'removeFormSupperView' or 'addSubView:' in child thread.\n2. other error maybe create UI in child thread. \n3. '__t_addSubview:' or '__t_removeFromSuperview' see call stack symbols(before this func)";
     NSString *logMessage = [NSString stringWithFormat:@"Class: %@, Instance: %@\n\nTips:\n%@\n\nsymbols:\n%@", [self class], self, logTips, symbols];
     [self showAlertControllerWithMessage:logMessage];
-    
+    return NO;
 }
 
 - (void)showAlertControllerWithMessage:(NSString *)message {

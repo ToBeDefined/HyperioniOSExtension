@@ -46,8 +46,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addUIInOtherThread(_ sender: Any) {
-        self.subView = UIView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
-        self.subView?.backgroundColor = .red
+        if self.subView == nil {
+            self.subView = UIView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
+            self.subView?.backgroundColor = .red
+        }
         DispatchQueue.init(label: "other thread", qos: .background).async {
             if let subView = self.subView {
                 self.view.addSubview(subView)
@@ -56,6 +58,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func removeUIInOtherThread(_ sender: Any) {
+        if self.subView == nil {
+            self.subView = UIView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
+            self.subView?.backgroundColor = .red
+        }
         DispatchQueue.init(label: "other thread", qos: .background).async {
             self.subView?.removeFromSuperview()
         }
