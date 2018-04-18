@@ -20,7 +20,7 @@
 + (void)load {
     // 防止load时候还未添加方法
     Method setIsCanTouchFPSViewMethod = class_getClassMethod([self class], @selector(setIsCanTouchFPSView:));
-    class_addMethod([self class],
+    class_addMethod(objc_getMetaClass(object_getClassName([self class])),
                     @selector(setIsCanTouchFPSView:),
                     method_getImplementation(setIsCanTouchFPSViewMethod),
                     method_getTypeEncoding(setIsCanTouchFPSViewMethod));

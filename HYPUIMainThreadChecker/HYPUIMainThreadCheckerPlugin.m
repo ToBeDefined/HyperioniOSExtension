@@ -18,6 +18,12 @@
 @implementation HYPUIMainThreadCheckerPlugin
 
 + (void)load {
+    // 防止load时候还未添加方法
+    Method setIsShouldCheckUIInMainThreadMethod = class_getClassMethod([self class], @selector(setIsShouldCheckUIInMainThread:));
+    class_addMethod(objc_getMetaClass(object_getClassName([self class])),
+                    @selector(setIsShouldCheckUIInMainThread:),
+                    method_getImplementation(setIsShouldCheckUIInMainThreadMethod),
+                    method_getTypeEncoding(setIsShouldCheckUIInMainThreadMethod));
     self.isShouldCheckUIInMainThread = YES;
 }
 

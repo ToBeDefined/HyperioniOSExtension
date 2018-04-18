@@ -20,7 +20,7 @@
 + (void)load {
     // 防止load时候还未添加方法
     Method setIsShowInSidebarListMethod = class_getClassMethod([self class], @selector(setIsShowInSidebarList:));
-    class_addMethod([self class],
+    class_addMethod(objc_getMetaClass(object_getClassName([self class])),
                     @selector(setIsShowInSidebarList:),
                     method_getImplementation(setIsShowInSidebarListMethod),
                     method_getTypeEncoding(setIsShowInSidebarListMethod));
