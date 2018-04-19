@@ -13,7 +13,7 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug']
 
 需要在所有涉及到的地方加入是否是Debug模式判断
 
-`ObjC`加入以下判断:
+`ObjC`加入以下判断:
 
 ```objc
 #ifdef DEBUG
@@ -27,7 +27,7 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug']
 #endif
 ```
 
-`Swift`加入以下判断:
+`Swift`加入以下判断:
 
 如果在 `Swift` 中使用: 在 `Build Settings` | `Other Swift Flags` | 加入 `-D DEBUG`
 
@@ -67,7 +67,7 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug']
 
 #### 打包操作
 
-1. 打包时候点击`Xcode`左上角的`Scheme`
+1. 打包时候点击`Xcode`左上角的`Scheme`
 
 ![package01](./images/package01.png)
 
@@ -93,7 +93,7 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug', 'Test']
 
 #### 代码编写要求
 
-`ObjC`加入以下判断:
+`ObjC`加入以下判断:
 
 ```objc
 #ifdef CUSTOM_DEBUG
@@ -107,7 +107,7 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug', 'Test']
 #endif
 ```
 
-`Swift`加入以下判断:
+`Swift`加入以下判断:
 
 ```swift
 #if CUSTOM_DEBUG
