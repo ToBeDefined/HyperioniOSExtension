@@ -29,18 +29,7 @@ HyperioniOSExtension
 in `Podfile`:
 
 ```ruby
-# Automatic control, but the package app will not be imported
 pod 'HyperioniOSExtension/HYPEnvironmentSelector', :configurations => ['Debug']
-```
-
-or
-
-```ruby
-# Manual control, manually control whether the package app is imported
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPEnvironmentSelector'
-end
 ```
 
 #### Use
@@ -122,18 +111,7 @@ class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 in `Podfile`:
 
 ```ruby
-# Automatic control, but the package app will not be imported
 pod 'HyperioniOSExtension/HYPFPSMonitor', :configurations => ['Debug']
-```
-
-or
-
-```ruby
-# Manual control, manually control whether the package app is imported
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPFPSMonitor'
-end
 ```
 
 #### Use
@@ -159,18 +137,7 @@ HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
 in `Podfile`:
 
 ```ruby
-# Automatic control, but the package app will not be imported
 pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug']
-```
-
-or
-
-```ruby
-# Manual control, manually control whether the package app is imported
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPUIMainThreadChecker'
-end
 ```
 
 #### Use

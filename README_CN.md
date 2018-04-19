@@ -27,18 +27,7 @@ HyperioniOSExtension
 #### Cocoapods导入
 
 ```ruby
-# 自动控制，但是打包不会导入
 pod 'HyperioniOSExtension/HYPEnvironmentSelector', :configurations => ['Debug']
-```
-
-或
-
-```ruby
-# 手动控制，手动控制打包是否导入
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPEnvironmentSelector'
-end
 ```
 
 #### 使用
@@ -118,18 +107,7 @@ class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 #### Cocoapods导入
 
 ```ruby
-# 自动控制，但是打包不会导入
 pod 'HyperioniOSExtension/HYPFPSMonitor', :configurations => ['Debug']
-```
-
-或
-
-```ruby
-# 手动控制，手动控制打包是否导入
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPFPSMonitor'
-end
 ```
 
 #### 使用
@@ -153,18 +131,7 @@ HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
 #### Cocoapods导入
 
 ```ruby
-# 自动控制，但是打包不会导入
 pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug']
-```
-
-或
-
-```ruby
-# 手动控制，手动控制打包是否导入
-is_debug = true # false
-if is_debug
-    pod 'HyperioniOSExtension/HYPUIMainThreadChecker'
-end
 ```
 
 #### 使用

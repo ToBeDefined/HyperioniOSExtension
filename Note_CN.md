@@ -45,23 +45,23 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug']
 
 ### 如果想在打包测试包(Archive)时候导入
 
-打包时候导入，一般是测试包导入，发布包中不导入，建议使用下面的方式添加Configuration：`Debug Package`
+打包时候导入，一般是测试包导入，发布包中不导入，建议使用下面的方式添加Configuration：`Test`
 
 #### 设置 `Configurations`
 
-1. 复制`release` Configuration
+1. 复制`Release` or `Debug` Configuration (取决于你之前的测试包使用什么配置)
 
 ![setting01](./images/setting01.png)
 
-2. 将复制的Configuration名称改为 `Debug Package`
+2. 将复制的`Configuration`名称改为 `Test`
 
 ![setting02](./images/setting02.png)
 
-3. 将`Project` 的 `Debug` 和 `Debug Package` 的 `Preprocesson Macros` 添加 `DEBUG=1 CUSTOM_DEBUG=1`
+3. 将`Project` 的 `Debug` 和 `Test` 的 `Preprocessor Macros` 添加 `DEBUG=1 CUSTOM_DEBUG=1`
 
 ![setting03](./images/setting03.png)
 
-4. 将`Project` 的 `Debug` 和 `Debug Package` 的 `Other Swift Flags` 添加 `-D DEBUG -D CUSTOM_DEBUG`
+4. 将`Project` 的 `Debug` 和 `Test` 的 `Other Swift Flags` 添加 `-D DEBUG -D CUSTOM_DEBUG`
 
 ![setting04](./images/setting04.png)
 
@@ -75,19 +75,20 @@ pod 'HyperioniOSExtension/......', :configurations => ['Debug']
 
 ![package02](./images/package02.png)
 
-3. 点击`Archive`，若打包测试包，选择`Build Configuration` 为 `Debug Package`；若打包发布包，选择`Build Configuration` 为 `Release`；
+3. 点击`Archive`，若打包测试包，选择`Build Configuration` 为 `Test`；若打包发布包，选择`Build Configuration` 为 `Release`；
 
 ![package03](./images/package03.png)
 
-4. 修改`Podfile`中`is_debug`的值为`true`(`Debug` 或 `Debug Package`) 或 `false`(`Release`), 运行`pod install`, 后续打包操作与之前相同。
+4. 如果使用`command-line` build 项目，需要选择具体build方式
+
+![package04](./images/package04.png)
+
+5. 后续打包操作与之前相同。
 
 #### `Podfile`
 
 ```ruby
-is_debug = true # or false
-if is_debug
-    pod 'HyperioniOSExtension/........'
-end
+pod 'HyperioniOSExtension/......', :configurations => ['Debug', 'Test']
 ```
 
 #### 代码编写要求
