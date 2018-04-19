@@ -1,10 +1,10 @@
 PODS:
   - HyperioniOS/Core (1.0.2)
-  - HyperioniOSExtension/HYPEnvironmentSelector (1.0.0):
+  - HyperioniOSExtension/HYPEnvironmentSelector (1.0.1):
     - HyperioniOS/Core (~> 1.0)
-  - HyperioniOSExtension/HYPFPSMonitor (1.0.0):
+  - HyperioniOSExtension/HYPFPSMonitor (1.0.1):
     - HyperioniOS/Core (~> 1.0)
-  - HyperioniOSExtension/HYPUIMainThreadChecker (1.0.0):
+  - HyperioniOSExtension/HYPUIMainThreadChecker (1.0.1):
     - HyperioniOS/Core (~> 1.0)
 
 DEPENDENCIES:
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   HyperioniOS: 2397937925b2d57ec28182ac979879b0da2658ee
-  HyperioniOSExtension: 8c3aecaa83594ccf65b78c2dafd56972e702427c
+  HyperioniOSExtension: 62410a6d5d1d9fa0ed6b7bc9704934ddfaca200b
 
 PODFILE CHECKSUM: 4d48e9a71ca0a08ab88d4eda4a2b286f6c97d7e7
 

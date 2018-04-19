@@ -11,47 +11,6 @@ import UIKit
 import HyperioniOSExtension
 #endif
 
-//#if CUSTOM_DEBUG
-//@objcMembers
-//class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
-//    var name: String?
-//    var baseURL: String?
-//    var commonPort: String?
-//    var H5BaseURL1: String?
-//    var H5BaseURL2: String?
-//    var H5BaseURL3: String?
-//    var H5BaseURL4: String?
-//    required override init() {
-//        super.init()
-//    }
-//
-//    init(name: String) {
-//        super.init()
-//        self.name = name
-//    }
-//}
-//#else
-//@objcMembers
-//class MyEnvItem: NSObject {
-//    var name: String?
-//    var baseURL: String?
-//    var commonPort: String?
-//    var H5BaseURL1: String?
-//    var H5BaseURL2: String?
-//    var H5BaseURL3: String?
-//    var H5BaseURL4: String?
-//    required override init() {
-//        super.init()
-//    }
-//
-//    init(name: String) {
-//        super.init()
-//        self.name = name
-//    }
-//}
-//#endif
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

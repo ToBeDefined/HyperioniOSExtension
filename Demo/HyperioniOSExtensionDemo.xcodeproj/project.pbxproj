@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F098FEA208883FE0032D378 /* MySwiftEnvItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F098FE9208883FE0032D378 /* MySwiftEnvItem.swift */; };
 		3F27AEB02088736D00787DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27AEAF2088736D00787DBF /* AppDelegate.swift */; };
 		3F27AEB22088736D00787DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27AEB12088736D00787DBF /* ViewController.swift */; };
 		3F27AEB52088736D00787DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F27AEB32088736D00787DBF /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		03ED1A4BBDCDC88BB11ED70E /* Pods-HyperioniOSExtensionDemo.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperioniOSExtensionDemo.test.xcconfig"; path = "Pods/Target Support Files/Pods-HyperioniOSExtensionDemo/Pods-HyperioniOSExtensionDemo.test.xcconfig"; sourceTree = "<group>"; };
 		347C94E25161C22CB2CAB49A /* Pods-HyperioniOSExtensionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperioniOSExtensionDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HyperioniOSExtensionDemo/Pods-HyperioniOSExtensionDemo.release.xcconfig"; sourceTree = "<group>"; };
+		3F098FE9208883FE0032D378 /* MySwiftEnvItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftEnvItem.swift; sourceTree = "<group>"; };
 		3F27AEAC2088736D00787DBF /* HyperioniOSExtensionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperioniOSExtensionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F27AEAF2088736D00787DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F27AEB12088736D00787DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				3F27AEAF2088736D00787DBF /* AppDelegate.swift */,
 				3F27AEB12088736D00787DBF /* ViewController.swift */,
 				3F27AEC22088742100787DBF /* MyEnvItem.h */,
+				3F098FE9208883FE0032D378 /* MySwiftEnvItem.swift */,
 				3F27AEC32088742100787DBF /* MyEnvItem.m */,
 				3F27AEB32088736D00787DBF /* Main.storyboard */,
 				3F27AEB62088736D00787DBF /* Assets.xcassets */,
@@ -214,6 +217,7 @@
 			files = (
 				3F27AEB22088736D00787DBF /* ViewController.swift in Sources */,
 				3F27AEC42088742100787DBF /* MyEnvItem.m in Sources */,
+				3F098FEA208883FE0032D378 /* MySwiftEnvItem.swift in Sources */,
 				3F27AEB02088736D00787DBF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,7 +369,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
 				INFOPLIST_FILE = HyperioniOSExtensionDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HyperioniOSExtensionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HyperioniOSExtensionDemo/HyperioniOSExtensionDemo-Bridging-Header.h";
@@ -384,7 +391,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
 				INFOPLIST_FILE = HyperioniOSExtensionDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HyperioniOSExtensionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HyperioniOSExtensionDemo/HyperioniOSExtensionDemo-Bridging-Header.h";
@@ -461,7 +471,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
 				INFOPLIST_FILE = HyperioniOSExtensionDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HyperioniOSExtensionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HyperioniOSExtensionDemo/HyperioniOSExtensionDemo-Bridging-Header.h";
