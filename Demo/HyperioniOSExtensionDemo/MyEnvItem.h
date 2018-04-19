@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#ifdef CUSTOM_DEBUG
 #import <HyperioniOSExtension/HYPEnvironmentSelector.h>
-
+#endif
 
 #ifdef CUSTOM_DEBUG
 @interface MyEnvItem: NSObject <HYPEnvironmentItemProtocol>

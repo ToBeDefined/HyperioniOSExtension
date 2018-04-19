@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if CUSTOM_DEBUG
 import HyperioniOSExtension
+#endif
 
 class ViewController: UIViewController {
     var subView: UIView?
@@ -18,23 +20,33 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showEnvSelector(_ sender: Any) {
+        #if CUSTOM_DEBUG
         HYPEnvironmentSelectorPlugin.showEnvironmentSelectorWindow(animated: true, completionBlock: nil)
+        #endif
     }
     
     @IBAction func showFPSMonitor(_ sender: Any) {
+        #if CUSTOM_DEBUG
         HYPFPSMonitorPlugin.showFPSMonitor()
+        #endif
     }
     
     @IBAction func hideFPSMonitor(_ sender: Any) {
+        #if CUSTOM_DEBUG
         HYPFPSMonitorPlugin.hideFPSMonitor()
+        #endif
     }
     
     @IBAction func openUIMainThreadCheck(_ sender: Any) {
+        #if CUSTOM_DEBUG
         HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = true
+        #endif
     }
     
     @IBAction func closeUIMainThreadCheck(_ sender: Any) {
+        #if CUSTOM_DEBUG
         HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = false
+        #endif
     }
     
     @IBAction func createUIInOtherThread(_ sender: Any) {

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+#if CUSTOM_DEBUG
 import HyperioniOSExtension
+#endif
 
-
-//#if DEBUG
+//#if CUSTOM_DEBUG
 //@objcMembers
 //class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 //    var name: String?
