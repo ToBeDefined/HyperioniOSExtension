@@ -100,19 +100,17 @@
 
 #pragma mark - Private Func
 + (Class)getEnvironmentItemClass {
-    id item = [self getEnvironmentItems].firstObject;
-    if (item == nil) {
-        return [NSNull class];
+    id item = self.environmentItems.firstObject;
+    if (item != nil) {
+        return [item class];
     }
-    return [item class];
-}
-
-+ (NSArray *)getEnvironmentItems {
-    if (self.environmentItems.count > 0) {
-        return self.environmentItems;
+    
+    id baseItem = self.customEnvironmentItemTemplate;
+    if (baseItem != nil) {
+        return [baseItem class];
     }
-    NSAssert(NO, @"should set `HYPEnvironmentSelectorPlugin.environmentItems` or set `HYPEnvironmentSelectorPlugin.environmentItemsPlistName`, plist should set array in root, array's element is dictionary, and dictionary should have key: `name`, all value is `NSString`");
-    return nil;
+    
+    return [NSNull class];
 }
 
 

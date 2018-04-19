@@ -25,7 +25,15 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.items = [HYPEnvironmentSelectorPlugin getEnvironmentItems];
+    self.items = HYPEnvironmentSelectorPlugin.environmentItems;
+    if (self.items.count == 0) {
+        NSLog(@"\
+\n\n\
+===============================================================\
+\n should set `HYPEnvironmentSelectorPlugin.environmentItems \n\
+===============================================================\
+\n\n");
+    }
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消"
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self

@@ -68,7 +68,6 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentIte
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;
 
-+ (NSArray *_Nullable)getEnvironmentItems;
 + (Class)getEnvironmentItemClass;
 
 @end
