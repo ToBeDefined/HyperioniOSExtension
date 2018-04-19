@@ -46,7 +46,7 @@ void __t_main_thread_checker_safe_swizzling_exchange_instance_method(Class cls, 
         return;
     }
     // addSwizzlSELSuccess 成功，addOriginSELSuccess 失败，replace originSEL
-    if (addOriginSELSuccess && !addSwizzlSELSuccess) {
+    if (!addOriginSELSuccess && addSwizzlSELSuccess) {
         class_replaceMethod(cls,
                             originalSel,
                             method_getImplementation(swizzledMethod),
