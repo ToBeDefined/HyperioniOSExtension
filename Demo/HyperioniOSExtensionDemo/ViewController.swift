@@ -1,15 +1,13 @@
 //
 //  ViewController.swift
-//  Example
+//  HyperioniOSExtensionDemo
 //
 //  Created by TBD on 2018/4/12.
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
 import UIKit
-import HYPEnvironmentSelector
-import HYPFPSMonitor
-import HYPUIMainThreadChecker
+import HyperioniOSExtension
 
 class ViewController: UIViewController {
     var subView: UIView?
@@ -18,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
     }
-
+    
     @IBAction func showEnvSelector(_ sender: Any) {
         HYPEnvironmentSelectorPlugin.showEnvironmentSelectorWindow(animated: true, completionBlock: nil)
     }

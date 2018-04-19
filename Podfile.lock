@@ -4,9 +4,13 @@ PODS:
 DEPENDENCIES:
   - HyperioniOS/Core
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - HyperioniOS
+
 SPEC CHECKSUMS:
   HyperioniOS: 2397937925b2d57ec28182ac979879b0da2658ee
 
-PODFILE CHECKSUM: fc9f77f1b6eaacbc6796267f6a66ded22d34596a
+PODFILE CHECKSUM: f5730bada63f4a872bf0785d0c09a495b813ec57
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

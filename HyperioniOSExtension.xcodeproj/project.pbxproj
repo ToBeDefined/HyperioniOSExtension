@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3F14AFA02085C88500CE4EE5 /* HYPUIMainThreadChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F14AFA32085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */; };
-		3F14AFA42085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F14AFA82085C89A00CE4EE5 /* UIView+HYPUIMainThreadChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */; };
 		3F14AFA92085C89A00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */; };
 		3F14AFAA2085C89A00CE4EE5 /* HYPUIMainThreadCheckerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */; };
@@ -19,21 +17,13 @@
 		3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */; };
 		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
 		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
-		3F55CEE72085D88500B1960F /* MyEnvItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F55CEE62085D88500B1960F /* MyEnvItem.m */; };
 		3F886656207F735A009760E3 /* HYPEnvironmentItemManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */; };
 		3F886659207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */; };
 		3F88665A207F735A009760E3 /* HYPEnvironmentSelectorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */; };
 		3F886660207F7366009760E3 /* env.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665D207F7366009760E3 /* env.png */; };
 		3F886661207F7366009760E3 /* env@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665E207F7366009760E3 /* env@2x.png */; };
 		3F886662207F7366009760E3 /* env@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F88665F207F7366009760E3 /* env@3x.png */; };
-		3F886684207F7388009760E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F886683207F7388009760E3 /* AppDelegate.swift */; };
-		3F886686207F7388009760E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F886685207F7388009760E3 /* ViewController.swift */; };
-		3F886689207F7388009760E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F886687207F7388009760E3 /* Main.storyboard */; };
-		3F88668B207F7389009760E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F88668A207F7389009760E3 /* Assets.xcassets */; };
-		3F88668E207F7389009760E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F88668C207F7389009760E3 /* LaunchScreen.storyboard */; };
 		3FA20F292084402C008B1402 /* HYPFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F272084402C008B1402 /* HYPFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; };
-		3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FA20F3320844062008B1402 /* HYPFPSMonitorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3120844062008B1402 /* HYPFPSMonitorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FA20F3420844062008B1402 /* HYPFPSMonitorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA20F3220844062008B1402 /* HYPFPSMonitorPlugin.m */; };
 		3FA20F3720844731008B1402 /* HYPFPSMonitorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA20F3520844731008B1402 /* HYPFPSMonitorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,8 +36,6 @@
 		3FA8F1BA20803B500015BEE0 /* HYPEnvironmentSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */; };
 		3FA8F1C62080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */; };
 		3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */; };
-		3FF95B7F2085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; };
-		3FF95B802085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B862085F45B00AE7D93 /* HYPEnvironmentSelectorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B872085F45B00AE7D93 /* HYPEnvironmentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,50 +45,9 @@
 		3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		416036DF50820786C0E7A417 /* Pods_HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */; };
-		9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8B5C2564B566209C7B0F48 /* Pods_Example.framework */; };
 		B77CAFC5428A9C7F9F80E236 /* Pods_HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */; };
 		FF54AEB869A7EA5A7EF80809 /* Pods_HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3F14AFA12085C88500CE4EE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F886638207F7317009760E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F14AF9B2085C88500CE4EE5;
-			remoteInfo = HYPUIMainThreadChecker;
-		};
-		3FA20F2A2084402C008B1402 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F886638207F7317009760E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3FA20F242084402C008B1402;
-			remoteInfo = HYPFPSMonitor;
-		};
-		3FF95B832085F43100AE7D93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F886638207F7317009760E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F886640207F7317009760E3;
-			remoteInfo = HYPEnvironmentSelector;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3F886697207F7500009760E3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3FF95B802085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Embed Frameworks */,
-				3F14AFA42085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Embed Frameworks */,
-				3FA20F2D2084402C008B1402 /* HYPFPSMonitor.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		068B945CA384F07037F45A75 /* Pods-HYPEnvironmentSelector.realse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnvironmentSelector.realse.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector.realse.xcconfig"; sourceTree = "<group>"; };
@@ -125,9 +72,6 @@
 		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentItemProtocol.h; sourceTree = "<group>"; };
-		3F55CEE42085D88500B1960F /* Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		3F55CEE52085D88500B1960F /* MyEnvItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEnvItem.h; sourceTree = "<group>"; };
-		3F55CEE62085D88500B1960F /* MyEnvItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEnvItem.m; sourceTree = "<group>"; };
 		3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnvironmentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,13 +84,6 @@
 		3F88665D207F7366009760E3 /* env.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = env.png; sourceTree = "<group>"; };
 		3F88665E207F7366009760E3 /* env@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "env@2x.png"; sourceTree = "<group>"; };
 		3F88665F207F7366009760E3 /* env@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "env@3x.png"; sourceTree = "<group>"; };
-		3F886681207F7388009760E3 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F886683207F7388009760E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F886685207F7388009760E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3F886688207F7388009760E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3F88668A207F7389009760E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3F88668D207F7389009760E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3F88668F207F7389009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPFPSMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA20F272084402C008B1402 /* HYPFPSMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPFPSMonitor.h; sourceTree = "<group>"; };
 		3FA20F282084402C008B1402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -210,17 +147,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F88667E207F7388009760E3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F14AFA32085C88500CE4EE5 /* HYPUIMainThreadChecker.framework in Frameworks */,
-				3FA20F2C2084402C008B1402 /* HYPFPSMonitor.framework in Frameworks */,
-				3FF95B7F2085F41E00AE7D93 /* HYPEnvironmentSelector.framework in Frameworks */,
-				9EE5A05B87CFAF598939CEA4 /* Pods_Example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3FA20F212084402C008B1402 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -264,7 +190,6 @@
 				3F886643207F7317009760E3 /* HYPEnvironmentSelector */,
 				3FA20F262084402C008B1402 /* HYPFPSMonitor */,
 				3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
-				3F886682207F7388009760E3 /* Example */,
 				3F886642207F7317009760E3 /* Products */,
 				4739C495600620D1E0B57456 /* Pods */,
 				F68ED925A964252A2A681949 /* Frameworks */,
@@ -275,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */,
-				3F886681207F7388009760E3 /* Example.app */,
 				3FA20F252084402C008B1402 /* HYPFPSMonitor.framework */,
 				3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */,
 			);
@@ -313,22 +237,6 @@
 				3F88665F207F7366009760E3 /* env@3x.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		3F886682207F7388009760E3 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				3F55CEE42085D88500B1960F /* Example-Bridging-Header.h */,
-				3F55CEE52085D88500B1960F /* MyEnvItem.h */,
-				3F55CEE62085D88500B1960F /* MyEnvItem.m */,
-				3F886683207F7388009760E3 /* AppDelegate.swift */,
-				3F886685207F7388009760E3 /* ViewController.swift */,
-				3F886687207F7388009760E3 /* Main.storyboard */,
-				3F88668A207F7389009760E3 /* Assets.xcassets */,
-				3F88668C207F7389009760E3 /* LaunchScreen.storyboard */,
-				3F88668F207F7389009760E3 /* Info.plist */,
-			);
-			path = Example;
 			sourceTree = "<group>";
 		};
 		3FA20F262084402C008B1402 /* HYPFPSMonitor */ = {
@@ -458,7 +366,6 @@
 				3F14AF982085C88500CE4EE5 /* Frameworks */,
 				3F14AF992085C88500CE4EE5 /* Headers */,
 				3F14AF9A2085C88500CE4EE5 /* Resources */,
-				1B9C6D3C4F8321C244E6CFEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,7 +385,6 @@
 				3F88663D207F7317009760E3 /* Frameworks */,
 				3F88663E207F7317009760E3 /* Headers */,
 				3F88663F207F7317009760E3 /* Resources */,
-				17C4E41C201DB7C6EF046666 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -489,30 +395,6 @@
 			productReference = 3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3F886680207F7388009760E3 /* Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F886690207F7389009760E3 /* Build configuration list for PBXNativeTarget "Example" */;
-			buildPhases = (
-				1787FD9BCFCC50EE49C64CF0 /* [CP] Check Pods Manifest.lock */,
-				3F88667D207F7388009760E3 /* Sources */,
-				3F88667E207F7388009760E3 /* Frameworks */,
-				3F88667F207F7388009760E3 /* Resources */,
-				3F886697207F7500009760E3 /* Embed Frameworks */,
-				7398F463DDE979D09F5DD73D /* [CP] Embed Pods Frameworks */,
-				DC0049E551F475F89775E3CA /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3FF95B842085F43100AE7D93 /* PBXTargetDependency */,
-				3FA20F2B2084402C008B1402 /* PBXTargetDependency */,
-				3F14AFA22085C88500CE4EE5 /* PBXTargetDependency */,
-			);
-			name = Example;
-			productName = Example;
-			productReference = 3F886681207F7388009760E3 /* Example.app */;
-			productType = "com.apple.product-type.application";
-		};
 		3FA20F242084402C008B1402 /* HYPFPSMonitor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FA20F302084402C008B1402 /* Build configuration list for PBXNativeTarget "HYPFPSMonitor" */;
@@ -522,7 +404,6 @@
 				3FA20F212084402C008B1402 /* Frameworks */,
 				3FA20F222084402C008B1402 /* Headers */,
 				3FA20F232084402C008B1402 /* Resources */,
-				35C5616703DEE2A45FD96FFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -549,10 +430,6 @@
 					3F886640207F7317009760E3 = {
 						CreatedOnToolsVersion = 9.3;
 					};
-					3F886680207F7388009760E3 = {
-						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 0930;
-					};
 					3FA20F242084402C008B1402 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -574,7 +451,6 @@
 				3F886640207F7317009760E3 /* HYPEnvironmentSelector */,
 				3FA20F242084402C008B1402 /* HYPFPSMonitor */,
 				3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */,
-				3F886680207F7388009760E3 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -600,16 +476,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F88667F207F7388009760E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F88668E207F7389009760E3 /* LaunchScreen.storyboard in Resources */,
-				3F88668B207F7389009760E3 /* Assets.xcassets in Resources */,
-				3F886689207F7388009760E3 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3FA20F232084402C008B1402 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -623,87 +489,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1787FD9BCFCC50EE49C64CF0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		17C4E41C201DB7C6EF046666 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1B9C6D3C4F8321C244E6CFEB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPUIMainThreadChecker/Pods-HYPUIMainThreadChecker-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		35C5616703DEE2A45FD96FFB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7398F463DDE979D09F5DD73D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/HyperioniOS/HyperioniOS.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HyperioniOS.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		988A4EF38E927DC3C6AE5890 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -758,21 +543,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DC0049E551F475F89775E3CA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -799,16 +569,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F88667D207F7388009760E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F886686207F7388009760E3 /* ViewController.swift in Sources */,
-				3F55CEE72085D88500B1960F /* MyEnvItem.m in Sources */,
-				3F886684207F7388009760E3 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3FA20F202084402C008B1402 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -820,43 +580,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3F14AFA22085C88500CE4EE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F14AF9B2085C88500CE4EE5 /* HYPUIMainThreadChecker */;
-			targetProxy = 3F14AFA12085C88500CE4EE5 /* PBXContainerItemProxy */;
-		};
-		3FA20F2B2084402C008B1402 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3FA20F242084402C008B1402 /* HYPFPSMonitor */;
-			targetProxy = 3FA20F2A2084402C008B1402 /* PBXContainerItemProxy */;
-		};
-		3FF95B842085F43100AE7D93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F886640207F7317009760E3 /* HYPEnvironmentSelector */;
-			targetProxy = 3FF95B832085F43100AE7D93 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		3F886687207F7388009760E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F886688207F7388009760E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3F88668C207F7389009760E3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F88668D207F7389009760E3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3F14AFA62085C88500CE4EE5 /* Debug */ = {
@@ -883,164 +606,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		3F5F256F20874F3000D7FD06 /* Debug Package */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"CUSTOM_DEBUG=1",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_SWIFT_FLAGS = "-D DEBUG -D CUSTOM_DEBUG";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = "Debug Package";
-		};
-		3F5F257020874F3000D7FD06 /* Debug Package */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08D2493AA39E184D534F5777 /* Pods-HYPEnvironmentSelector.debug package.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/HYPEnvironmentSelector/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPEnvironmentSelector;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Debug Package";
-		};
-		3F5F257120874F3000D7FD06 /* Debug Package */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31CBAF91BBA452663EAD7A63 /* Pods-HYPFPSMonitor.debug package.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HYPFPSMonitor/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPFPSMonitor;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Debug Package";
-		};
-		3F5F257220874F3000D7FD06 /* Debug Package */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D38769F8185760FB6E31EFE7 /* Pods-HYPUIMainThreadChecker.debug package.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HYPUIMainThreadChecker/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPUIMainThreadChecker;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Debug Package";
-		};
-		3F5F257320874F3000D7FD06 /* Debug Package */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83AA018D8B9D71655ABEC0C1 /* Pods-Example.debug package.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Example/Example-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Debug Package";
 		};
 		3F5F25742087526200D7FD06 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1099,7 +664,7 @@
 		};
 		3F5F25752087526200D7FD06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 068B945CA384F07037F45A75 /* Pods-HYPEnvironmentSelector.realse.xcconfig */;
+			baseConfigurationReference = 505EEE7269718E53B081973B /* Pods-HYPEnvironmentSelector.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1124,7 +689,7 @@
 		};
 		3F5F25762087526200D7FD06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C77DEC3620DDA2AD6D1BC980 /* Pods-HYPFPSMonitor.realse.xcconfig */;
+			baseConfigurationReference = 7345F310DD8A053BCE9DC07D /* Pods-HYPFPSMonitor.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1149,7 +714,7 @@
 		};
 		3F5F25772087526200D7FD06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB9B607053CF0048DC00BD1D /* Pods-HYPUIMainThreadChecker.realse.xcconfig */;
+			baseConfigurationReference = 2995F6DDDC070EEB4D268065 /* Pods-HYPUIMainThreadChecker.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1168,29 +733,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.HYPUIMainThreadChecker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3F5F25782087526200D7FD06 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A6F832F239A6FF00BACDF18 /* Pods-Example.realse.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Example/Example-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1283,29 +825,6 @@
 			};
 			name = Debug;
 		};
-		3F886691207F7389009760E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36EC2D7824E5F9823D947F2C /* Pods-Example.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
-				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "Example/Example-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		3FA20F2E2084402C008B1402 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */;
@@ -1338,7 +857,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F14AFA62085C88500CE4EE5 /* Debug */,
-				3F5F257220874F3000D7FD06 /* Debug Package */,
 				3F5F25772087526200D7FD06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1348,7 +866,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F886647207F7317009760E3 /* Debug */,
-				3F5F256F20874F3000D7FD06 /* Debug Package */,
 				3F5F25742087526200D7FD06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1358,18 +875,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F88664A207F7317009760E3 /* Debug */,
-				3F5F257020874F3000D7FD06 /* Debug Package */,
 				3F5F25752087526200D7FD06 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		3F886690207F7389009760E3 /* Build configuration list for PBXNativeTarget "Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F886691207F7389009760E3 /* Debug */,
-				3F5F257320874F3000D7FD06 /* Debug Package */,
-				3F5F25782087526200D7FD06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1378,7 +884,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FA20F2E2084402C008B1402 /* Debug */,
-				3F5F257120874F3000D7FD06 /* Debug Package */,
 				3F5F25762087526200D7FD06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
