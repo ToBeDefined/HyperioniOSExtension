@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#if __has_include(<HYPEnvironmentSelector/HYPEnvironmentSelector.h>)
+#if __has_include(<HyperioniOSExtension/HYPEnvironmentSelector.h>)
 FOUNDATION_EXPORT double HYPEnvironmentSelectorVersionNumber;
 FOUNDATION_EXPORT const unsigned char HYPEnvironmentSelectorVersionString[];
-#import <HYPEnvironmentSelector/HYPEnvironmentSelectorPlugin.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentItemProtocol.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentSelectorPluginModule.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentItemManage.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentSelectorViewController.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentSelectorEditItemViewController.h>
-#import <HYPEnvironmentSelector/HYPEnvironmentInfoEditCell.h>
+#import <HyperioniOSExtension/HYPEnvironmentSelectorPlugin.h>
+#import <HyperioniOSExtension/HYPEnvironmentItemProtocol.h>
+#import <HyperioniOSExtension/HYPEnvironmentSelectorPluginModule.h>
+#import <HyperioniOSExtension/HYPEnvironmentItemManage.h>
+#import <HyperioniOSExtension/HYPEnvironmentSelectorViewController.h>
+#import <HyperioniOSExtension/HYPEnvironmentSelectorEditItemViewController.h>
+#import <HyperioniOSExtension/HYPEnvironmentInfoEditCell.h>
 #else
 #import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentItemProtocol.h"

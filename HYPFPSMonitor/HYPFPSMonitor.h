@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#if __has_include(<HYPFPSMonitor/HYPFPSMonitor.h>)
+#if __has_include(<HyperioniOSExtension/HYPFPSMonitor.h>)
 FOUNDATION_EXPORT double HYPFPSMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char HYPFPSMonitorVersionString[];
-#import <HYPFPSMonitor/HYPFPSMonitorPlugin.h>
-#import <HYPFPSMonitor/HYPFPSMonitorPluginModule.h>
-#import <HYPFPSMonitor/HYPFPSMonitorManager.h>
+#import <HyperioniOSExtension/HYPFPSMonitorPlugin.h>
+#import <HyperioniOSExtension/HYPFPSMonitorPluginModule.h>
+#import <HyperioniOSExtension/HYPFPSMonitorManager.h>
 #else
 #import "HYPFPSMonitorPlugin.h"
 #import "HYPFPSMonitorPluginModule.h"

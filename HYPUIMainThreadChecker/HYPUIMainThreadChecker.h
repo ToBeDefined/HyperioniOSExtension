@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#if __has_include(<HYPUIMainThreadChecker/HYPUIMainThreadChecker.h>)
+#if __has_include(<HyperioniOSExtension/HYPUIMainThreadChecker.h>)
 FOUNDATION_EXPORT double HYPUIMainThreadCheckerVersionNumber;
 FOUNDATION_EXPORT const unsigned char HYPUIMainThreadCheckerVersionString[];
-#import <HYPUIMainThreadChecker/HYPUIMainThreadCheckerPlugin.h>
-#import <HYPUIMainThreadChecker/HYPUIMainThreadCheckerPluginModule.h>
-#import <HYPUIMainThreadChecker/UIView+HYPUIMainThreadChecker.h>
+#import <HyperioniOSExtension/HYPUIMainThreadCheckerPlugin.h>
+#import <HyperioniOSExtension/HYPUIMainThreadCheckerPluginModule.h>
+#import <HyperioniOSExtension/UIView+HYPUIMainThreadChecker.h>
 #else
 #import "HYPUIMainThreadCheckerPlugin.h"
 #import "HYPUIMainThreadCheckerPluginModule.h"
