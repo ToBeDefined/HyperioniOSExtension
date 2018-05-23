@@ -10,60 +10,69 @@
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 #import "HYPFPSMonitorManager.h"
-#import "HYPFPSMonitorPlugin.h"
 
+#define HYPFPSMonitorManagerFPSViewWidth    100
+#define HYPFPSMonitorManagerFPSViewHeight   100
+
+#define HYPFPSViewIsHaveAbsoluteFrameXY    @"HYPFPSViewIsHaveAbsoluteFrameXY"
+#define HYPFPSViewAbsoluteFrameXSaveKey    @"HYPFPSViewAbsoluteFrameXSaveKey"
+#define HYPFPSViewAbsoluteFrameYSaveKey    @"HYPFPSViewAbsoluteFrameYSaveKey"
+
+@interface HYPFPSMonitorManager() <NSCopying, NSMutableCopying>
+
+@property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, strong) UIView *fpsView;
+@property (nonatomic, strong) UILabel *fpsLabel;
 // 计数器
-CFTimeInterval HYPFPSMonitorManagerLastTime = 0;
-NSUInteger HYPFPSMonitorManagerRefreshCount = 0;
-
-CGFloat HYPFPSMonitorManagerFPSViewWidth  = 100;
-CGFloat HYPFPSMonitorManagerFPSViewHeight = 100;
-
-static NSString *HYPFPSViewIsHaveAbsoluteFrameXY  = @"HYPFPSViewIsHaveAbsoluteFrameXY";
-static NSString *HYPFPSViewAbsoluteFrameXSaveKey  = @"HYPFPSViewAbsoluteFrameXSaveKey";
-static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSaveKey";
-
-@interface HYPFPSMonitorManager()
-
-@property (class, nonatomic, assign) BOOL isShowingFPSMonitorView;
-@property (class, nonatomic, strong) CADisplayLink *displayLink;
-@property (class, nonatomic, strong, readonly) UIView *fpsView;
-@property (class, nonatomic, strong, readonly) UILabel *fpsLabel;
-
+@property (nonatomic, assign) CFTimeInterval lastTime;
+@property (nonatomic, assign) NSUInteger refreshCount;
 @end
 
 @implementation HYPFPSMonitorManager
 
 
-#pragma mark - isShowingFPSMonitorView
-+ (void)setIsShowingFPSMonitorView:(BOOL)isShowingFPSMonitorView {
-    objc_setAssociatedObject(self,
-                             @selector(isShowingFPSMonitorView),
-                             @(isShowingFPSMonitorView),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedHYPFPSMonitorManager = [super allocWithZone:zone];
+    });
+    return sharedHYPFPSMonitorManager;
 }
 
-+ (BOOL)isShowingFPSMonitorView {
-    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
+- (id)copyWithZone:(NSZone *)zone {
+    return sharedHYPFPSMonitorManager;
 }
 
-
-#pragma mark - displayLink
-+ (void)setDisplayLink:(CADisplayLink *)dispalyLink {
-    objc_setAssociatedObject(self,
-                             @selector(displayLink),
-                             dispalyLink,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
+- (id)mutableCopyWithZone:(NSZone *)zone {
+    return sharedHYPFPSMonitorManager;
 }
 
-+ (CADisplayLink *)displayLink {
-    return objc_getAssociatedObject(self, _cmd);
+- (instancetype)init {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedHYPFPSMonitorManager = [super init];
+        sharedHYPFPSMonitorManager->_isCanTouchFPSView = YES;
+        sharedHYPFPSMonitorManager->_lastTime = 0;
+        sharedHYPFPSMonitorManager->_refreshCount = 0;
+    });
+    return sharedHYPFPSMonitorManager;
 }
 
++ (instancetype)sharedManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedHYPFPSMonitorManager = [[[self class] alloc] init];
+    });
+    return sharedHYPFPSMonitorManager;
+}
+
++ (instancetype)shared {
+    return [self sharedManager];
+}
 
 #pragma mark - FPS Views
-+ (UIView *)fpsView {
+- (UIView *)fpsView {
     UIView *fpsView = objc_getAssociatedObject(self, _cmd);
     if (fpsView) {
         return fpsView;
@@ -72,7 +81,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     return objc_getAssociatedObject(self, _cmd);
 }
 
-+ (UILabel *)fpsLabel {
+- (UILabel *)fpsLabel {
     UILabel *fpsLabel = objc_getAssociatedObject(self, _cmd);
     if (fpsLabel) {
         return fpsLabel;
@@ -81,7 +90,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     return objc_getAssociatedObject(self, _cmd);
 }
 
-+ (void)createFPSViews {
+- (void)createFPSViews {
     // fpsView
     UIView *fpsView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                0,
@@ -113,11 +122,11 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     fpsLabel.userInteractionEnabled = YES;
     fpsLabel.textColor = [UIColor whiteColor];
     fpsLabel.font = [UIFont systemFontOfSize:12];
-    [self setFPSViewUserInterfaceEnable:HYPFPSMonitorPlugin.isCanTouchFPSView];
+    [self setFPSViewUserInterfaceEnable:self.isCanTouchFPSView];
 }
 
 #pragma mark - fpsView拖动
-+ (void)setFPSViewUserInterfaceEnable:(BOOL)enable {
+- (void)setFPSViewUserInterfaceEnable:(BOOL)enable {
     if (enable) {
         [self addGestureRecognizer];
     } else {
@@ -125,7 +134,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     }
 }
 
-+ (void)addGestureRecognizer {
+- (void)addGestureRecognizer {
     UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
     if (fpsView == nil) {
         return;
@@ -141,7 +150,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
                              OBJC_ASSOCIATION_ASSIGN);
 }
 
-+ (void)removeGestureRecognizer {
+- (void)removeGestureRecognizer {
     UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
     if (fpsView == nil) {
         return;
@@ -152,7 +161,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     }
 }
 
-+ (void)viewDidDragged:(UIPanGestureRecognizer *)pan {
+- (void)viewDidDragged:(UIPanGestureRecognizer *)pan {
     if (pan.state == UIGestureRecognizerStateChanged || pan.state == UIGestureRecognizerStateEnded) {
         UIView *dragView = objc_getAssociatedObject(pan, @selector(viewDidDragged:));
         CGPoint offset = [pan translationInView:dragView.superview];
@@ -178,7 +187,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
  @param view 获取绝对frame的view
  @return 返回在屏幕上的绝对frame
  */
-+ (CGRect)getAbsoluteFrameForView:(UIView *)view {
+- (CGRect)getAbsoluteFrameForView:(UIView *)view {
     CGFloat x = view.frame.origin.x;
     CGFloat y = view.frame.origin.y;
     CGFloat width = view.frame.size.width;
@@ -200,7 +209,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
  @param view 获取绝对位置在view内相对位置的view
  @return view内的相对位置
  */
-+ (CGRect)getRelativeFrameWithAbsoluteFrame:(CGRect)absoluteFrame inView:(UIView *)view {
+- (CGRect)getRelativeFrameWithAbsoluteFrame:(CGRect)absoluteFrame inView:(UIView *)view {
     CGFloat x = absoluteFrame.origin.x;
     CGFloat y = absoluteFrame.origin.y;
     CGFloat width = absoluteFrame.size.width;
@@ -222,26 +231,17 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
  @param newSuperView view添加到新的superView上
  @return 载新的superView上该view的frame
  */
-+ (CGRect)conversionRelativeFrameForView:(UIView *)view
+- (CGRect)conversionRelativeFrameForView:(UIView *)view
                        addToNewSuperView:(UIWindow *)newSuperView {
     CGRect absoluteFrame = [self getAbsoluteFrameForView:view];
     return [self getRelativeFrameWithAbsoluteFrame:absoluteFrame inView:newSuperView];
 }
 
 #pragma mark - showFPSMonitor
-+ (void)showFPSMonitor:(BOOL)shouldShow {
-    if (shouldShow) {
-        if (!self.isShowingFPSMonitorView) {
-            [self showFPSMonitorView];
-        }
-        self.isShowingFPSMonitorView = YES;
-    } else {
-        [self hideFPSMonitorView];
-        self.isShowingFPSMonitorView = NO;
+- (void)showFPSMonitor {
+    if (self.isShowingFPSMonitorView) {
+        return;
     }
-}
-
-+ (void)showFPSMonitorView {
     if (!self.displayLink) {
         self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateFPSValue:)];
         [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
@@ -251,9 +251,12 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
                                              selector:@selector(addFPSViewToKeyWindow)
                                                  name:UIWindowDidBecomeKeyNotification
                                                object:nil];
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
+    self->_isShowingFPSMonitorView = YES;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
 }
 
-+ (void)addFPSViewToKeyWindow {
+- (void)addFPSViewToKeyWindow {
     if ([UIApplication sharedApplication].keyWindow.isHidden || [self.fpsView isDescendantOfView:[UIApplication sharedApplication].keyWindow]) {
         return;
     }
@@ -267,7 +270,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
         CGRect absoluteFrame;
         BOOL isHaveCacheFrame = [[NSUserDefaults standardUserDefaults] boolForKey:HYPFPSViewIsHaveAbsoluteFrameXY];
         // 如果允许触摸并且有缓存位置则用缓存的位置，否则使用默认位置
-        if (HYPFPSMonitorPlugin.isCanTouchFPSView && isHaveCacheFrame) {
+        if (self.isCanTouchFPSView && isHaveCacheFrame) {
             CGFloat absoluteFrameX = (CGFloat)[[NSUserDefaults standardUserDefaults] floatForKey:HYPFPSViewAbsoluteFrameXSaveKey];
             CGFloat absoluteFrameY = (CGFloat)[[NSUserDefaults standardUserDefaults] floatForKey:HYPFPSViewAbsoluteFrameYSaveKey];
             absoluteFrame = CGRectMake(absoluteFrameX,
@@ -301,7 +304,7 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
     }];
 }
 
-+ (void)hideFPSMonitorView {
+- (void)hideFPSMonitor {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.displayLink.paused = YES;
     [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
@@ -317,30 +320,33 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
         self.fpsView.alpha = 0;
         self.fpsView.hidden = YES;
         // 重置 lastTime refreshCount
-        HYPFPSMonitorManagerLastTime = 0;
-        HYPFPSMonitorManagerRefreshCount = 0;
+        self.lastTime = 0;
+        self.refreshCount = 0;
+        [self willChangeValueForKey:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
+        self->_isShowingFPSMonitorView = NO;
+        [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
     }];
 }
 
-+ (void)calculateFPSValue:(CADisplayLink *)link {
+- (void)calculateFPSValue:(CADisplayLink *)link {
     // 刷新一次计数 +1
-    ++HYPFPSMonitorManagerRefreshCount;
+    ++self.refreshCount;
     
-    if (HYPFPSMonitorManagerLastTime == 0) {
+    if (self.lastTime == 0) {
         self.fpsLabel.text = @"wait...";
-        HYPFPSMonitorManagerLastTime = link.timestamp;
+        self.lastTime = link.timestamp;
         return;
     }
     
-    NSTimeInterval delta = link.timestamp - HYPFPSMonitorManagerLastTime;
+    NSTimeInterval delta = link.timestamp - self.lastTime;
     if (delta < 1) {
         return;
     }
-    float fpsValue = HYPFPSMonitorManagerRefreshCount / delta;
+    float fpsValue = self.refreshCount / delta;
     
     // 重置 lastTime refreshCount
-    HYPFPSMonitorManagerLastTime = link.timestamp;
-    HYPFPSMonitorManagerRefreshCount = 0;
+    self.lastTime = link.timestamp;
+    self.refreshCount = 0;
     
     CGFloat progress = fpsValue / 60.0;
     UIColor *color = [UIColor colorWithHue:0.27 * (progress - 0.2) saturation:1 brightness:0.9 alpha:1];

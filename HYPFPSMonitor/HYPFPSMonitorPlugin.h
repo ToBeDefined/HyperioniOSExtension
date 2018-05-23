@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <HyperioniOS/HYPPlugin.h>
+#import "HYPFPSMonitorManager.h"
 
 @interface HYPFPSMonitorPlugin : NSObject<HYPPlugin>
 
 // FPSView是否允许接收触摸事件
-@property (class, nonatomic, assign) BOOL isCanTouchFPSView;
-
-+ (void)showFPSMonitor;
-
-+ (void)hideFPSMonitor;
+@property (class, nonatomic, strong, readonly) HYPFPSMonitorManager *manager;
 
 @end

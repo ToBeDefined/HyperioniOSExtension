@@ -15,7 +15,6 @@
 
 @interface HYPFPSMonitorPluginModule() <HYPPluginMenuItemDelegate>
 
-@property (nonatomic, assign) BOOL isShowingHYPFPSMonitorView;
 @property (nonatomic, strong) HYPPluginMenuItem *menu;
 
 @end
@@ -35,10 +34,11 @@
     return __instance;
 }
 
-- (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
-    [HYPFPSMonitorManager setFPSViewUserInterfaceEnable:isCanTouchFPSView];
+- (void)dealloc {
+    // Never Run
+    [[HYPFPSMonitorManager sharedManager] removeObserver:self
+                                              forKeyPath:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
 }
-
 
 #pragma mark - pluginMenuItem
 - (UIView *)pluginMenuItem {
@@ -51,23 +51,38 @@
     menu.delegate = self;
     [menu bindWithTitle:@"FPS Monitor"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    [menu setSelected:self.isShowingHYPFPSMonitorView animated:YES];
+    [menu setSelected:[HYPFPSMonitorManager sharedManager].isShowingFPSMonitorView animated:YES];
     self.menu = menu;
+    [[HYPFPSMonitorManager sharedManager] addObserver:self
+                                           forKeyPath:NSStringFromSelector(@selector(isShowingFPSMonitorView))
+                                              options:NSKeyValueObservingOptionNew
+                                              context:nil];
     return menu;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(isShowingFPSMonitorView))]
+        && object == [HYPFPSMonitorManager sharedManager]) {
+        BOOL isShow = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        [self.menu setSelected:isShow animated:NO];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - HYPPluginMenuItemDelegate
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
-    self.isShowingHYPFPSMonitorView = !self.isShowingHYPFPSMonitorView;
     [[HyperionManager sharedInstance] togglePluginDrawer];
-    [self showHYPFPSMonitor:self.isShowingHYPFPSMonitorView];
+    [self showHYPFPSMonitor:![HYPFPSMonitorManager sharedManager].isShowingFPSMonitorView];
 }
 
 #pragma mark - Private Func
 - (void)showHYPFPSMonitor:(BOOL)isShow {
-    self.isShowingHYPFPSMonitorView = isShow;
-    [HYPFPSMonitorManager showFPSMonitor:isShow];
-    [self.menu setSelected:isShow animated:YES];
+    if (isShow) {
+        [[HYPFPSMonitorManager sharedManager] showFPSMonitor];
+    } else {
+        [[HYPFPSMonitorManager sharedManager] hideFPSMonitor];
+    }
 }
 
 @end

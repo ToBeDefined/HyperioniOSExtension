@@ -27,13 +27,13 @@ class ViewController: UIViewController {
     
     @IBAction func showFPSMonitor(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPFPSMonitorPlugin.showFPSMonitor()
+        HYPFPSMonitorPlugin.manager.showFPSMonitor()
         #endif
     }
     
     @IBAction func hideFPSMonitor(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPFPSMonitorPlugin.hideFPSMonitor()
+        HYPFPSMonitorPlugin.manager.hideFPSMonitor()
         #endif
     }
     
