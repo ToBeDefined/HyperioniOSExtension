@@ -31,6 +31,7 @@ static HYPUIMainThreadCheckerManager *sharedHYPUIMainThreadCheckerManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedHYPUIMainThreadCheckerManager = [super init];
+        [sharedHYPUIMainThreadCheckerManager open];
     });
     return sharedHYPUIMainThreadCheckerManager;
 }
