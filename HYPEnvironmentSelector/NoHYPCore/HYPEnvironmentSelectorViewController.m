@@ -9,9 +9,9 @@
 #import <objc/runtime.h>
 
 #import "HYPEnvironmentSelectorViewController.h"
-#import "HYPEnvironmentSelectorPlugin.h"
 #import "HYPEnvironmentSelectorEditItemViewController.h"
 #import "HYPEnvironmentItemManage.h"
+#import "HYPEnvironmentSelectorManager.h"
 
 static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
@@ -25,7 +25,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.items = HYPEnvironmentSelectorPlugin.environmentItems;
+    self.items = [HYPEnvironmentSelectorManager sharedManager].environmentItems;
     if (self.items.count == 0) {
         NSLog(@"\
 \n\n\
@@ -50,7 +50,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 }
 
 - (void)cancelSelectEnvironment {
-    [HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+    [[HYPEnvironmentSelectorManager sharedManager] hideEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
 }
 
 - (void)pushToEditViewControllerWithItemUseCache {
@@ -77,7 +77,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
                                       reuseIdentifier:HYPEnvironmentInfoCellID];
         cell.detailTextLabel.numberOfLines = 0;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        if (HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem) {
+        if ([HYPEnvironmentSelectorManager sharedManager].isCanEditItemFromListItem) {
             cell.accessoryType = UITableViewCellAccessoryDetailButton;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -100,8 +100,8 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
-        EnvironmentSelectedBlock block = [HYPEnvironmentSelectorPlugin.environmentSelectedBlock copy];
+    [[HYPEnvironmentSelectorManager sharedManager] hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+        EnvironmentSelectedBlock block = [[HYPEnvironmentSelectorManager sharedManager].environmentSelectedBlock copy];
         if (block) {
             block(self.items[indexPath.row]);
         }

@@ -6,9 +6,9 @@
 //  Copyright © 2018年 TBD. All rights reserved.
 //
 
-#import "HYPEnvironmentItemManage.h"
-#import "HYPEnvironmentSelectorPlugin.h"
 #import <objc/runtime.h>
+#import "HYPEnvironmentItemManage.h"
+#import "HYPEnvironmentSelectorManager.h"
 
 @implementation HYPEnvironmentItemManage
 
@@ -39,7 +39,7 @@ static NSString *swiftErrorLog = @"\n\n !!!if item is swift class!!! \n\n 1. mus
 }
 
 + (id)itemWithDictionary:(NSDictionary *)dict {
-    Class cls = [HYPEnvironmentSelectorPlugin getEnvironmentItemClass];
+    Class cls = [[HYPEnvironmentSelectorManager sharedManager] getEnvironmentItemClass];
     if ([cls isMemberOfClass:[NSNull class]]) {
         return nil;
     }

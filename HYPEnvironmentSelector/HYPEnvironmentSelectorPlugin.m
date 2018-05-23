@@ -24,42 +24,8 @@
     [self setIsShowInSidebarList:YES];
 }
 
-#pragma mark - environmentItems
-+ (void)setEnvironmentItems:(NSArray *)environmentItems {
-    objc_setAssociatedObject(self,
-                             @selector(environmentItems),
-                             environmentItems,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (NSArray *)environmentItems {
-    return (NSArray *)objc_getAssociatedObject(self, _cmd);
-}
-
-
-#pragma mark - customEnvironmentItemTemplate
-+ (void)setCustomEnvironmentItemTemplate:(id)customEnvironmentItemTemplate {
-    objc_setAssociatedObject(self,
-                             @selector(customEnvironmentItemTemplate),
-                             customEnvironmentItemTemplate,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (id)customEnvironmentItemTemplate {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
-
-#pragma mark - environmentSelectedBlock
-+ (void)setEnvironmentSelectedBlock:(EnvironmentSelectedBlock)environmentSelectedBlock {
-    objc_setAssociatedObject(self,
-                             @selector(environmentSelectedBlock),
-                             environmentSelectedBlock,
-                             OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-+ (EnvironmentSelectedBlock)environmentSelectedBlock {
-    return [objc_getAssociatedObject(self, _cmd) copy];
++ (HYPEnvironmentSelectorManager *)manager {
+    return [HYPEnvironmentSelectorManager sharedManager];
 }
 
 
@@ -73,50 +39,6 @@
 
 + (BOOL)isShowInSidebarList {
     return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
-}
-
-
-#pragma mark - isCanEditItemFromListItem
-+ (void)setIsCanEditItemFromListItem:(BOOL)isCanEditItemFromListItem {
-    objc_setAssociatedObject(self,
-                             @selector(isCanEditItemFromListItem),
-                             @(isCanEditItemFromListItem),
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (BOOL)isCanEditItemFromListItem {
-    return [(NSNumber *)objc_getAssociatedObject(self, _cmd) boolValue];
-}
-
-#pragma mark - Show/Hide Environment Selector
-+ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
-                                  isCanCancel:(BOOL)isCanCancel
-                              completionBlock:(void (^ _Nullable)(void))completion {
-    [[HYPEnvironmentSelectorPluginModule sharedInstance] showEnvironmentSelectorWindowAnimated:animated
-                                                                                   isCanCancel:isCanCancel
-                                                                               completionBlock:completion];
-}
-
-+ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
-                              completionBlock:(void (^)(void))completion {
-    [[HYPEnvironmentSelectorPluginModule sharedInstance] hideEnvironmentSelectorWindowAnimated:animated
-                                                                               completionBlock:completion];
-}
-
-
-#pragma mark - Private Func
-+ (Class)getEnvironmentItemClass {
-    id item = self.environmentItems.firstObject;
-    if (item != nil) {
-        return [item class];
-    }
-    
-    id baseItem = self.customEnvironmentItemTemplate;
-    if (baseItem != nil) {
-        return [baseItem class];
-    }
-    
-    return [NSNull class];
 }
 
 

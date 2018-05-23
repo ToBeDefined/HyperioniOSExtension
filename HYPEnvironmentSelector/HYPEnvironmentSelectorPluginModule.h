@@ -8,6 +8,8 @@
 
 #import <HyperioniOS/HYPPluginModule.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HYPEnvironmentSelectorPluginModule : HYPPluginModule
 
 + (instancetype _Nonnull)sharedInstance;
@@ -19,3 +21,5 @@
                               completionBlock:(void (^_Nullable)(void))completion;
 
 @end
+
+NS_ASSUME_NONNULL_END

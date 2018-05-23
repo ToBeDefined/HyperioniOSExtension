@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
 
@@ -45,9 +48,10 @@
 
 @property (nonatomic, copy) NSString * _Nullable name;
 
-- (instancetype __nonnull)init;
+- (instancetype)init;
 
 @end
 
 #pragma clang diagnostic pop
+NS_ASSUME_NONNULL_END
 

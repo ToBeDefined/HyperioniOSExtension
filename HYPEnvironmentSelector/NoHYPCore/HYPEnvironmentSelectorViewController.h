@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HYPEnvironmentSelectorViewController : UITableViewController
+
 @property (nonatomic, assign, getter=isCanCancel) BOOL canCancel;
+
 @end
+
+NS_ASSUME_NONNULL_END

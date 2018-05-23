@@ -10,7 +10,7 @@
 #import "HYPEnvironmentSelectorEditItemViewController.h"
 #import "HYPEnvironmentInfoEditCell.h"
 #import "HYPEnvironmentItemManage.h"
-#import "HYPEnvironmentSelectorPlugin.h"
+#import "HYPEnvironmentSelectorManager.h"
 
 static NSString *HYPEnvironmentInfoEditCellID           = @"HYPEnvironmentInfoEditCell";
 static NSString *TextFieldAssociatedKey                 = @"TextFieldAssociatedKey";
@@ -41,7 +41,7 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
         return;
     }
     // 2、如果有模板，使用模板(拷贝)
-    id baseItem = HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate;
+    id baseItem = [HYPEnvironmentSelectorManager sharedManager].customEnvironmentItemTemplate;
     if (baseItem != nil) {
         _item = [HYPEnvironmentItemManage mutableCopyItem:baseItem];
         return;
@@ -83,8 +83,8 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:itemDict];
     [[NSUserDefaults standardUserDefaults] setObject:data
                                               forKey:HYPEnvironmentSelectorEditItemSaveKey];
-    [HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
-        EnvironmentSelectedBlock block = [HYPEnvironmentSelectorPlugin.environmentSelectedBlock copy];
+    [[HYPEnvironmentSelectorManager sharedManager] hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+        EnvironmentSelectedBlock block = [[HYPEnvironmentSelectorManager sharedManager].environmentSelectedBlock copy];
         if (block) {
             block(self.item);
         }

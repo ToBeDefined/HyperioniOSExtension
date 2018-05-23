@@ -14,6 +14,8 @@
 		3F14AFAB2085C9D900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F14AFAC2085C9DC00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F14AFAD2085C9E000CE4EE5 /* UIView+HYPUIMainThreadChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F33B5F520B567C500588676 /* HYPEnvironmentSelectorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F33B5F320B567C500588676 /* HYPEnvironmentSelectorManager.h */; };
+		3F33B5F620B567C500588676 /* HYPEnvironmentSelectorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B5F420B567C500588676 /* HYPEnvironmentSelectorManager.m */; };
 		3F55CEDF2085CAA500B1960F /* mainThreadCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9120859BCB00CE4EE5 /* mainThreadCheck.png */; };
 		3F55CEE02085CAA500B1960F /* mainThreadCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */; };
 		3F55CEE12085CAA500B1960F /* mainThreadCheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */; };
@@ -36,7 +38,6 @@
 		3FA8F1BA20803B500015BEE0 /* HYPEnvironmentSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */; };
 		3FA8F1C62080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */; };
 		3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */; };
-		3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B862085F45B00AE7D93 /* HYPEnvironmentSelectorPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B872085F45B00AE7D93 /* HYPEnvironmentItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B882085F45B00AE7D93 /* HYPEnvironmentSelectorPluginModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,9 +72,10 @@
 		3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F33B5F320B567C500588676 /* HYPEnvironmentSelectorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorManager.h; sourceTree = "<group>"; };
+		3F33B5F420B567C500588676 /* HYPEnvironmentSelectorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorManager.m; sourceTree = "<group>"; };
 		3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentItemProtocol.h; sourceTree = "<group>"; };
 		3F886641207F7317009760E3 /* HYPEnvironmentSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPEnvironmentSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelector.h; sourceTree = "<group>"; };
 		3F886645207F7317009760E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorPluginModule.h; sourceTree = "<group>"; };
 		3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentItemManage.h; sourceTree = "<group>"; };
@@ -184,6 +186,24 @@
 			path = HYPUIMainThreadChecker;
 			sourceTree = "<group>";
 		};
+		3F33B5F720B5714900588676 /* NoHYPCore */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B5F320B567C500588676 /* HYPEnvironmentSelectorManager.h */,
+				3F33B5F420B567C500588676 /* HYPEnvironmentSelectorManager.m */,
+				3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */,
+				3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */,
+				3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */,
+				3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */,
+				3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */,
+				3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */,
+				3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */,
+				3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */,
+				3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */,
+			);
+			path = NoHYPCore;
+			sourceTree = "<group>";
+		};
 		3F886637207F7317009760E3 = {
 			isa = PBXGroup;
 			children = (
@@ -209,20 +229,11 @@
 		3F886643207F7317009760E3 /* HYPEnvironmentSelector */ = {
 			isa = PBXGroup;
 			children = (
-				3F886644207F7317009760E3 /* HYPEnvironmentSelector.h */,
 				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
 				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
-				3F55CEE22085CF6700B1960F /* HYPEnvironmentItemProtocol.h */,
 				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
 				3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */,
-				3F88664D207F7359009760E3 /* HYPEnvironmentItemManage.h */,
-				3F88664E207F7359009760E3 /* HYPEnvironmentItemManage.m */,
-				3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */,
-				3FA8F1B820803B500015BEE0 /* HYPEnvironmentSelectorViewController.m */,
-				3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */,
-				3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */,
-				3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */,
-				3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */,
+				3F33B5F720B5714900588676 /* NoHYPCore */,
 				3F886645207F7317009760E3 /* Info.plist */,
 				3F88665C207F7366009760E3 /* Resources */,
 			);
@@ -332,7 +343,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF95B852085F44D00AE7D93 /* HYPEnvironmentSelector.h in Headers */,
+				3F33B5F520B567C500588676 /* HYPEnvironmentSelectorManager.h in Headers */,
 				3FF95B862085F45B00AE7D93 /* HYPEnvironmentSelectorPlugin.h in Headers */,
 				3FF95B872085F45B00AE7D93 /* HYPEnvironmentItemProtocol.h in Headers */,
 				3FF95B882085F45B00AE7D93 /* HYPEnvironmentSelectorPluginModule.h in Headers */,
@@ -566,6 +577,7 @@
 				3FA8F1CA2080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m in Sources */,
 				3F886659207F735A009760E3 /* HYPEnvironmentSelectorPluginModule.m in Sources */,
 				3F88665A207F735A009760E3 /* HYPEnvironmentSelectorPlugin.m in Sources */,
+				3F33B5F620B567C500588676 /* HYPEnvironmentSelectorManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
