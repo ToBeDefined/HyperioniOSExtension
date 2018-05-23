@@ -89,12 +89,18 @@
 }
 
 #pragma mark - Show/Hide Environment Selector
-+ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [[HYPEnvironmentSelectorPluginModule sharedInstance] showEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
++ (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                                  isCanCancel:(BOOL)isCanCancel
+                              completionBlock:(void (^ _Nullable)(void))completion {
+    [[HYPEnvironmentSelectorPluginModule sharedInstance] showEnvironmentSelectorWindowAnimated:animated
+                                                                                   isCanCancel:isCanCancel
+                                                                               completionBlock:completion];
 }
 
-+ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
-    [[HYPEnvironmentSelectorPluginModule sharedInstance] hideEnvironmentSelectorWindowAnimated:animated completionBlock:completion];
++ (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^)(void))completion {
+    [[HYPEnvironmentSelectorPluginModule sharedInstance] hideEnvironmentSelectorWindowAnimated:animated
+                                                                               completionBlock:completion];
 }
 
 

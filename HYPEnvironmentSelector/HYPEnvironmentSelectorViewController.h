@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HYPEnvironmentSelectorViewController : UITableViewController
-
+@property (nonatomic, assign, getter=isCanCancel) BOOL canCancel;
 @end

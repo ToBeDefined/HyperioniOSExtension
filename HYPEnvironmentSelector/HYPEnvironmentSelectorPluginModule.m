@@ -61,14 +61,19 @@
     [[HyperionManager sharedInstance] togglePluginDrawer];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.isShowingEnvironmentSelectorWindow) {
-            [self hideEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+            [self hideEnvironmentSelectorWindowAnimated:YES
+                                        completionBlock:nil];
         } else {
-            [self showEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
+            [self showEnvironmentSelectorWindowAnimated:YES
+                                            isCanCancel:YES
+                                        completionBlock:nil];
         }
     });
 }
 
-- (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+- (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                                  isCanCancel:(BOOL)isCanCancel
+                              completionBlock:(void (^)(void))completion {
     if (self.isShowingEnvironmentSelectorWindow) {
         return;
     }
@@ -77,6 +82,7 @@
     if (self.environmentSelectorWindow == nil) {
         UIWindow *environmentSelectorWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         HYPEnvironmentSelectorViewController *selectorVC = [[HYPEnvironmentSelectorViewController alloc] init];
+        selectorVC.canCancel = isCanCancel;
         UINavigationController *rootNavigatonController = [[UINavigationController alloc] initWithRootViewController:selectorVC];
         environmentSelectorWindow.rootViewController = rootNavigatonController;
         self.environmentSelectorWindow = environmentSelectorWindow;
@@ -102,7 +108,8 @@
     }
 }
 
-- (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated completionBlock:(void (^)(void))completion {
+- (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
+                              completionBlock:(void (^)(void))completion {
     if (self.environmentSelectorWindow) {
         if (animated) {
             [UIView animateWithDuration:0.1 animations:^{

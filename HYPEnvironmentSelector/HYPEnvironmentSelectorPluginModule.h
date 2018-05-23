@@ -13,6 +13,7 @@
 + (instancetype _Nonnull)sharedInstance;
 
 - (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                                  isCanCancel:(BOOL)isCanCancel
                               completionBlock:(void (^_Nullable)(void))completion;
 - (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;

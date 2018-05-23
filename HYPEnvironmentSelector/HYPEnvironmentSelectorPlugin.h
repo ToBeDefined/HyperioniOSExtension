@@ -64,6 +64,7 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentIte
 @property (class, nonatomic, assign) BOOL isCanEditItemFromListItem;
 
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
+                                  isCanCancel:(BOOL)isCanCancel
                               completionBlock:(void (^_Nullable)(void))completion;
 + (void)hideEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;

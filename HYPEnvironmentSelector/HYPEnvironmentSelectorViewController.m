@@ -34,9 +34,13 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 ===============================================================\
 \n\n");
     }
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                          target:self
-                                                                                          action:@selector(cancelSelectEnvironment)];
+    if (self.isCanCancel) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self
+                                                                                              action:@selector(cancelSelectEnvironment)];
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                                                                            target:self
                                                                                            action:@selector(pushToEditViewControllerWithItemUseCache)];
