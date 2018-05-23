@@ -21,6 +21,12 @@
 
 @implementation HYPFPSMonitorPluginModule
 
+- (void)dealloc {
+    // Never Run
+    [[HYPFPSMonitorManager sharedManager] removeObserver:self
+                                              forKeyPath:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
+}
+
 + (instancetype)sharedInstance {
     static id __instance = nil;
     static dispatch_once_t onceToken;
@@ -34,12 +40,6 @@
     return __instance;
 }
 
-- (void)dealloc {
-    // Never Run
-    [[HYPFPSMonitorManager sharedManager] removeObserver:self
-                                              forKeyPath:NSStringFromSelector(@selector(isShowingFPSMonitorView))];
-}
-
 #pragma mark - pluginMenuItem
 - (UIView *)pluginMenuItem {
     if (self.menu) {
@@ -51,7 +51,7 @@
     menu.delegate = self;
     [menu bindWithTitle:@"FPS Monitor"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    [menu setSelected:[HYPFPSMonitorManager sharedManager].isShowingFPSMonitorView animated:YES];
+    [menu setSelected:[HYPFPSMonitorManager sharedManager].isShowingFPSMonitorView animated:NO];
     self.menu = menu;
     [[HYPFPSMonitorManager sharedManager] addObserver:self
                                            forKeyPath:NSStringFromSelector(@selector(isShowingFPSMonitorView))

@@ -30,7 +30,6 @@
 
 @implementation HYPFPSMonitorManager
 
-
 static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;

@@ -22,6 +22,12 @@
 
 @implementation HYPEnvironmentSelectorPluginModule
 
+- (void)dealloc {
+    // Never Run
+    [[HYPEnvironmentSelectorManager sharedManager] removeObserver:self
+                                                       forKeyPath:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
+}
+
 + (instancetype)sharedInstance {
     static id __instance = nil;
     static dispatch_once_t onceToken;
@@ -33,12 +39,6 @@
         __instance = [[[self class] alloc] initWithExtension:pluginExtension];
     });
     return __instance;
-}
-
-- (void)dealloc {
-    // Never Run
-    [[HYPEnvironmentSelectorManager sharedManager] removeObserver:self
-                                                       forKeyPath:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
 }
 
 - (UIView *)pluginMenuItem {
@@ -56,11 +56,11 @@
                   image:[UIImage imageWithContentsOfFile:imagePath]];
     menu.delegate = self;
     [menu setSelected:[HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow animated:NO];
+    self.menu = menu;
     [[HYPEnvironmentSelectorManager sharedManager] addObserver:self
                                                     forKeyPath:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))
                                                        options:NSKeyValueObservingOptionNew
                                                        context:nil];
-    self.menu = menu;
     return menu;
 }
 
