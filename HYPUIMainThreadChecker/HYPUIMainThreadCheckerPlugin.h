@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <HyperioniOS/HYPPlugin.h>
-
+#import "HYPUIMainThreadCheckerManager.h"
 @interface HYPUIMainThreadCheckerPlugin : NSObject<HYPPlugin>
+
+@property (class, nonatomic, strong, readonly) HYPUIMainThreadCheckerManager *manager;
 
 @end

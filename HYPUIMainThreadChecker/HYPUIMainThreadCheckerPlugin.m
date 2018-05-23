@@ -12,6 +12,10 @@
 
 @implementation HYPUIMainThreadCheckerPlugin
 
++ (HYPUIMainThreadCheckerManager *)manager {
+    return [HYPUIMainThreadCheckerManager sharedManager];
+}
+
 #pragma mark - HYPPlugin
 + (nonnull id<HYPPluginModule>)createPluginModule:(id<HYPPluginExtension> _Nonnull)pluginExtension {
     return [HYPUIMainThreadCheckerPluginModule sharedInstance];

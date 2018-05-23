@@ -39,13 +39,13 @@ class ViewController: UIViewController {
     
     @IBAction func openUIMainThreadCheck(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = true
+        HYPUIMainThreadCheckerPlugin.manager.open()
         #endif
     }
     
     @IBAction func closeUIMainThreadCheck(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = false
+        HYPUIMainThreadCheckerPlugin.manager.close()
         #endif
     }
     
