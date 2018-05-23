@@ -19,6 +19,5 @@
 
 - (void)showFPSMonitor;
 - (void)hideFPSMonitor;
-- (void)setFPSViewUserInterfaceEnable:(BOOL)enable;
 
 @end

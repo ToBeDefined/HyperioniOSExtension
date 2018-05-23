@@ -72,21 +72,19 @@ static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
 
 #pragma mark - FPS Views
 - (UIView *)fpsView {
-    UIView *fpsView = objc_getAssociatedObject(self, _cmd);
-    if (fpsView) {
-        return fpsView;
+    if (self->_fpsView) {
+        return self->_fpsView;
     }
     [self createFPSViews];
-    return objc_getAssociatedObject(self, _cmd);
+    return self->_fpsView;
 }
 
 - (UILabel *)fpsLabel {
-    UILabel *fpsLabel = objc_getAssociatedObject(self, _cmd);
-    if (fpsLabel) {
-        return fpsLabel;
+    if (self->_fpsLabel) {
+        return self->_fpsLabel;
     }
     [self createFPSViews];
-    return objc_getAssociatedObject(self, _cmd);
+    return self->_fpsLabel;
 }
 
 - (void)createFPSViews {
@@ -95,10 +93,7 @@ static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
                                                                0,
                                                                HYPFPSMonitorManagerFPSViewWidth,
                                                                HYPFPSMonitorManagerFPSViewHeight)];
-    objc_setAssociatedObject(self,
-                             @selector(fpsView),
-                             fpsView,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self->_fpsView = fpsView;
     fpsView.backgroundColor = [UIColor clearColor];
     // fpsLabel
     CGFloat fpsLabelHeight  = 30;
@@ -109,10 +104,7 @@ static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
                                                                   fpsLabelY,
                                                                   fpsLabelWidth,
                                                                   fpsLabelHeight)];
-    objc_setAssociatedObject(self,
-                             @selector(fpsLabel),
-                             fpsLabel,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self->_fpsLabel = fpsLabel;
     [fpsView addSubview:fpsLabel];
     fpsLabel.layer.cornerRadius = 5;
     fpsLabel.layer.masksToBounds = YES;
@@ -121,12 +113,16 @@ static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
     fpsLabel.userInteractionEnabled = YES;
     fpsLabel.textColor = [UIColor whiteColor];
     fpsLabel.font = [UIFont systemFontOfSize:12];
-    [self setFPSViewUserInterfaceEnable:self.isCanTouchFPSView];
+    [self addOrRemoveGestureRecognizer];
 }
 
 #pragma mark - fpsView拖动
-- (void)setFPSViewUserInterfaceEnable:(BOOL)enable {
-    if (enable) {
+- (void)setIsCanTouchFPSView:(BOOL)isCanTouchFPSView {
+    self->_isCanTouchFPSView = isCanTouchFPSView;
+    [self addOrRemoveGestureRecognizer];
+}
+- (void)addOrRemoveGestureRecognizer {
+    if (self.isCanTouchFPSView) {
         [self addGestureRecognizer];
     } else {
         [self removeGestureRecognizer];
