@@ -62,7 +62,9 @@ static HYPEnvironmentSelectorManager *sharedHYPEnvironmentSelectorManager = nil;
     if (self.isShowingEnvironmentSelectorWindow) {
         return;
     }
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     self->_isShowingEnvironmentSelectorWindow = YES;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     if (self.environmentSelectorWindow == nil) {
         UIWindow *environmentSelectorWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         HYPEnvironmentSelectorViewController *selectorVC = [[HYPEnvironmentSelectorViewController alloc] init];
@@ -110,7 +112,9 @@ static HYPEnvironmentSelectorManager *sharedHYPEnvironmentSelectorManager = nil;
 
 - (void)afterHideEnvironmentSelectorWindowAnimation:(void (^)(void))completion {
     self.environmentSelectorWindow.alpha = 0;
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     self->_isShowingEnvironmentSelectorWindow = NO;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     self.environmentSelectorWindow.hidden = YES;
     self.environmentSelectorWindow = nil;
     [self.originKeyWindow makeKeyWindow];

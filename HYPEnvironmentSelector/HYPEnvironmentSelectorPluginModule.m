@@ -17,7 +17,6 @@
 @interface HYPEnvironmentSelectorPluginModule() <HYPPluginMenuItemDelegate>
 
 @property (nonatomic, strong) HYPPluginMenuItem *menu;
-@property (nonatomic, assign, readonly) BOOL isShowingEnvironmentSelectorWindow;
 
 @end
 
@@ -36,8 +35,10 @@
     return __instance;
 }
 
-- (BOOL)isShowingEnvironmentSelectorWindow {
-    return [HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow;
+- (void)dealloc {
+    // Never Run
+    [[HYPEnvironmentSelectorManager sharedManager] removeObserver:self
+                                                       forKeyPath:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
 }
 
 - (UIView *)pluginMenuItem {
@@ -54,15 +55,29 @@
     [menu bindWithTitle:@"Environment Selector"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
     menu.delegate = self;
-    [menu setSelected:self.isShowingEnvironmentSelectorWindow animated:NO];
+    [menu setSelected:[HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow animated:NO];
+    [[HYPEnvironmentSelectorManager sharedManager] addObserver:self
+                                                    forKeyPath:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))
+                                                       options:NSKeyValueObservingOptionNew
+                                                       context:nil];
     self.menu = menu;
     return menu;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))]
+        && object == [HYPEnvironmentSelectorManager sharedManager]) {
+        BOOL isSelect = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        [self.menu setSelected:isSelect animated:NO];
+    } else {    
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
     [[HyperionManager sharedInstance] togglePluginDrawer];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.isShowingEnvironmentSelectorWindow) {
+        if ([HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow) {
             [self hideEnvironmentSelectorWindowAnimated:YES
                                         completionBlock:nil];
         } else {

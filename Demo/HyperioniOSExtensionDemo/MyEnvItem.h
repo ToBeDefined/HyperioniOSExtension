@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #ifdef CUSTOM_DEBUG
-#import <HyperioniOSExtension/HYPEnvironmentSelector.h>
+#import <HyperioniOSExtension/HYPEnvironmentItemProtocol.h>
 #endif
 
 #ifdef CUSTOM_DEBUG
