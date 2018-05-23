@@ -25,10 +25,10 @@ static NSString *HYPFPSViewAbsoluteFrameYSaveKey  = @"HYPFPSViewAbsoluteFrameYSa
 
 @interface HYPFPSMonitorManager()
 
-@property (nonatomic, class, assign) BOOL isShowingFPSMonitorView;
-@property (nonatomic, class, strong) CADisplayLink *displayLink;
-@property (nonatomic, class, strong, readonly) UIView *fpsView;
-@property (nonatomic, class, strong, readonly) UILabel *fpsLabel;
+@property (class, nonatomic, assign) BOOL isShowingFPSMonitorView;
+@property (class, nonatomic, strong) CADisplayLink *displayLink;
+@property (class, nonatomic, strong, readonly) UIView *fpsView;
+@property (class, nonatomic, strong, readonly) UILabel *fpsLabel;
 
 @end
 

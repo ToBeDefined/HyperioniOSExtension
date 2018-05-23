@@ -17,7 +17,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 @interface HYPEnvironmentSelectorViewController()
 
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, copy) NSArray *items;
 
 @end
 

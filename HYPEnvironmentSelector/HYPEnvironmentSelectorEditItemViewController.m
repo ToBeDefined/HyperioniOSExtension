@@ -19,7 +19,7 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
 @interface HYPEnvironmentSelectorEditItemViewController()
 
 @property (nonatomic, strong) id item;
-@property (nonatomic, strong) NSArray<NSString *> *keys;
+@property (nonatomic, copy) NSArray<NSString *> *keys;
 
 @end
 

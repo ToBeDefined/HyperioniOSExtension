@@ -23,8 +23,8 @@
  
  // ObjC
  @interface <#MyEnvItem#>: NSObject <HYPEnvironmentItemProtocol>
- @property (nonatomic, strong) NSString *name;
- @property (nonatomic, strong) NSString *<#otherVariable#>;
+ @property (nonatomic, copy) NSString *name;
+ @property (nonatomic, copy) NSString *<#otherVariable#>;
  @end
  
  @implementation <#MyEnvItem#>
@@ -43,7 +43,7 @@
  */
 @protocol HYPEnvironmentItemProtocol <NSObject>
 
-@property (nonatomic, strong) NSString * _Nullable name;
+@property (nonatomic, copy) NSString * _Nullable name;
 
 - (instancetype __nonnull)init;
 

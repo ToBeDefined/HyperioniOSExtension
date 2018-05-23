@@ -12,7 +12,7 @@
 @interface HYPFPSMonitorPlugin : NSObject<HYPPlugin>
 
 // FPSView是否允许接收触摸事件
-@property (nonatomic, class, assign) BOOL isCanTouchFPSView;
+@property (class, nonatomic, assign) BOOL isCanTouchFPSView;
 
 + (void)showFPSMonitor;
 

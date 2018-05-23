@@ -36,8 +36,8 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentIte
  
  // ObjC
  @interface <#MyEnvItem#>: NSObject <HYPEnvironmentItemProtocol>
- @property (nonatomic, strong) NSString *name;
- @property (nonatomic, strong) NSString *<#otherVariable#>;
+ @property (nonatomic, copy) NSString *name;
+ @property (nonatomic, copy) NSString *<#otherVariable#>;
  @end
  
  @implementation <#MyEnvItem#>
@@ -54,14 +54,14 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentIte
      }
  }
  */
-@property (nonatomic, class, copy) NSArray <NSObject <HYPEnvironmentItemProtocol>*> * _Nullable environmentItems;
+@property (class, nonatomic, copy) NSArray <NSObject <HYPEnvironmentItemProtocol>*> * _Nullable environmentItems;
 // 自定义URL编辑界面的模板
-@property (nonatomic, class, strong) NSObject <HYPEnvironmentItemProtocol> * _Nullable customEnvironmentItemTemplate;
-@property (nonatomic, class, copy) EnvironmentSelectedBlock environmentSelectedBlock;
+@property (class, nonatomic, strong) NSObject <HYPEnvironmentItemProtocol> * _Nullable customEnvironmentItemTemplate;
+@property (class, nonatomic, copy) EnvironmentSelectedBlock environmentSelectedBlock;
 // 是否在侧边栏显示，默认为YES
-@property (nonatomic, class, assign) BOOL isShowInSidebarList;
+@property (class, nonatomic, assign) BOOL isShowInSidebarList;
 // 是否允许以列表中的item为基础修改（默认为NO）
-@property (nonatomic, class, assign) BOOL isCanEditItemFromListItem;
+@property (class, nonatomic, assign) BOOL isCanEditItemFromListItem;
 
 + (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
                               completionBlock:(void (^_Nullable)(void))completion;
