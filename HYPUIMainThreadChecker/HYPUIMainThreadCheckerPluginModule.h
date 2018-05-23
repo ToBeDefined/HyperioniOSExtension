@@ -11,8 +11,6 @@
 
 @interface HYPUIMainThreadCheckerPluginModule : HYPPluginModule
 
-@property (nonatomic, assign) BOOL isShouldCheckMainThread;
-
 + (instancetype)sharedInstance;
 
 @end

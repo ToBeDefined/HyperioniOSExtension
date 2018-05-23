@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F14AFA02085C88500CE4EE5 /* HYPUIMainThreadChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F14AFA82085C89A00CE4EE5 /* UIView+HYPUIMainThreadChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */; };
 		3F14AFA92085C89A00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */; };
 		3F14AFAA2085C89A00CE4EE5 /* HYPUIMainThreadCheckerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */; };
@@ -44,6 +43,8 @@
 		3FF95B8A2085F45B00AE7D93 /* HYPEnvironmentSelectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1B720803B500015BEE0 /* HYPEnvironmentSelectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8C2085F45B00AE7D93 /* HYPEnvironmentSelectorEditItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C32080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FF95B8D2085F45B00AE7D93 /* HYPEnvironmentInfoEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FFE3A8020B58C6900314833 /* HYPUIMainThreadCheckerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFE3A7E20B58C6900314833 /* HYPUIMainThreadCheckerManager.h */; };
+		3FFE3A8120B58C6900314833 /* HYPUIMainThreadCheckerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE3A7F20B58C6900314833 /* HYPUIMainThreadCheckerManager.m */; };
 		416036DF50820786C0E7A417 /* Pods_HYPEnvironmentSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AF4DD7BC9024DE3D42242A /* Pods_HYPEnvironmentSelector.framework */; };
 		B77CAFC5428A9C7F9F80E236 /* Pods_HYPUIMainThreadChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA452E9184A6617B25E9FB1 /* Pods_HYPUIMainThreadChecker.framework */; };
 		FF54AEB869A7EA5A7EF80809 /* Pods_HYPFPSMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9BD4A80258DF8BECBF6182 /* Pods_HYPFPSMonitor.framework */; };
@@ -69,7 +70,6 @@
 		3F14AF9220859BCB00CE4EE5 /* mainThreadCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainThreadCheck@2x.png"; sourceTree = "<group>"; };
 		3F14AF9320859BCB00CE4EE5 /* mainThreadCheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainThreadCheck@3x.png"; sourceTree = "<group>"; };
 		3F14AF9C2085C88500CE4EE5 /* HYPUIMainThreadChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPUIMainThreadChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadChecker.h; sourceTree = "<group>"; };
 		3F14AF9F2085C88500CE4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F33B5F320B567C500588676 /* HYPEnvironmentSelectorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentSelectorManager.h; sourceTree = "<group>"; };
 		3F33B5F420B567C500588676 /* HYPEnvironmentSelectorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorManager.m; sourceTree = "<group>"; };
@@ -102,6 +102,8 @@
 		3FA8F1C42080A4340015BEE0 /* HYPEnvironmentSelectorEditItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentSelectorEditItemViewController.m; sourceTree = "<group>"; };
 		3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPEnvironmentInfoEditCell.h; sourceTree = "<group>"; };
 		3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPEnvironmentInfoEditCell.m; sourceTree = "<group>"; };
+		3FFE3A7E20B58C6900314833 /* HYPUIMainThreadCheckerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPUIMainThreadCheckerManager.h; sourceTree = "<group>"; };
+		3FFE3A7F20B58C6900314833 /* HYPUIMainThreadCheckerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPUIMainThreadCheckerManager.m; sourceTree = "<group>"; };
 		42470BB1473038DBF7143011 /* Pods-HYPEnvironmentSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPEnvironmentSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPEnvironmentSelector/Pods-HYPEnvironmentSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6F832F239A6FF00BACDF18 /* Pods-Example.realse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.realse.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.realse.xcconfig"; sourceTree = "<group>"; };
 		4F0459C04175FAD28001D34B /* Pods-HYPFPSMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYPFPSMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HYPFPSMonitor/Pods-HYPFPSMonitor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,13 +173,11 @@
 		3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */ = {
 			isa = PBXGroup;
 			children = (
-				3F14AF9E2085C88500CE4EE5 /* HYPUIMainThreadChecker.h */,
 				3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */,
 				3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */,
 				3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */,
 				3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */,
-				3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */,
-				3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */,
+				3FFE3A7D20B58C3800314833 /* NoHYPCore */,
 				3F14AF9F2085C88500CE4EE5 /* Info.plist */,
 				3F14AF9020859BCB00CE4EE5 /* Resources */,
 			);
@@ -281,6 +281,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3FFE3A7D20B58C3800314833 /* NoHYPCore */ = {
+			isa = PBXGroup;
+			children = (
+				3FFE3A7E20B58C6900314833 /* HYPUIMainThreadCheckerManager.h */,
+				3FFE3A7F20B58C6900314833 /* HYPUIMainThreadCheckerManager.m */,
+				3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */,
+				3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */,
+			);
+			path = NoHYPCore;
+			sourceTree = "<group>";
+		};
 		4739C495600620D1E0B57456 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,8 +348,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F14AFA02085C88500CE4EE5 /* HYPUIMainThreadChecker.h in Headers */,
 				3F14AFAB2085C9D900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h in Headers */,
+				3FFE3A8020B58C6900314833 /* HYPUIMainThreadCheckerManager.h in Headers */,
 				3F14AFAC2085C9DC00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h in Headers */,
 				3F14AFAD2085C9E000CE4EE5 /* UIView+HYPUIMainThreadChecker.h in Headers */,
 			);
@@ -567,6 +578,7 @@
 			files = (
 				3F14AFA82085C89A00CE4EE5 /* UIView+HYPUIMainThreadChecker.m in Sources */,
 				3F14AFA92085C89A00CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m in Sources */,
+				3FFE3A8120B58C6900314833 /* HYPUIMainThreadCheckerManager.m in Sources */,
 				3F14AFAA2085C89A00CE4EE5 /* HYPUIMainThreadCheckerPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,12 +10,19 @@
 #import <HyperioniOS/HYPPluginMenuItem.h>
 #import <HyperioniOS/HYPPluginExtensionImp.h>
 #import "HYPUIMainThreadCheckerPluginModule.h"
+#import "HYPUIMainThreadCheckerManager.h"
 
 @interface HYPUIMainThreadCheckerPluginModule() <HYPPluginMenuItemDelegate>
 @property (nonatomic, strong) HYPPluginMenuItem *menu;
 @end
 
 @implementation HYPUIMainThreadCheckerPluginModule
+
+- (void)dealloc {
+    // Never Run
+    [[HYPUIMainThreadCheckerManager sharedManager] removeObserver:self
+                                                       forKeyPath:NSStringFromSelector(@selector(isOpen))];
+}
 
 + (instancetype)sharedInstance {
     static id __instance = nil;
@@ -30,12 +37,6 @@
     return __instance;
 }
 
-#pragma mark - isShouldCheckMainThread
-- (void)setIsShouldCheckMainThread:(BOOL)isShouldCheckMainThread {
-    _isShouldCheckMainThread = isShouldCheckMainThread;
-    [self.menu setSelected:self.isShouldCheckMainThread animated:YES];
-}
-
 #pragma mark - pluginMenuItem
 - (UIView *)pluginMenuItem {
     if (self.menu) {
@@ -47,14 +48,33 @@
     menu.delegate = self;
     [menu bindWithTitle:@"UI Main Thread Check"
                   image:[UIImage imageWithContentsOfFile:imagePath]];
-    [menu setSelected:self.isShouldCheckMainThread animated:YES];
+    [menu setSelected:[HYPUIMainThreadCheckerManager sharedManager].isOpen animated:NO];
     self.menu = menu;
+    [[HYPUIMainThreadCheckerManager sharedManager] addObserver:self
+                                                    forKeyPath:NSStringFromSelector(@selector(isOpen))
+                                                       options:NSKeyValueObservingOptionNew
+                                                       context:nil];
     return menu;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(isOpen))]
+        && object == [HYPUIMainThreadCheckerManager sharedManager]) {
+        BOOL isOpen = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        [self.menu setSelected:isOpen animated:NO];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+
 #pragma mark - HYPPluginMenuItemDelegate
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
-    self.isShouldCheckMainThread = !self.isShouldCheckMainThread;
+    if ([HYPUIMainThreadCheckerManager sharedManager].isOpen) {
+        [[HYPUIMainThreadCheckerManager sharedManager] close];
+    } else {
+        [[HYPUIMainThreadCheckerManager sharedManager] open];
+    }
 }
 
 @end

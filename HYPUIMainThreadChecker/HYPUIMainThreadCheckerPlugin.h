@@ -11,6 +11,4 @@
 
 @interface HYPUIMainThreadCheckerPlugin : NSObject<HYPPlugin>
 
-@property (class, nonatomic, assign) BOOL isShouldCheckUIInMainThread;
-
 @end
