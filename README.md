@@ -54,7 +54,7 @@ HYPEnvironmentSelectorPlugin.isShowInSidebarList = YES/NO;
 HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem = YES/NO;
 
 // Actively pop up the environment selection page
-[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
     // Callback after popup
 }];
 

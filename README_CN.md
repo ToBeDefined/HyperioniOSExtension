@@ -52,7 +52,7 @@ HYPEnvironmentSelectorPlugin.isShowInSidebarList = YES/NO;
 HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem = YES/NO;
 
 // 主动弹出环境选择页面
-[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
     // 弹出之后的回调
 }];
 
