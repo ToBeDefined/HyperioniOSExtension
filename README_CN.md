@@ -72,8 +72,8 @@ HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem = YES/NO;
 
 ```objc
 @interface MyEnvItem : NSObject <HYPEnvironmentItemProtocol>
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *otherVariable;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *otherVariable;
 @end
  
 @implementation MyEnvItem
