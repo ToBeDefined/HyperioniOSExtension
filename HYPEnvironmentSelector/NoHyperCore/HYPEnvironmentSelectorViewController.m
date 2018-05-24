@@ -13,6 +13,31 @@
 #import "HYPEnvironmentItemManage.h"
 #import "HYPEnvironmentSelectorManager.h"
 
+//@interface HYPEnvironmentSelectorViewCellModel : NSObject
+//
+//@property (nonatomic, copy) NSString *name;
+//@property (nonatomic, copy) NSString *description;
+//@property (nonatomic, assign) CGFloat height;
+//
+//@end
+//
+//@implementation HYPEnvironmentSelectorViewCellModel
+//
+//- (CGFloat)height {
+//    if ((int)self->_height == 0) {
+//        self
+//    }
+//    return self->_height;
+//}
+//
+//- (CGFloat)calculateHeight {
+//
+//}
+//
+//@end
+
+
+
 static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 @interface HYPEnvironmentSelectorViewController()
@@ -47,6 +72,8 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.title = @"Environment Selector";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)setIsCanCancel:(BOOL)isCanCancel {
@@ -78,6 +105,42 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (@available(iOS 11, *)) {
+        return UITableViewAutomaticDimension;
+    } else {
+        return [self calculateHeightForIndex:indexPath];
+    }
+}
+
+- (CGFloat)calculateHeightForIndex:(NSIndexPath *)indexPath {
+    id item = self.items[indexPath.row];
+    NSString *title;
+    id tmpName = [HYPEnvironmentItemManage getObjectForKey:@"name" inItem:item];
+    if (tmpName) {
+        title = [NSString stringWithFormat:@"%@", tmpName];
+    } else {
+        title = @"No name was set.";
+    }
+    NSString *detail = [HYPEnvironmentItemManage descriptionForItem:item escapeName:YES];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:HYPEnvironmentInfoCellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:HYPEnvironmentInfoCellID];
+    }
+    
+    CGRect titleRect = [title boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, CGFLOAT_MAX)
+                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                        attributes:@{NSFontAttributeName: cell.textLabel.font}
+                                           context:nil];
+    CGRect detailRect = [detail boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, CGFLOAT_MAX)
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{NSFontAttributeName: cell.detailTextLabel.font}
+                                             context:nil];
+    return titleRect.size.height + detailRect.size.height + 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

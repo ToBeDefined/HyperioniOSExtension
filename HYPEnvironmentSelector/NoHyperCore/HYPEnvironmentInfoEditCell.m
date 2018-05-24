@@ -8,7 +8,7 @@
 
 #import "HYPEnvironmentInfoEditCell.h"
 
-@interface HYPEnvironmentInfoEditCell() <UITextFieldDelegate>
+@interface HYPEnvironmentInfoEditCell() <UITextViewDelegate>
 
 @end
 
@@ -52,66 +52,56 @@
                                                                multiplier:1.0
                                                                  constant:25]];
     
-    self.valueTextField = [[UITextField alloc] init];
-    self.valueTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    self.valueTextField.font = [UIFont systemFontOfSize:15];
-    self.valueTextField.textColor = [UIColor grayColor];
-    self.valueTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.valueTextField.layer.borderWidth = 1/[UIScreen mainScreen].scale;
-    self.valueTextField.layer.cornerRadius = 5;
-    self.valueTextField.layer.masksToBounds = YES;
-    self.valueTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    self.valueTextField.leftView.backgroundColor = [UIColor clearColor];
-    self.valueTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.valueTextField.delegate = self;
-    self.valueTextField.returnKeyType = UIReturnKeyDone;
-    [self.contentView addSubview:self.valueTextField];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextField
+    self.valueTextView = [[UITextView alloc] init];
+    self.valueTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.valueTextView.font = [UIFont systemFontOfSize:15];
+    self.valueTextView.textContainerInset = UIEdgeInsetsMake(3, 5, 3, 5);
+    self.valueTextView.textColor = [UIColor grayColor];
+    self.valueTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.valueTextView.layer.borderWidth = 1/[UIScreen mainScreen].scale;
+    self.valueTextView.layer.cornerRadius = 5;
+    self.valueTextView.layer.masksToBounds = YES;
+    self.valueTextView.delegate = self;
+    self.valueTextView.returnKeyType = UIReturnKeyDone;
+    [self.contentView addSubview:self.valueTextView];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextView
                                                                  attribute:NSLayoutAttributeTop
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.titleLabel
                                                                  attribute:NSLayoutAttributeBottom
                                                                 multiplier:1.0
                                                                   constant:10]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextField
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextView
                                                                  attribute:NSLayoutAttributeBottom
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeBottom
                                                                 multiplier:1.0
                                                                   constant:-10]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextField
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextView
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
                                                                 multiplier:1.0
                                                                   constant:10]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextField
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextView
                                                                  attribute:NSLayoutAttributeRight
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeRight
                                                                 multiplier:1.0
                                                                   constant:-10]];
-    [self.valueTextField addConstraint:[NSLayoutConstraint constraintWithItem:self.valueTextField
-                                                                    attribute:NSLayoutAttributeHeight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeNotAnAttribute
-                                                                   multiplier:1.0
-                                                                     constant:30]];
-    
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    [textField resignFirstResponder];
+//    return YES;
+//}
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (self.textFieldEditBlock) {
-        self.textFieldEditBlock(self.titleLabel.text, textField.text);
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if (self.textViewEditBlock) {
+        self.textViewEditBlock(self.titleLabel.text, textView.text);
     }
 }
 

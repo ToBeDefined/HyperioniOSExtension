@@ -35,10 +35,12 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     // 没传item
     // 1、如果存在缓存，使用缓存(生成item)
     NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:HYPEnvironmentSelectorEditItemSaveKey];
-    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if (dict != nil) {
-        _item = [HYPEnvironmentItemManage itemWithDictionary:dict];
-        return;
+    if (data) {
+        NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (dict != nil) {
+            _item = [HYPEnvironmentItemManage itemWithDictionary:dict];
+            return;
+        }
     }
     // 2、如果有模板，使用模板(拷贝)
     id baseItem = [HYPEnvironmentSelectorManager sharedManager].customEnvironmentItemTemplate;
@@ -66,6 +68,7 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[HYPEnvironmentInfoEditCell class]
            forCellReuseIdentifier:HYPEnvironmentInfoEditCellID];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200)];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:tap];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -99,6 +102,10 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     return self.keys.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 150;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HYPEnvironmentInfoEditCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPEnvironmentInfoEditCellID
                                                                        forIndexPath:indexPath];
@@ -106,12 +113,12 @@ static NSString *HYPEnvironmentSelectorEditItemSaveKey  = @"HYPEnvironmentSelect
     id value = [HYPEnvironmentItemManage getObjectForKey:propertyKey inItem:self.item];
     cell.titleLabel.text = propertyKey;
     if (value == [NSNull null]) {
-        cell.valueTextField.text = nil;
+        cell.valueTextView.text = nil;
     } else {
-        cell.valueTextField.text = value;
+        cell.valueTextView.text = value;
     }
     __weak typeof(self)weakSelf = self;
-    cell.textFieldEditBlock = ^(NSString *key, NSString *value) {
+    cell.textViewEditBlock = ^(NSString *key, NSString *value) {
         [HYPEnvironmentItemManage updateObject:value forKey:key inItem:weakSelf.item];
     };
     return cell;

@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HYPEnvironmentInfoEditCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UITextField *valueTextField;
-@property (nonatomic, copy) void(^textFieldEditBlock)(NSString *key, NSString *value);
+@property (nonatomic, strong) UITextView *valueTextView;
+@property (nonatomic, copy) void(^textViewEditBlock)(NSString *key, NSString *value);
 
 @end
 
