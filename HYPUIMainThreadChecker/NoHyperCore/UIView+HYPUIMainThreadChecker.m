@@ -68,6 +68,30 @@ BOOL isMainQueue(void) {
 }
 
 
+@interface _HYPUIMainThreadCheckerAlertViewDelegate : NSObject <UIAlertViewDelegate>
+
++ (instancetype)shared;
+
+@end
+
+@implementation _HYPUIMainThreadCheckerAlertViewDelegate
+
++ (instancetype)shared {
+    static _HYPUIMainThreadCheckerAlertViewDelegate *_hypUIMainThreadCheckerAlertViewSharedDelegate = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _hypUIMainThreadCheckerAlertViewSharedDelegate = [[[self class] alloc] init];
+    });
+    return _hypUIMainThreadCheckerAlertViewSharedDelegate;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%@", alertView.message);
+}
+
+@end
+
+
 #pragma mark - Implementation Replace
 #pragma mark -
 
@@ -156,19 +180,27 @@ BOOL isMainQueue(void) {
 
 - (void)showAlertControllerWithMessage:(NSString *)message {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"UI Operation Not In MainThread"
-                                                                                 message:message
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Log To Console"
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction * _Nonnull action) {
-                                                              NSLog(@"%@", message);
-                                                          }]];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController
-                                                                                     animated:YES
-                                                                                   completion:nil];
+        if (@available(iOS 8, *)) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"UI Operation Not In MainThread"
+                                                                                     message:message
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Log To Console"
+                                                                style:UIAlertActionStyleDestructive
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  NSLog(@"%@", message);
+                                                              }]];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController
+                                                                                         animated:YES
+                                                                                       completion:nil];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"UI Operation Not In MainThread"
+                                                                message:message
+                                                               delegate:[_HYPUIMainThreadCheckerAlertViewDelegate shared]
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Log To Console", nil];
+            [alertView show];
+        }
     });
 }
-
 
 @end
