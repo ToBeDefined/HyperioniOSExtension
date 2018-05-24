@@ -173,18 +173,50 @@
 		3F14AF9D2085C88500CE4EE5 /* HYPUIMainThreadChecker */ = {
 			isa = PBXGroup;
 			children = (
-				3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */,
-				3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */,
-				3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */,
-				3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */,
-				3FFE3A7D20B58C3800314833 /* NoHYPCore */,
+				3F2C227420B6459D005F9F9E /* Plugin */,
+				3FFE3A7D20B58C3800314833 /* NoHyperCore */,
 				3F14AF9F2085C88500CE4EE5 /* Info.plist */,
-				3F14AF9020859BCB00CE4EE5 /* Resources */,
 			);
 			path = HYPUIMainThreadChecker;
 			sourceTree = "<group>";
 		};
-		3F33B5F720B5714900588676 /* NoHYPCore */ = {
+		3F2C227320B64576005F9F9E /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
+				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
+				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
+				3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */,
+				3F88665C207F7366009760E3 /* Resources */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		3F2C227420B6459D005F9F9E /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				3F14AF842085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.h */,
+				3F14AF852085977900CE4EE5 /* HYPUIMainThreadCheckerPlugin.m */,
+				3F14AF88208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.h */,
+				3F14AF89208597A800CE4EE5 /* HYPUIMainThreadCheckerPluginModule.m */,
+				3F14AF9020859BCB00CE4EE5 /* Resources */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		3F2C227520B645B0005F9F9E /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				3FA20F3120844062008B1402 /* HYPFPSMonitorPlugin.h */,
+				3FA20F3220844062008B1402 /* HYPFPSMonitorPlugin.m */,
+				3FA20F3520844731008B1402 /* HYPFPSMonitorPluginModule.h */,
+				3FA20F3620844731008B1402 /* HYPFPSMonitorPluginModule.m */,
+				3FA20F3D20844900008B1402 /* Resources */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		3F33B5F720B5714900588676 /* NoHyperCore */ = {
 			isa = PBXGroup;
 			children = (
 				3F33B5F320B567C500588676 /* HYPEnvironmentSelectorManager.h */,
@@ -199,16 +231,16 @@
 				3FA8F1C72080A6720015BEE0 /* HYPEnvironmentInfoEditCell.h */,
 				3FA8F1C82080A6720015BEE0 /* HYPEnvironmentInfoEditCell.m */,
 			);
-			path = NoHYPCore;
+			path = NoHyperCore;
 			sourceTree = "<group>";
 		};
-		3F33B5F820B5767100588676 /* NoHYPCore */ = {
+		3F33B5F820B5767100588676 /* NoHyperCore */ = {
 			isa = PBXGroup;
 			children = (
 				3FA20F4420844D8F008B1402 /* HYPFPSMonitorManager.h */,
 				3FA20F4520844D8F008B1402 /* HYPFPSMonitorManager.m */,
 			);
-			path = NoHYPCore;
+			path = NoHyperCore;
 			sourceTree = "<group>";
 		};
 		3F886637207F7317009760E3 = {
@@ -236,13 +268,9 @@
 		3F886643207F7317009760E3 /* HYPEnvironmentSelector */ = {
 			isa = PBXGroup;
 			children = (
-				3F886653207F7359009760E3 /* HYPEnvironmentSelectorPlugin.h */,
-				3F886652207F7359009760E3 /* HYPEnvironmentSelectorPlugin.m */,
-				3F88664C207F7358009760E3 /* HYPEnvironmentSelectorPluginModule.h */,
-				3F886651207F7359009760E3 /* HYPEnvironmentSelectorPluginModule.m */,
-				3F33B5F720B5714900588676 /* NoHYPCore */,
+				3F2C227320B64576005F9F9E /* Plugin */,
+				3F33B5F720B5714900588676 /* NoHyperCore */,
 				3F886645207F7317009760E3 /* Info.plist */,
-				3F88665C207F7366009760E3 /* Resources */,
 			);
 			path = HYPEnvironmentSelector;
 			sourceTree = "<group>";
@@ -260,13 +288,9 @@
 		3FA20F262084402C008B1402 /* HYPFPSMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				3FA20F3120844062008B1402 /* HYPFPSMonitorPlugin.h */,
-				3FA20F3220844062008B1402 /* HYPFPSMonitorPlugin.m */,
-				3FA20F3520844731008B1402 /* HYPFPSMonitorPluginModule.h */,
-				3FA20F3620844731008B1402 /* HYPFPSMonitorPluginModule.m */,
-				3F33B5F820B5767100588676 /* NoHYPCore */,
+				3F2C227520B645B0005F9F9E /* Plugin */,
+				3F33B5F820B5767100588676 /* NoHyperCore */,
 				3FA20F282084402C008B1402 /* Info.plist */,
-				3FA20F3D20844900008B1402 /* Resources */,
 			);
 			path = HYPFPSMonitor;
 			sourceTree = "<group>";
@@ -281,7 +305,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3FFE3A7D20B58C3800314833 /* NoHYPCore */ = {
+		3FFE3A7D20B58C3800314833 /* NoHyperCore */ = {
 			isa = PBXGroup;
 			children = (
 				3FFE3A7E20B58C6900314833 /* HYPUIMainThreadCheckerManager.h */,
@@ -289,7 +313,7 @@
 				3F14AF8C2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.h */,
 				3F14AF8D2085982800CE4EE5 /* UIView+HYPUIMainThreadChecker.m */,
 			);
-			path = NoHYPCore;
+			path = NoHyperCore;
 			sourceTree = "<group>";
 		};
 		4739C495600620D1E0B57456 /* Pods */ = {
