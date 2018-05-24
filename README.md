@@ -29,37 +29,42 @@ HyperioniOSExtension
 in `Podfile`:
 
 ```ruby
-pod 'HyperioniOSExtension/HYPEnvironmentSelector', :configurations => ['Debug']
+pod 'HyperioniOSExtension/EnvironmentSelector', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 7.0
+
+or
+
+pod 'HyperioniOSExtension/EnvironmentSelector-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### Use
 
 ```objc
+// If Use Not Depend HyperioniOS Version, Following `HYPEnvironmentSelectorPlugin.manager` change to `[HYPEnvironmentSelectorManager sharedManager]`
 // Set the environment variable of the environment selection page. 
 // The element of `environmentItems` must conform to the `HYPEnvironmentItemProtocol` protocol.
-HYPEnvironmentSelectorPlugin.environmentItems = @[envItem1, envItem2, envItem3];
+HYPEnvironmentSelectorPlugin.manager.environmentItems = @[envItem1, envItem2, envItem3];
 
 // Actively fill in the template for the environment variable
-HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = envItem1;
+HYPEnvironmentSelectorPlugin.manager.customEnvironmentItemTemplate = envItem1;
 
 // Set callback after selecting environment
-HYPEnvironmentSelectorPlugin.environmentSelectedBlock = ^(NSObject<HYPEnvironmentItemProtocol> * _Nullable obj) {
+HYPEnvironmentSelectorPlugin.manager.environmentSelectedBlock = ^(NSObject<HYPEnvironmentItemProtocol> * _Nullable obj) {
     // Click on the environment setting and return the corresponding obj.
 };
 
 // Whether to show in the column to the right of `HyperioniOS`
-HYPEnvironmentSelectorPlugin.isShowInSidebarList = YES/NO;
+HYPEnvironmentSelectorPlugin.manager.isShowInSidebarList = YES/NO;
 
 // Whether to allow editing with the element of `environmentItems` as a template
-HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem = YES/NO;
+HYPEnvironmentSelectorPlugin.manager.isCanEditItemFromListItem = YES/NO;
 
 // Actively pop up the environment selection page
-[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin.manager showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
     // Callback after popup
 }];
 
 // Actively hide the environment selection page
-[HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin.manager hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
     // The callback after the hide
 }];
 ```
@@ -111,21 +116,26 @@ class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 in `Podfile`:
 
 ```ruby
-pod 'HyperioniOSExtension/HYPFPSMonitor', :configurations => ['Debug']
+pod 'HyperioniOSExtension/FPSMonitor', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 6.0
+
+or
+
+pod 'HyperioniOSExtension/FPSMonitor-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### Use
 
 
 ```objc
+// If Use Not Depend HyperioniOS Version, Following `HYPFPSMonitorPlugin.manager` change to `[HYPFPSMonitorManager sharedManager]`
 // Set whether touch/drag FPS monitoring View is allowed
-HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
+HYPFPSMonitorPlugin.manager.isCanTouchFPSView = YES/NO;
 
 // Actively display FPS monitoring View
-[HYPFPSMonitorPlugin showFPSMonitor];
+[HYPFPSMonitorPlugin.manager showFPSMonitor];
 
 // Actively hide FPS monitoring View
-[HYPFPSMonitorPlugin hideFPSMonitor];
+[HYPFPSMonitorPlugin.manager hideFPSMonitor];
 ```
 
 
@@ -137,14 +147,21 @@ HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
 in `Podfile`:
 
 ```ruby
-pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug']
+pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 5.0
+
+or
+
+pod 'HyperioniOSExtension/HYPUIMainThreadChecker-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### Use
 
 
 ```objc
-// Turns on/off UI operation main thread (main_queue) monitoring
-HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = YES/NO;
+// If Use Not Depend HyperioniOS Version, Following `HYPUIMainThreadCheckerPlugin.manager` change to `[HYPUIMainThreadCheckerManager sharedManager]`
+// Turns on UI operation main thread (main_queue) monitoring
+[HYPUIMainThreadCheckerPlugin.manager open];
+// Turns off UI operation main thread (main_queue) monitoring
+[HYPUIMainThreadCheckerPlugin.manager close];
 ```
 

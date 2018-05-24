@@ -27,37 +27,42 @@ HyperioniOSExtension
 #### Cocoapods导入
 
 ```ruby
-pod 'HyperioniOSExtension/HYPEnvironmentSelector', :configurations => ['Debug']
+pod 'HyperioniOSExtension/EnvironmentSelector', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 7.0
+
+or
+
+pod 'HyperioniOSExtension/EnvironmentSelector-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### 使用
 
 
 ```objc
+// 若使用不依赖 HyperioniOS 的版本, 下面的 `HYPEnvironmentSelectorPlugin.manager` 替换成 `[HYPEnvironmentSelectorManager sharedManager]`
 // 设置环境选择页面的环境变量，`environmentItems` 的 element 必须符合 `HYPEnvironmentItemProtocol` 协议
-HYPEnvironmentSelectorPlugin.environmentItems = @[envItem1, envItem2, envItem3];
+HYPEnvironmentSelectorPlugin.manager.environmentItems = @[envItem1, envItem2, envItem3];
 
 // 主动填写环境变量的模板
-HYPEnvironmentSelectorPlugin.customEnvironmentItemTemplate = envItem1;
+HYPEnvironmentSelectorPlugin.manager.customEnvironmentItemTemplate = envItem1;
 
 // 设置选择环境之后的回调
-HYPEnvironmentSelectorPlugin.environmentSelectedBlock = ^(NSObject<HYPEnvironmentItemProtocol> * _Nullable obj) {
+HYPEnvironmentSelectorPlugin.manager.environmentSelectedBlock = ^(NSObject<HYPEnvironmentItemProtocol> * _Nullable obj) {
     // 点选环境设置之后返回对应的obj，此处做选择之后的操作
 };
 
 // 是否显示在 `HyperioniOS` 右侧的栏目内
-HYPEnvironmentSelectorPlugin.isShowInSidebarList = YES/NO;
+HYPEnvironmentSelectorPlugin.manager.isShowInSidebarList = YES/NO;
 
 // 是否显示允许以 `environmentItems` 的 element 为模板进行编辑
-HYPEnvironmentSelectorPlugin.isCanEditItemFromListItem = YES/NO;
+HYPEnvironmentSelectorPlugin.manager.isCanEditItemFromListItem = YES/NO;
 
 // 主动弹出环境选择页面
-[HYPEnvironmentSelectorPlugin showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin.manager showEnvironmentSelectorWindowAnimated:YES isCanCancel:YES completionBlock:^{
     // 弹出之后的回调
 }];
 
 // 主动隐藏环境选择页面
-[HYPEnvironmentSelectorPlugin hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
+[HYPEnvironmentSelectorPlugin.manager hideEnvironmentSelectorWindowAnimated:YES completionBlock:^{
     // 隐藏之后的回调
 }];
 ```
@@ -107,21 +112,26 @@ class MyEnvItem: NSObject, HYPEnvironmentItemProtocol {
 #### Cocoapods导入
 
 ```ruby
-pod 'HyperioniOSExtension/HYPFPSMonitor', :configurations => ['Debug']
+pod 'HyperioniOSExtension/FPSMonitor', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 6.0
+
+or
+
+pod 'HyperioniOSExtension/FPSMonitor-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### 使用
 
 
 ```objc
+// 若使用不依赖 HyperioniOS 的版本, 下面的 `HYPFPSMonitorPlugin.manager` 替换成 `[HYPFPSMonitorManager sharedManager]`
 // 设置是否允许触摸/拖动FPS监控View
-HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
+HYPFPSMonitorPlugin.manager.isCanTouchFPSView = YES/NO;
 
 // 主动显示FPS监控View
-[HYPFPSMonitorPlugin showFPSMonitor];
+[HYPFPSMonitorPlugin.manager showFPSMonitor];
 
 // 主动隐藏FPS监控View
-[HYPFPSMonitorPlugin hideFPSMonitor];
+[HYPFPSMonitorPlugin.manager hideFPSMonitor];
 ```
 
 
@@ -131,14 +141,21 @@ HYPFPSMonitorPlugin.isCanTouchFPSView = YES/NO;
 #### Cocoapods导入
 
 ```ruby
-pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug']
+pod 'HyperioniOSExtension/HYPUIMainThreadChecker', :configurations => ['Debug'] # Not Depend HyperioniOS, iOS Version >= 5.0
+
+or
+
+pod 'HyperioniOSExtension/HYPUIMainThreadChecker-Plugin', :configurations => ['Debug'] # Depend HyperioniOS, iOS Version >= 9.0
 ```
 
 #### 使用
 
 
 ```objc
-// 开启/关闭UI操作主线程(main_queue)监控
-HYPUIMainThreadCheckerPlugin.isShouldCheckUIInMainThread = YES/NO;
+// 若使用不依赖 HyperioniOS 的版本, 下面的 `HYPUIMainThreadCheckerPlugin.manager` 替换成 `[HYPUIMainThreadCheckerManager sharedManager]`
+// 开启UI操作主队列(main_queue)监控
+[HYPUIMainThreadCheckerPlugin.manager open];
+// 关闭UI操作主队列(main_queue)监控
+[HYPUIMainThreadCheckerPlugin.manager close];
 ```
 
