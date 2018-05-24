@@ -152,6 +152,7 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:HYPEnvironmentInfoCellID];
+        cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         if ([HYPEnvironmentSelectorManager sharedManager].isCanEditItemFromListItem) {
