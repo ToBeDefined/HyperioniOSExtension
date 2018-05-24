@@ -62,6 +62,8 @@ typedef void (^ __nullable EnvironmentSelectedBlock)(NSObject <HYPEnvironmentIte
 // 是否正在显示
 @property (nonatomic, assign, readonly) BOOL isShowingEnvironmentSelectorWindow;
 
+@property (nonatomic, assign, readonly) BOOL isCanCancel;
+
 - (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
                                   isCanCancel:(BOOL)isCanCancel
                               completionBlock:(void (^_Nullable)(void))completion;

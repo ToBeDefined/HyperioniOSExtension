@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     
     @IBAction func showEnvSelector(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPEnvironmentSelectorManager.shared().showEnvironmentSelectorWindow(animated: true, isCanCancel: true, completionBlock: nil)
+        HYPEnvironmentSelectorManager.shared.showEnvironmentSelectorWindow(animated: true, isCanCancel: true, completionBlock: nil)
+//        HYPEnvironmentSelectorPlugin.manager.showEnvironmentSelectorWindow(animated: true, isCanCancel: false, completionBlock: nil)
         #endif
     }
     

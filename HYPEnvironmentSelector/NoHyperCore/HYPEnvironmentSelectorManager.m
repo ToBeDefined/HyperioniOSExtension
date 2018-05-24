@@ -11,7 +11,8 @@
 
 @interface HYPEnvironmentSelectorManager() <NSCopying, NSMutableCopying>
 
-@property (nonatomic, weak) UIWindow *environmentSelectorWindow;
+@property (nonatomic, strong) UIWindow *environmentSelectorWindow;
+@property (nonatomic, strong) HYPEnvironmentSelectorViewController *environmentSelectorWindowRootVC;
 @property (nonatomic, weak) UIWindow *originKeyWindow;
 
 @end
@@ -62,22 +63,25 @@ static HYPEnvironmentSelectorManager *sharedHYPEnvironmentSelectorManager = nil;
     if (self.isShowingEnvironmentSelectorWindow) {
         return;
     }
+    self->_isCanCancel = isCanCancel;
     [self willChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     self->_isShowingEnvironmentSelectorWindow = YES;
     [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     if (self.environmentSelectorWindow == nil) {
-        UIWindow *environmentSelectorWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         HYPEnvironmentSelectorViewController *selectorVC = [[HYPEnvironmentSelectorViewController alloc] init];
-        selectorVC.canCancel = isCanCancel;
         UINavigationController *rootNavigatonController = [[UINavigationController alloc] initWithRootViewController:selectorVC];
+        UIWindow *environmentSelectorWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         environmentSelectorWindow.rootViewController = rootNavigatonController;
+        
+        self.environmentSelectorWindowRootVC = selectorVC;
         self.environmentSelectorWindow = environmentSelectorWindow;
     }
     [(UINavigationController *)self.environmentSelectorWindow.rootViewController popToRootViewControllerAnimated:NO];
+    self.environmentSelectorWindowRootVC.isCanCancel = isCanCancel;
     self.environmentSelectorWindow.alpha = 0;
     self.environmentSelectorWindow.hidden = NO;
     self.originKeyWindow = [UIApplication sharedApplication].keyWindow;
-    [self.environmentSelectorWindow makeKeyWindow];
+    [self.environmentSelectorWindow makeKeyAndVisible];
     if (animated) {
         [UIView animateWithDuration:0.1 animations:^{
             self.environmentSelectorWindow.alpha = 1;
@@ -116,7 +120,6 @@ static HYPEnvironmentSelectorManager *sharedHYPEnvironmentSelectorManager = nil;
     self->_isShowingEnvironmentSelectorWindow = NO;
     [self didChangeValueForKey:NSStringFromSelector(@selector(isShowingEnvironmentSelectorWindow))];
     self.environmentSelectorWindow.hidden = YES;
-    self.environmentSelectorWindow = nil;
     [self.originKeyWindow makeKeyWindow];
     self.originKeyWindow = nil;
     if (completion) {

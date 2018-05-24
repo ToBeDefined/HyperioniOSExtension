@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HYPEnvironmentSelectorViewController : UITableViewController
 
-@property (nonatomic, assign, getter=isCanCancel) BOOL canCancel;
+@property (nonatomic, assign) BOOL isCanCancel;
 
 @end
 

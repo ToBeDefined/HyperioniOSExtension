@@ -49,6 +49,20 @@ static NSString *HYPEnvironmentInfoCellID = @"HYPEnvironmentInfoCellID";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
+- (void)setIsCanCancel:(BOOL)isCanCancel {
+    self->_isCanCancel = isCanCancel;
+    if (!self.navigationItem) {
+        return;
+    }
+    if (isCanCancel) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                              target:self
+                                                                                              action:@selector(cancelSelectEnvironment)];
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
 - (void)cancelSelectEnvironment {
     [[HYPEnvironmentSelectorManager sharedManager] hideEnvironmentSelectorWindowAnimated:YES completionBlock:nil];
 }

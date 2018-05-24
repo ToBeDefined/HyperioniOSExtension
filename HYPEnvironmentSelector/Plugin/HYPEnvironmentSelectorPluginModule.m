@@ -76,16 +76,21 @@
 
 - (void)pluginMenuItemSelected:(UIView<HYPPluginMenuItem> *)pluginView {
     [[HyperionManager sharedInstance] togglePluginDrawer];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow) {
+    if ([HYPEnvironmentSelectorManager sharedManager].isShowingEnvironmentSelectorWindow) {
+        if (![HYPEnvironmentSelectorManager sharedManager].isCanCancel) {
+            return;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self hideEnvironmentSelectorWindowAnimated:YES
                                         completionBlock:nil];
-        } else {
+        });
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showEnvironmentSelectorWindowAnimated:YES
                                             isCanCancel:YES
                                         completionBlock:nil];
-        }
-    });
+        });
+    }
 }
 
 - (void)showEnvironmentSelectorWindowAnimated:(BOOL)animated
