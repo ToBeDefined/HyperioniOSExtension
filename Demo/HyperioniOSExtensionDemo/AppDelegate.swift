@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         #if CUSTOM_DEBUG
-        HYPEnvironmentSelectorPlugin.manager.environmentItems = [MyEnvItem.init(name: "1"),
+        HYPEnvironmentSelectorManager.shared.environmentItems = [MyEnvItem.init(name: "1"),
                                                                  MyEnvItem.init(name: "2"),
                                                                  MyEnvItem.init(name: "3"),
                                                                  MyEnvItem.init(name: "4")]
-        HYPEnvironmentSelectorPlugin.manager.customEnvironmentItemTemplate = MyEnvItem.init(name: "base")
-        HYPEnvironmentSelectorPlugin.manager.environmentSelectedBlock = { (obj) in
+        HYPEnvironmentSelectorManager.shared.customEnvironmentItemTemplate = MyEnvItem.init(name: "base")
+        HYPEnvironmentSelectorManager.shared.environmentSelectedBlock = { (obj) in
             if let obj = obj as? MyEnvItem {
                 var message = "EnvName: \(obj.name ?? "no name")" + HYPEnvironmentItemManage.description(forItem: obj, escapeName: true)
                 message = message.replacingOccurrences(of: "Optional(\"", with: "")

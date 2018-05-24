@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HYPFPSMonitorManager : NSObject
 
 @property (class, nonatomic, readonly) HYPFPSMonitorManager *shared;
@@ -21,3 +23,5 @@
 - (void)hideFPSMonitor;
 
 @end
+
+NS_ASSUME_NONNULL_END

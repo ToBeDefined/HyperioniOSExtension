@@ -27,25 +27,25 @@ class ViewController: UIViewController {
     
     @IBAction func showFPSMonitor(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPFPSMonitorPlugin.manager.showFPSMonitor()
+        HYPFPSMonitorManager.shared.showFPSMonitor()
         #endif
     }
     
     @IBAction func hideFPSMonitor(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPFPSMonitorPlugin.manager.hideFPSMonitor()
+        HYPFPSMonitorManager.shared.hideFPSMonitor()
         #endif
     }
     
     @IBAction func openUIMainThreadCheck(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPUIMainThreadCheckerPlugin.manager.open()
+        HYPUIMainThreadCheckerManager.shared.open()
         #endif
     }
     
     @IBAction func closeUIMainThreadCheck(_ sender: Any) {
         #if CUSTOM_DEBUG
-        HYPUIMainThreadCheckerPlugin.manager.close()
+        HYPUIMainThreadCheckerManager.shared.close()
         #endif
     }
     

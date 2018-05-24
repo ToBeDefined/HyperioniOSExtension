@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <HyperioniOS/HYPPluginModule.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HYPFPSMonitorPluginModule : HYPPluginModule
 
 + (instancetype)sharedInstance;
 
 @end
+
+NS_ASSUME_NONNULL_END

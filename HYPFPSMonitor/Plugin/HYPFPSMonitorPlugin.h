@@ -10,8 +10,12 @@
 #import <HyperioniOS/HYPPlugin.h>
 #import "HYPFPSMonitorManager.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HYPFPSMonitorPlugin : NSObject<HYPPlugin>
 
 @property (class, nonatomic, strong, readonly) HYPFPSMonitorManager *manager;
 
 @end
+
+NS_ASSUME_NONNULL_END

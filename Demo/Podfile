@@ -1,12 +1,12 @@
 
-platform :ios, "9.0"
+platform :ios, "7.0"
 
 use_frameworks!
 inhibit_all_warnings!
 
 target 'HyperioniOSExtensionDemo' do
-    pod 'HyperioniOSExtension/HYPEnvironmentSelector',  :path => '../', :configurations => ['Debug', 'Test']
-    pod 'HyperioniOSExtension/HYPFPSMonitor',           :path => '../', :configurations => ['Debug', 'Test']
-    pod 'HyperioniOSExtension/HYPUIMainThreadChecker',  :path => '../', :configurations => ['Debug', 'Test']
+    pod 'HyperioniOSExtension/EnvironmentSelector',  :path => '../', :configurations => ['Debug', 'Test']
+    pod 'HyperioniOSExtension/FPSMonitor',           :path => '../', :configurations => ['Debug', 'Test']
+    pod 'HyperioniOSExtension/UIMainThreadChecker',  :path => '../', :configurations => ['Debug', 'Test']
 end
 

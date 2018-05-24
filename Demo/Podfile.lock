@@ -1,29 +1,20 @@
 PODS:
-  - HyperioniOS/Core (1.0.2)
-  - HyperioniOSExtension/HYPEnvironmentSelector (1.0.2):
-    - HyperioniOS/Core (~> 1.0)
-  - HyperioniOSExtension/HYPFPSMonitor (1.0.2):
-    - HyperioniOS/Core (~> 1.0)
-  - HyperioniOSExtension/HYPUIMainThreadChecker (1.0.2):
-    - HyperioniOS/Core (~> 1.0)
+  - HyperioniOSExtension/EnvironmentSelector (1.1.0)
+  - HyperioniOSExtension/FPSMonitor (1.1.0)
+  - HyperioniOSExtension/UIMainThreadChecker (1.1.0)
 
 DEPENDENCIES:
-  - HyperioniOSExtension/HYPEnvironmentSelector (from `../`)
-  - HyperioniOSExtension/HYPFPSMonitor (from `../`)
-  - HyperioniOSExtension/HYPUIMainThreadChecker (from `../`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - HyperioniOS
+  - HyperioniOSExtension/EnvironmentSelector (from `../`)
+  - HyperioniOSExtension/FPSMonitor (from `../`)
+  - HyperioniOSExtension/UIMainThreadChecker (from `../`)
 
 EXTERNAL SOURCES:
   HyperioniOSExtension:
     :path: "../"
 
 SPEC CHECKSUMS:
-  HyperioniOS: 2397937925b2d57ec28182ac979879b0da2658ee
-  HyperioniOSExtension: d216160a7ed17a6d095ca063e6362f6ac7da435f
+  HyperioniOSExtension: 0e0ebef0db4569608501d4e99a45fc6c1947d6a5
 
-PODFILE CHECKSUM: 8e5b57fc9792aa5aec073a15dedb2d0be1beb0cf
+PODFILE CHECKSUM: 57a5000da34c3af9c824c62539891c614d389ea5
 
 COCOAPODS: 1.5.2
