@@ -23,6 +23,7 @@
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, strong) UIView *fpsView;
 @property (nonatomic, strong) UILabel *fpsLabel;
+@property (nonatomic, assign) BOOL isAddPan;
 // 计数器
 @property (nonatomic, assign) CFTimeInterval lastTime;
 @property (nonatomic, assign) NSUInteger refreshCount;
@@ -130,29 +131,30 @@ static HYPFPSMonitorManager *sharedHYPFPSMonitorManager = nil;
 }
 
 - (void)addGestureRecognizer {
-    UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
-    if (fpsView == nil) {
-        return;
+    if (self->_fpsView) {
+        if (self.isAddPan) {
+            return;
+        }
+        self.isAddPan = YES;
+        self->_fpsView.userInteractionEnabled = YES;
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidDragged:)];
+        [pan setMaximumNumberOfTouches:1];
+        [pan setMinimumNumberOfTouches:1];
+        [self->_fpsView addGestureRecognizer:pan];
+        objc_setAssociatedObject(pan,
+                                 @selector(viewDidDragged:),
+                                 self->_fpsView,
+                                 OBJC_ASSOCIATION_ASSIGN);
     }
-    fpsView.userInteractionEnabled = YES;
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewDidDragged:)];
-    [pan setMaximumNumberOfTouches:1];
-    [pan setMinimumNumberOfTouches:1];
-    [fpsView addGestureRecognizer:pan];
-    objc_setAssociatedObject(pan,
-                             @selector(viewDidDragged:),
-                             fpsView,
-                             OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (void)removeGestureRecognizer {
-    UIView *fpsView = objc_getAssociatedObject(self, @selector(fpsView));
-    if (fpsView == nil) {
-        return;
-    }
-    fpsView.userInteractionEnabled = NO;
-    for (UIGestureRecognizer *ges in fpsView.gestureRecognizers) {
-        [fpsView removeGestureRecognizer:ges];
+    if (self->_fpsView) {
+        self->_fpsView.userInteractionEnabled = NO;
+        for (UIGestureRecognizer *ges in self->_fpsView.gestureRecognizers) {
+            [self->_fpsView removeGestureRecognizer:ges];
+        }
+        self.isAddPan = NO;
     }
 }
 
